@@ -1,22 +1,27 @@
-set client_min_messages to warning;
+SET client_min_messages TO warning;
 
 -- DANGER: this is NOT how to do it in the real world.
 -- `drop schema` INSTANTLY ERASES EVERYTHING.
-drop schema "public" cascade;
+DROP SCHEMA "public" CASCADE;
 
-create schema "public";
+CREATE SCHEMA "public";
 
-CREATE TABLE "public"."myPets" (
-	"productName" TEXT NOT NULL,
-	"petType" TEXT NOT NULL,
-	"category" TEXT NOT NULL,
-	"itemPrice" real NOT NULL,
-	"subscriptionPrice" real NOT NULL,
-	"brandName" TEXT NOT NULL,
-	"reviews" integer NOT NULL,
-	"ratings" real NOT NULL,
-	"productId" serial NOT NULL,
-	CONSTRAINT "myPets_pk" PRIMARY KEY ("productId")
-) WITH (
-  OIDS=FALSE
+CREATE TABLE "public"."myPets"(
+  "productName" text NOT NULL,
+  "petType" text NOT NULL,
+  "category" text NOT NULL,
+  "itemPrice" real NOT NULL,
+  "subscriptionPrice" real,
+  "brandName" text NOT NULL,
+  "reviews" integer NOT NULL,
+  "ratings" real NOT NULL,
+  "imgUrl" text NOT NULL,
+  "imgUrl2" text,
+  "imgUrl3" text,
+  "imgUrl4" text,
+  "productId" serial NOT NULL,
+  CONSTRAINT "myPets_pk" PRIMARY KEY ("productId")
+)
+WITH (
+  OIDS = FALSE
 );
