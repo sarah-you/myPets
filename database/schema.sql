@@ -19,6 +19,7 @@ CREATE TABLE "public"."myPets"(
   "imgUrl2" text,
   "imgUrl3" text,
   "imgUrl4" text,
+  "details" text NOT NULL,
   "productId" serial NOT NULL,
   CONSTRAINT "myPets_pk" PRIMARY KEY ("productId")
 )
