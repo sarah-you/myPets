@@ -1,0 +1,36 @@
+.carousel-wrap {
+  display: flex;
+  justify-content: center;
+  margin-top: 4rem;
+}
+
+.l-arrow-wrap,
+.r-arrow-wrap {
+  margin-top: 20rem;
+  font-size: 2rem;
+}
+
+.l-arrow-wrap,
+.r-arrow-wrap:hover {
+  cursor: pointer;
+}
+
+.mid-col-wrap {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+img {
+  width: 90%;
+}
+
+.progress-bar {
+  margin-top: 1rem;
+  font-size: 1.25rem;
+}
+
+.progress-bar:hover {
+  cursor: pointer;
+}

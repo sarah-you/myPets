@@ -1,0 +1,32 @@
+.row {
+  display: flex;
+  justify-content: center;
+}
+
+h3 {
+  text-align: center;
+  margin-top: 3rem;
+  margin-bottom: 2rem;
+}
+
+.col-full {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.img-wrap {
+  display: flex;
+  justify-content: center;
+}
+
+img {
+  width: 70%;
+}
+
+.link-wrap {
+  margin-top: 2rem;
+  text-align: center;
+  font-size: 1.5rem;
+}

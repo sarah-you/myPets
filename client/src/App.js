@@ -1,6 +1,13 @@
 import { useEffect, useState } from 'react';
-import logo from './logo.svg';
 import './App.css';
+import { Routes, Route } from 'react-router-dom';
+import NavBar from './components/NavBar';
+import Main from './pages/Main';
+import Meow from './pages/Meow';
+import Woof from './pages/Woof';
+import ProductCatalog from './pages/ProductCatalog';
+import Subscription from './pages/Subscription';
+import NotFound from './pages/NotFound';
 
 function App() {
   const [serverData, setServerData] = useState('');
@@ -20,10 +27,16 @@ function App() {
 
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <h1>{serverData}</h1>
-      </header>
+      <Routes>
+        <Route path="/" element={<NavBar />}>
+          <Route index element={<Main />} />
+          <Route path="meow" element={<Meow />} />
+          <Route path="woof" element={<Woof />} />
+          <Route path="details/:productId" element={<ProductCatalog />} />
+          <Route path="subscription" element={<Subscription />} />
+          <Route path="*" element={<NotFound />} />
+        </Route>
+      </Routes>
     </div>
   );
 }
