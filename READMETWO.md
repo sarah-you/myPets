@@ -4,3 +4,11 @@ PLEASE NOTE: ALL PRODUCTS ARE SAMPLED FROM CHEWY.COM FOR EDUCATIONAL PURPOSES. N
 
 - hardcoded each individual property (17 columns) for each product item (total 46 sample products) and imported to database via sql file
 - pulled data from chewy.com
+
+##### Bootstrap
+
+```javaScript
+import bootstrap from 'bootstrap';
+```
+
+will load all of Bootstrap’s plugins onto a bootstrap object

@@ -1,34 +1,40 @@
-CREATE TABLE "public"."myPets" (
-	"productName" TEXT NOT NULL,
-	"petType" TEXT NOT NULL,
-	"category" TEXT NOT NULL,
-	"itemPrice" real NOT NULL,
-	"subscriptionPrice" real,
-	"brandName" TEXT NOT NULL,
-	"reviews" integer NOT NULL,
-	"ratings" real NOT NULL,
-	"imgUrl" TEXT NOT NULL,
-	"imgUrl2" TEXT,
-	"imgUrl3" TEXT,
-	"imgUrl4" TEXT,
-	"detail" text NOT NULL,
+SET client_min_messages TO warning;
+
+DROP SCHEMA "public" CASCADE;
+
+CREATE SCHEMA "public";
+
+CREATE TABLE "public"."myPets"(
+  "productName" text NOT NULL,
+  "petType" text NOT NULL,
+  "category" text NOT NULL,
+  "itemPrice" real NOT NULL,
+  "subscriptionPrice" real,
+  "brandName" text NOT NULL,
+  "reviews" integer NOT NULL,
+  "ratings" real NOT NULL,
+  "imgUrl" text NOT NULL,
+  "imgUrl2" text,
+  "imgUrl3" text,
+  "imgUrl4" text,
+  "detail" text NOT NULL,
   "detail2" text NOT NULL,
   "detail3" text NOT NULL,
   "detail4" text NOT NULL,
   "detail5" text NOT NULL,
-	"productId" serial NOT NULL,
-	CONSTRAINT "myPets_pk" PRIMARY KEY ("productId")
-) WITH (
-  OIDS=FALSE
+  "productId" serial NOT NULL,
+  CONSTRAINT "myPets_pk" PRIMARY KEY ("productId")
+)
+WITH (
+  OIDS = FALSE
 );
 
-
-
-CREATE TABLE "public"."subscription" (
-	"firstName" TEXT NOT NULL,
-	"lastName" TEXT NOT NULL,
-	"email" TEXT NOT NULL,
-	"address" TEXT NOT NULL
-) WITH (
-  OIDS=FALSE
+CREATE TABLE "public"."subscription"(
+  "firstName" text NOT NULL,
+  "lastName" text NOT NULL,
+  "email" text NOT NULL,
+  "address" text NOT NULL
+)
+WITH (
+  OIDS = FALSE
 );
