@@ -1,9 +1,9 @@
 import 'dotenv/config';
 import express from 'express';
+import ClientError from './lib/client-error.js';
 import errorMiddleware from './lib/error-middleware.js';
 import pg from 'pg';
 
-// eslint-disable-next-line no-unused-vars -- Remove when used
 const db = new pg.Pool({
   connectionString: process.env.DATABASE_URL,
   ssl: {
@@ -22,9 +22,94 @@ app.use(express.static(reactStaticDir));
 app.use(express.static(uploadsStaticDir));
 app.use(express.json());
 
-app.get('/api/hello', (req, res) => {
-  res.json({ message: 'Hello, World!' });
+// data for landing page (pet favorites)
+app.get('/api/favpets', async (req, res, next) => {
+  try {
+    const sql = `
+SELECT *
+FROM "myPets"
+WHERE "subscriptionPrice" IS NOT NULL
+ORDER BY "ratings" desc
+LIMIT 6
+    `;
+    const result = await db.query(sql);
+    res.json(result.rows);
+  } catch (err) {
+    next(err);
+  }
 });
+
+// data for cat page (cat products)
+app.get('/api/meow', async (req, res, next) => {
+  try {
+    const sql = `
+SELECT *
+FROM "myPets"
+WHERE "petType" = 'cat';
+    `;
+    const result = await db.query(sql);
+    res.json(result.rows);
+  } catch (err) {
+    next(err);
+  }
+});
+
+// data for dog page (dog products)
+app.get('/api/woof', async (req, res, next) => {
+  try {
+    const sql = `
+SELECT *
+FROM "myPets"
+WHERE "petType" = 'dog';
+    `;
+    const result = await db.query(sql);
+    res.json(result.rows);
+  } catch (err) {
+    next(err);
+  }
+});
+
+// data for all products (Catalog page)
+app.get('/api/catalog', async (req, res, next) => {
+  try {
+    const sql = `
+SELECT *
+FROM "myPets"
+    `;
+    const result = await db.query(sql);
+    res.json(result.rows);
+  } catch (err) {
+    next(err);
+  }
+});
+
+// data for specific product based on productId
+app.get('/api/details/:productId', async (req, res, next) => {
+  try {
+    const productId = Number(req.params.productId);
+    if (!productId) {
+      throw new ClientError(400, 'productId must be a positive integer');
+    }
+    const sql = `
+      select *
+        from "myPets"
+        where "productId" = $1
+    `;
+    const params = [productId];
+    const result = await db.query(sql, params);
+    if (!result.rows[0]) {
+      throw new ClientError(
+        404,
+        `cannot find product with productId ${productId}`
+      );
+    }
+    res.json(result.rows[0]);
+  } catch (err) {
+    next(err);
+  }
+});
+
+// client POST for subscription form and DELETE subscription
 
 /**
  * Serves React's index.html if no api route matches.
