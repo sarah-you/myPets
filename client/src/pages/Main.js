@@ -1,4 +1,6 @@
 import Carousel from '../components/Carousel';
+import ShopByPets from '../components/ShopByPets';
+import PetFav from '../components/PetFav';
 
 const img = [
   {
@@ -31,6 +33,8 @@ export default function Main() {
   return (
     <>
       <Carousel img={img} />
+      <ShopByPets />
+      <PetFav />
     </>
   );
 }

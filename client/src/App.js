@@ -5,7 +5,7 @@ import NavBar from './components/NavBar';
 import Main from './pages/Main';
 import Meow from './pages/Meow';
 import Woof from './pages/Woof';
-import ProductCatalog from './pages/ProductCatalog';
+import Catalog from './pages/Catalog';
 import Subscription from './pages/Subscription';
 import NotFound from './pages/NotFound';
 
@@ -32,7 +32,7 @@ function App() {
           <Route index element={<Main />} />
           <Route path="meow" element={<Meow />} />
           <Route path="woof" element={<Woof />} />
-          <Route path="details/:productId" element={<ProductCatalog />} />
+          <Route path="details/:productId" element={<Catalog />} />
           <Route path="subscription" element={<Subscription />} />
           <Route path="*" element={<NotFound />} />
         </Route>

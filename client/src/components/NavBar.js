@@ -38,7 +38,7 @@ export default function NavBar() {
               alt="4 square blocks"
               className="pc-icon"
             />
-            Product Catalog
+            Catalog
           </Link>
         </div>
         <div className="subscribe-wrap">
