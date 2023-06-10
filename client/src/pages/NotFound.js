@@ -12,7 +12,7 @@ export default function NotFound() {
           </div>
           <div className="link-wrap">
             <Link className="link" to="/">
-              Return to the catalog
+              Return Home
             </Link>
           </div>
         </div>

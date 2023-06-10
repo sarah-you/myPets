@@ -31,9 +31,9 @@ export default function PetFav() {
     <div className="container">
       <div className="pet-fav-wrap">
         <h2 className="pet-fav">Pet Favorites ✨</h2>
-        <div className="row">
+        <div className="product-list">
           {products?.map((product) => (
-            <div key={product.productId}>
+            <div key={product.productId} className="prod-wrap">
               <Product product={product} />
             </div>
           ))}
@@ -44,45 +44,18 @@ export default function PetFav() {
 }
 
 function Product({ product }) {
-  const {
-    productName,
-    petType,
-    category,
-    itemPrice,
-    subscriptionPrice,
-    imgUrl,
-    imgUrl2,
-    imgUrl3,
-    imgUrl4,
-    detail,
-    detail2,
-    detail3,
-    detail4,
-    detail5,
-    productId,
-  } = product;
+  const { productName, itemPrice, imgUrl, detail, productId } = product;
   return (
-    <>
-      <Link to={`/details/${productId}`} className="prod-wrap">
-        <img src={imgUrl} className="main-img" alt={productName} />
-        <img src={imgUrl2} className="main-img" alt={productName} />
-        <img src={imgUrl3} className="main-img" alt={productName} />
-        <img src={imgUrl4} className="main-img" alt={productName} />
-        <div className="prod-detail-wrap">
-          <h5 className="prod-title">{productName}</h5>
-          <p className="pet-type">{petType}</p>
-          <p className="category">{category}</p>
-          <p className="prod-price">{toDollars(itemPrice)}</p>
-          <p className="prod-sub-price">{toDollars(subscriptionPrice)}</p>
-          <ol className="prod-details">
-            <li className="details">{detail}</li>
-            <li className="details">{detail2}</li>
-            <li className="details">{detail3}</li>
-            <li className="details">{detail4}</li>
-            <li className="details">{detail5}</li>
-          </ol>
-        </div>
-      </Link>
-    </>
+    <div className="prod-card">
+      <img src={imgUrl} alt={productName} />
+      <div className="card-content">
+        <h3 class="card-title">{productName}</h3>
+        <p className="card-text price">{toDollars(itemPrice)}</p>
+        <p className="card-text detail">{detail}</p>
+        <Link to={`/details/${productId}`}>
+          <button className="view-btn">View Product</button>
+        </Link>
+      </div>
+    </div>
   );
 }

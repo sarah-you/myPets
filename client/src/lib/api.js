@@ -1,3 +1,5 @@
+// client side API requests
+
 /**
  * Fetches all products from the API.
  * @returns Promise that resolves to an array of products.
@@ -21,7 +23,7 @@ export async function fetchCatalog() {
  * @returns Promise that resolves to the product.
  */
 export async function fetchProduct(productId) {
-  const res = await fetch(`/api/products/${productId}`);
+  const res = await fetch(`/api/details/${productId}`);
   if (!res.ok) throw new Error(`fetch Error ${res.status}`);
   return await res.json();
 }

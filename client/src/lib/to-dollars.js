@@ -1,5 +1,5 @@
 // formatting for $
 
 export default function toDollars(value) {
-  return '$' + (value / 100).toFixed(2);
+  return '$' + value.toFixed(2);
 }
