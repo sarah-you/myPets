@@ -1,0 +1,114 @@
+.es-modal {
+  position: fixed;
+  z-index: 1;
+  padding-top: 100px;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  overflow: none;
+  background-color: rgb(0, 0, 0, 0.85);
+}
+
+/* Modal Content */
+.modal-content {
+  background-color: #fc6248;
+  margin: auto;
+  padding: 20px;
+  border: 1px solid #888;
+  width: 80%;
+  height: 70vh;
+}
+
+.modal-wrap {
+  display: flex;
+  flex-direction: row;
+}
+
+.content-wrap {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: 3rem;
+}
+
+h2 {
+  margin-bottom: 2rem;
+  font-family: geologica, sans-serif;
+}
+
+p {
+  margin-bottom: 3rem;
+  font-family: noto-sans-kr, sans-serif;
+  font-weight: lighter;
+}
+
+.es-btn-wrap {
+  display: flex;
+}
+
+.es-btn {
+  float: right;
+  font-size: 28px;
+  width: 10rem;
+  margin: 3rem;
+  padding: 0.5rem;
+  border-radius: 5px;
+  margin-top: 15rem;
+  background-color: #e3e2c5;
+  color: black;
+  font-family: geologica, sans-serif;
+}
+
+.subscribe-btn {
+  border-radius: 4px;
+  background-color: #f4511e;
+  border: none;
+  color: #fff;
+  text-align: center;
+  font-size: 28px;
+  padding: 20px;
+  width: 200px;
+  transition: all 0.5s;
+  cursor: pointer;
+}
+
+.subscribe-btn span {
+  cursor: pointer;
+  display: inline-block;
+  position: relative;
+  transition: 0.5s;
+}
+
+.subscribe-btn span::after {
+  content: '\00bb';
+  position: absolute;
+  opacity: 0;
+  top: 0;
+  right: -20px;
+  transition: 0.5s;
+}
+
+.subscribe-btn:hover span {
+  padding-right: 25px;
+}
+
+.subscribe-btn:hover span::after {
+  opacity: 1;
+  right: 0;
+}
+
+.close-btn {
+  background-color: #ffb544;
+  border: none;
+}
+
+.close-btn:hover {
+  box-shadow: 0 5px #fc6248;
+  transform: translateY(4px);
+}
+
+.img-wrap {
+  width: 75%;
+  justify-content: end;
+}

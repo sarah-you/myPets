@@ -33,7 +33,9 @@ CREATE TABLE "public"."subscription"(
   "firstName" text NOT NULL,
   "lastName" text NOT NULL,
   "email" text NOT NULL,
-  "address" text NOT NULL
+  "address" text NOT NULL,
+  "userId" serial NOT NULL,
+  CONSTRAINT "Subscription_pk" PRIMARY KEY ("userId")
 )
 WITH (
   OIDS = FALSE

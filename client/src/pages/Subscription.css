@@ -1,0 +1,83 @@
+h1 {
+  font-family: Geologica, sans-serif;
+  font-weight: bold;
+  text-align: center;
+  margin-top: 2rem;
+  margin-bottom: 2rem;
+}
+
+h3 {
+  color: #fc6248;
+}
+
+.link {
+  text-align: center;
+  font-size: 1.5rem;
+}
+
+.back-btn-wrap {
+  color: #2568a3;
+}
+
+.back-btn-wrap:hover {
+  text-decoration: underline;
+}
+
+.home-btn {
+  font-size: 1.5rem;
+  font-family: Geologica, sans-serif;
+}
+
+/* .form-wrap {
+  display: flex;
+  flex-direction: column;
+}
+
+.form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  border: solid black;
+  width: calc(100% / 2);
+  height: 35rem;
+  border-radius: 5px;
+}
+
+label,
+button {
+  margin-top: 2rem;
+  margin-bottom: 2rem;
+}
+
+input {
+  width: 25rem;
+  height: 2.5rem;
+  border-radius: 5px;
+  border: solid black 2px;
+  margin-left: 1rem;
+}
+
+input::placeholder {
+  font-family: noto-sans-kr, sans-serif;
+}
+
+.subscribe-btn {
+  width: 10rem;
+  height: 3rem;
+  border-radius: 5px;
+  border: solid 3px #4b89be;
+  box-shadow: 2px 2px 4px #4b89be;
+  background-color: #2568A3;
+  color: white;
+  font-weight: bold;
+}
+
+.subscribe-btn:hover {
+  cursor: pointer;
+}
+
+.subscribe-btn:active {
+  background-color: #4b89be;
+  box-shadow: 2px 2px 4px #2568A3;
+  transform: translateY(4px);
+} */

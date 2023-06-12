@@ -1,6 +1,7 @@
 import Carousel from '../components/Carousel';
 import ShopByPets from '../components/ShopByPets';
 import PetFav from '../components/PetFav';
+import EmailSubscriptionModal from '../components/EmailSubscription';
 
 const img = [
   {
@@ -33,6 +34,7 @@ export default function Main() {
   return (
     <>
       <Carousel img={img} />
+      <EmailSubscriptionModal />
       <ShopByPets />
       <PetFav />
     </>

@@ -27,3 +27,16 @@ export async function fetchProduct(productId) {
   if (!res.ok) throw new Error(`fetch Error ${res.status}`);
   return await res.json();
 }
+
+export async function createSubscriber(firstName, lastName, email, address) {
+  const req = {
+    method: 'POST',
+    headers: {
+      'content-type': 'application/json',
+    },
+    body: JSON.stringify({ firstName, lastName, email, address }),
+  };
+  const res = await fetch('/api/subscription', req);
+  if (!res.ok) throw new Error(`fetch Error ${res.status}`);
+  return await res.json();
+}

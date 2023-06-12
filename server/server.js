@@ -39,7 +39,7 @@ LIMIT 6
   }
 });
 
-// data for cat page (cat products)
+// data for cat page (Meow page)
 app.get('/api/meow', async (req, res, next) => {
   try {
     const sql = `
@@ -54,7 +54,7 @@ WHERE "petType" = 'cat';
   }
 });
 
-// data for dog page (dog products)
+// data for dog page (Woof page)
 app.get('/api/woof', async (req, res, next) => {
   try {
     const sql = `
@@ -83,7 +83,7 @@ FROM "myPets"
   }
 });
 
-// data for specific product based on productId
+// data for specific product based on productId (ProductDetails)
 app.get('/api/details/:productId', async (req, res, next) => {
   try {
     const productId = Number(req.params.productId);
@@ -109,7 +109,83 @@ app.get('/api/details/:productId', async (req, res, next) => {
   }
 });
 
-// client POST for subscription form and DELETE subscription
+// client POST subscription form (Subscription page)
+app.post('/api/subscription', async (req, res, next) => {
+  try {
+    const firstName = req.body.firstName;
+    const lastName = req.body.lastName;
+    const email = req.body.email;
+    const address = req.body.address;
+    if (!firstName || !lastName || !email || !address) {
+      throw new ClientError(
+        400,
+        `first name, last name, email, and address are required fields`
+      );
+    }
+    const sql = `
+    insert into "subscription" ("firstName", "lastName", "email", "address")
+    values ($1, $2, $3, $4)
+    returning *;
+    `;
+    const params = [firstName, lastName, email, address];
+    const result = await db.query(sql, params);
+    res.status(201).json(result.rows);
+  } catch (err) {
+    next(err);
+  }
+});
+
+// client update/PUT subscription form info (Subscription page)
+// app.put('/api/subscription/:userId', async (res, req, next) => {
+//   try {
+//     const userId = req.params.userId;
+//     const firstName = req.body.firstName;
+//     const lastName = req.body.lastName;
+//     const email = req.body.email;
+//     const address = req.body.address;
+//     if (!firstName || !lastName || !email || !address || !userId) {
+//       throw new ClientError(
+//         400,
+//         `first name, last name, email, address, and userId are required fields`
+//       );
+//     }
+//     const sql = `
+//     update "subscription"
+//     set "firstName" = $2,
+//         "lastName" = $3,
+//         "email" = $4,
+//         "address" = $5
+//     where "userId" = $1
+//     returning *;
+//     `;
+//     const params = [userId, firstName, lastName, email, address];
+//     const result = await db.query(sql, params);
+//     if (!result.rows[0]) {
+//       throw new ClientError(
+//         404,
+//         `cannot find subscriber with 'userId' ${userId}`
+//       );
+//     }
+//     res.status(200).json(result.rows);
+//   } catch (err) {
+//     next(err);
+//   }
+// });
+
+// // client remove/DELETE subscription (Subscription page)
+// app.delete('/api/subscription/:userId', async (req, res, next) => {
+//   try {
+//     const userId = req.params.userId;
+//     if(userId === undefined) {
+//             throw new ClientError(
+//         400,
+//         `cannot find subscriber with 'userId' ${userId}`);
+//     }
+//     res.status(201).send(`subscription for ${userId} has been deleted`);
+//   } catch (err) {
+//     next(err);
+//   }
+// });
 
 /**
  * Serves React's index.html if no api route matches.

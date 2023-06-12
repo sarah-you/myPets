@@ -49,7 +49,7 @@ function Product({ product }) {
     <div className="prod-card">
       <img src={imgUrl} alt={productName} />
       <div className="card-content">
-        <h3 class="card-title">{productName}</h3>
+        <h3 className="card-title">{productName}</h3>
         <p className="card-text price">{toDollars(itemPrice)}</p>
         <p className="card-text detail">{detail}</p>
         <Link to={`/details/${productId}`}>
