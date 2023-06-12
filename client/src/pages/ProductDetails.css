@@ -1,3 +1,12 @@
+.sm-previews {
+  display: flex;
+  align-items: center;
+  width: 25%;
+  height: 10rem;
+  margin-left: 5rem;
+  margin-top: 2rem;
+}
+
 .btn-wrap {
   display: flex;
   justify-content: center;

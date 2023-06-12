@@ -4,6 +4,7 @@ import './ProductDetails.css';
 import { Link } from 'react-router-dom';
 import { useParams } from 'react-router-dom';
 import { FaCaretLeft } from 'react-icons/fa';
+import PdCarousel from '../components/PdCarousel';
 
 export default function ProductDetails() {
   const { productId } = useParams();
@@ -57,10 +58,13 @@ export default function ProductDetails() {
         <div className="card-body">
           <div className="row mb-4">
             <div className="col-12 col-sm-6 col-md-5">
-              <img src={imgUrl} alt={productName} className="main-img" />
-              <img src={imgUrl2} alt={productName} className="img2" />
-              <img src={imgUrl3} alt={productName} className="img3" />
-              <img src={imgUrl4} alt={productName} className="img4" />
+              <PdCarousel imgs={[imgUrl, imgUrl2, imgUrl3, imgUrl4]} />
+              <div className="sm-previews">
+                <img src={imgUrl} alt={productName} className="main-img" />
+                <img src={imgUrl2} alt={productName} className="img2" />
+                <img src={imgUrl3} alt={productName} className="img3" />
+                <img src={imgUrl4} alt={productName} className="img4" />
+              </div>
             </div>
             <div className="col-12 col-sm-6 col-md-7">
               <h2 className="name">{productName}</h2>
