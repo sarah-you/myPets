@@ -15,6 +15,22 @@
   display: flex;
 }
 
+.btns-wrap:hover::before {
+  content: '';
+  position: absolute;
+  transition: opacity 0.3s;
+  opacity: 0.4;
+  margin-left: 8.25rem;
+  height: 100%;
+  top: 5px;
+  left: 5px;
+}
+
+.img:hover {
+  background-color: white;
+  opacity: 80%;
+}
+
 .cat-btn {
   position: relative;
   display: inline-block;
@@ -26,19 +42,6 @@
   font-weight: bold;
   color: white;
   margin-bottom: 3rem;
-}
-
-.cat-btn:hover::before {
-  content: '';
-  position: absolute;
-  background-color: rgba(0, 0, 0, 0.7);
-  transition: opacity 0.3s;
-  opacity: 0.4;
-  margin-left: 8.25rem;
-  width: calc(70% - 6px);
-  height: 100%;
-  top: 5px;
-  left: 5px;
 }
 
 .cat-btn:hover::after {
@@ -61,19 +64,6 @@
   font-weight: bold;
   color: white;
   margin-bottom: 3rem;
-}
-
-.dog-btn:hover::before {
-  content: '';
-  position: absolute;
-  background-color: rgba(0, 0, 0, 0.7);
-  transition: opacity 0.3s;
-  opacity: 0.4;
-  margin-left: 8.25rem;
-  width: calc(70% - 6px);
-  height: 100%;
-  top: 5px;
-  left: 5px;
 }
 
 .dog-btn:hover::after {

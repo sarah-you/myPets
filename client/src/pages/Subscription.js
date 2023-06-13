@@ -1,4 +1,4 @@
-import { Link, useNavigate, useLocation } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { useState } from 'react';
 import { createSubscriber } from '../lib';
 import './Subscription.css';
@@ -8,7 +8,6 @@ import SubscriptionSuccess from '../components/SubscriptionSuccess';
 export default function Subscription() {
   const [error, setError] = useState();
   const navigate = useNavigate();
-  const location = useLocation();
 
   async function handleSubmit(e) {
     e.preventDefault();
@@ -23,11 +22,7 @@ export default function Subscription() {
         email,
         address
       );
-      if (result) {
-        navigate('sucess', { state: result });
-      } else {
-        navigate('subscription');
-      }
+      navigate('sucess', { state: result });
     } catch (err) {
       setError(error);
     }
@@ -35,6 +30,7 @@ export default function Subscription() {
   return (
     <div>
       <h1>myPets Subscription 📦</h1>
+      <SubscriptionSuccess navigate={navigate} />
       <div className="content-wrap">
         <div className="form-wrap">
           <form method="post" onSubmit={handleSubmit} className="form">
@@ -59,7 +55,6 @@ export default function Subscription() {
               Subscribe
             </button>
           </form>
-          <SubscriptionSuccess location={location} navigate={navigate} />
         </div>
         <div className="link">
           <Link to="/">

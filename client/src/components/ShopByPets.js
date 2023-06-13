@@ -16,11 +16,19 @@ export default function ShopByPets({ Link }) {
       <h2 className="shop-by-pets">Shop by Pets 🦴</h2>
       <div className="btns-wrap">
         <button className="cat-btn" onClick={handleClickCat}>
-          <img src="images/cat-page-link.webp" alt="kitten" />
+          <img
+            src="images/cat-page-link.webp"
+            alt="kitten"
+            className="cat img"
+          />
           <span className="cat-btn-text"></span>
         </button>
         <button className="dog-btn" onClick={handleClickDog}>
-          <img src="images/dog-page-link.jpeg" alt="puppy" />
+          <img
+            src="images/dog-page-link.jpeg"
+            alt="puppy"
+            className="dog img"
+          />
           <span className="dog-btn-text"></span>
         </button>
       </div>
