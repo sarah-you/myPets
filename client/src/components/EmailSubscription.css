@@ -12,7 +12,7 @@
 
 /* Modal Content */
 .modal-content {
-  background-color: #fc6248;
+  background-color: #f95738;
   margin: auto;
   padding: 20px;
   border: 1px solid #888;
@@ -55,16 +55,15 @@ p {
   padding: 0.5rem;
   border-radius: 5px;
   margin-top: 15rem;
-  background-color: #e3e2c5;
   color: black;
   font-family: geologica, sans-serif;
 }
 
 .subscribe-btn {
   border-radius: 4px;
-  background-color: #f4511e;
+  background-color: #f4d35e;
   border: none;
-  color: #fff;
+  color: black;
   text-align: center;
   font-size: 28px;
   padding: 20px;
@@ -104,8 +103,8 @@ p {
 }
 
 .close-btn:hover {
-  box-shadow: 0 5px #fc6248;
-  transform: translateY(4px);
+  box-shadow: 0 2px #f95738;
+  transform: translateY(2px);
 }
 
 .img-wrap {

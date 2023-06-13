@@ -32,7 +32,7 @@ export default function NavBar() {
           </Link>
         </div>
         <div className="pc-wrap">
-          <Link to="details/:productId" className="pc">
+          <Link to="catalog" className="pc">
             <img
               src="images/pc-icon.png"
               alt="4 square blocks"

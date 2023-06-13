@@ -7,6 +7,7 @@ import Woof from './pages/Woof';
 import Catalog from './pages/Catalog';
 import ProductDetails from './pages/ProductDetails';
 import Subscription from './pages/Subscription';
+import SubscriptionSuccess from './components/SubscriptionSuccess';
 import NotFound from './pages/NotFound';
 
 function App() {
@@ -15,11 +16,12 @@ function App() {
       <Routes>
         <Route path="/" element={<NavBar />}>
           <Route index element={<Main />} />
-          <Route path="/meow" element={<Meow />} />
-          <Route path="/woof" element={<Woof />} />
-          <Route path="/catalog" element={<Catalog />} />
-          <Route path="/details/:productId" element={<ProductDetails />} />
-          <Route path="/subscription" element={<Subscription />} />
+          <Route path="meow" element={<Meow />} />
+          <Route path="woof" element={<Woof />} />
+          <Route path="catalog" element={<Catalog />} />
+          <Route path="details/:productId" element={<ProductDetails />} />
+          <Route path="subscription" element={<Subscription />} />
+          <Route path="success" element={<SubscriptionSuccess />} />
           <Route path="*" element={<NotFound />} />
         </Route>
       </Routes>

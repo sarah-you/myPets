@@ -1,11 +1,14 @@
-import { Link } from 'react-router-dom';
+import { Link, useNavigate, useLocation } from 'react-router-dom';
 import { useState } from 'react';
 import { createSubscriber } from '../lib';
 import './Subscription.css';
 import { FaCaretLeft } from 'react-icons/fa';
+import SubscriptionSuccess from '../components/SubscriptionSuccess';
 
 export default function Subscription() {
   const [error, setError] = useState();
+  const navigate = useNavigate();
+  const location = useLocation();
 
   async function handleSubmit(e) {
     e.preventDefault();
@@ -20,6 +23,11 @@ export default function Subscription() {
         email,
         address
       );
+      if (result) {
+        navigate('sucess', { state: result });
+      } else {
+        navigate('subscription');
+      }
     } catch (err) {
       setError(error);
     }
@@ -27,38 +35,41 @@ export default function Subscription() {
   return (
     <div>
       <h1>myPets Subscription 📦</h1>
-      <h3>COMING SOON!</h3>
-      <h3>
-        Receive biweekly supply of your pet's favorites right to your door!
-      </h3>
-      <div className="link">
-        <Link to="/">
-          <div className="back-btn-wrap">
-            <FaCaretLeft />
-            <button className="btn home-btn">Back to Home</button>
-          </div>
-        </Link>
+      <div className="content-wrap">
+        <div className="form-wrap">
+          <form method="post" onSubmit={handleSubmit} className="form">
+            <h4>Receive your pet's favorites right to your door!</h4>
+            <p>
+              subscription details vary for each product. Please check the
+              products' details for more information :){' '}
+            </p>
+            <label className="fn">
+              <input name="firstName" placeholder="First Name" />
+            </label>
+            <label className="ln">
+              <input name="lastName" placeholder="Last Name" />
+            </label>
+            <label className="email">
+              <input type="text" name="email" placeholder="Email" />
+            </label>
+            <label className="address">
+              <input name="address" placeholder="Delivery Address" />
+            </label>
+            <button type="submit" className="subscribe-btn">
+              Subscribe
+            </button>
+          </form>
+          <SubscriptionSuccess location={location} navigate={navigate} />
+        </div>
+        <div className="link">
+          <Link to="/">
+            <div className="back-btn-wrap">
+              <FaCaretLeft />
+              <button className="btn home-btn">Back to Home</button>
+            </div>
+          </Link>
+        </div>
       </div>
-      {/* <div className="form-wrap">
-        <form method="post" onSubmit={handleSubmit} className="form">
-          <label className="fn">
-            <input name="firstname" placeholder="First Name" />
-          </label>
-          <label className="ln">
-            <input name="lastname" placeholder="Last Name" />
-          </label>
-          <label className="email">
-            <input type="text" name="email" placeholder="Email" />
-          </label>
-          <label className="address">
-            <input name="address" placeholder="Delivery Address" />
-          </label>
-          <button type="submit" className="subscribe-btn">
-            Subscribe
-          </button>
-        </form>
-
-      </div> */}
     </div>
   );
 }

@@ -8,7 +8,7 @@ export default function EmailSubscriptionModal() {
   useEffect(() => {
     const intervalId = setTimeout(() => {
       setShowModal(true);
-    }, 4000);
+    }, 8000);
     return () => clearTimeout(intervalId);
   }, []);
   const handleCloseModal = () => {
@@ -28,7 +28,7 @@ export default function EmailSubscriptionModal() {
                 extra 25% off the first month
               </p>
               <div className="es-btn-wrap">
-                <Link path="/subscription">
+                <Link to="subscription">
                   <button className="es-btn subscribe-btn">
                     <span>Subscribe</span>
                   </button>
