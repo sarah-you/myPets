@@ -53,20 +53,20 @@ export default function Subscription() {
             <label className="fn">
               <div className="fn-input-wrap">
                 <FaUserCircle className="fn-icon" />
-                <input name="firstName" placeholder="First Name" />
+                <input name="firstName" placeholder="First Name" required />
               </div>
             </label>
             <label className="ln">
               <FaUserCircle className="ln-icon" />
-              <input name="lastName" placeholder="Last Name" />
+              <input name="lastName" placeholder="Last Name" required />
             </label>
             <label className="email">
               <FaEnvelope className="email-icon" />
-              <input type="text" name="email" placeholder="Email" />
+              <input type="text" name="email" placeholder="Email" required />
             </label>
             <label className="address">
               <FaMapPin className="address-icon" />
-              <input name="address" placeholder="Delivery Address" />
+              <input name="address" placeholder="Delivery Address" required />
             </label>
             <button type="submit" className="sub-btn">
               Subscribe

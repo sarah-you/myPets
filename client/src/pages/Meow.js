@@ -5,15 +5,18 @@ import CatProd from '../components/CatProd';
 
 export default function Meow() {
   return (
-    <div className="meow">
+    <div className="meow-page">
       <img src="../images/cat-page-hero.png" alt="cat" className="cat-hero" />
-      <CatProd />
-      <Link to="/">
-        <div className="back-btn-wrap">
-          <FaCaretLeft />
-          <button className="btn home-btn">Back to Home</button>
-        </div>
-      </Link>
+      <div className="cat-content-wrap">
+        <h1 className="cat-h1">myCats 🐈</h1>
+        <CatProd />
+        <Link to="/">
+          <div className="back-btn-wrap">
+            <FaCaretLeft />
+            <button className="btn home-btn">Back to Home</button>
+          </div>
+        </Link>
+      </div>
     </div>
   );
 }

@@ -46,3 +46,9 @@ export async function fetchCatProd() {
   if (!res.ok) throw new Error(`fetch Error ${res.status}`);
   return await res.json();
 }
+
+export async function fetchDogProd() {
+  const res = await fetch('/api/woof');
+  if (!res.ok) throw new Error(`fetch Error ${res.status}`);
+  return await res.json();
+}

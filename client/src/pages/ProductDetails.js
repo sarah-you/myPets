@@ -93,6 +93,17 @@ export default function ProductDetails() {
                 <li className="detail">{detail5}</li>
               </ul>
             </div>
+            <div className="sub-link-div">
+              {localStorage.getItem('userInput') !== null ? (
+                <Link to="/success" className="pd-sub-link">
+                  <h4 className="sub-h4">Join the waitlist!</h4>
+                </Link>
+              ) : (
+                <Link to="/subscription" className="pd-sub-link">
+                  <h4 className="sub-h4">Join the waitlist!</h4>
+                </Link>
+              )}
+            </div>
           </div>
         </div>
       </div>

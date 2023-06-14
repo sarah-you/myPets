@@ -77,6 +77,31 @@
   margin-top: 2.5rem;
 }
 
+.sub-link-div {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  margin-top: 2rem;
+  cursor: pointer;
+}
+
+.sub-link-div:hover {
+  text-decoration: underline #0d3b66;
+  width: 15rem;
+  height: 4rem;
+  border-radius: 10px;
+}
+
+.pd-sub-link {
+  text-decoration: none;
+}
+
+.sub-h4 {
+  font-size: 1.75rem;
+  font-weight: 600;
+}
+
 .btn-wrap {
   display: flex;
   justify-content: center;
