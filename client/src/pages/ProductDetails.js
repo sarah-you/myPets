@@ -5,7 +5,7 @@ import { Link } from 'react-router-dom';
 import { useParams } from 'react-router-dom';
 import { FaCaretLeft } from 'react-icons/fa';
 import PdCarousel from '../components/PdCarousel';
-import Ratings from '../components/Ratings';
+import Ratings from '../lib/Ratings';
 
 export default function ProductDetails() {
   const { productId } = useParams();
@@ -77,11 +77,11 @@ export default function ProductDetails() {
               <div className="all-price-wrap">
                 <div className="item-price-wrap">
                   <p className="ip-text">Item Price</p>
-                  <h5 className=" price">{toDollars(itemPrice)}</h5>
+                  <h5 className="price">{toDollars(itemPrice)}</h5>
                 </div>
                 <div className="sub-price-wrap">
-                  <p className="sp-text">Subscription Price (monthly)</p>
-                  <h5 className=" sub-price">{toDollars(subscriptionPrice)}</h5>
+                  <p className="sp-text">myPets Price (monthly)</p>
+                  <h5 className="sub-price">{toDollars(subscriptionPrice)}</h5>
                 </div>
               </div>
               <ul className="details-wrap">
@@ -94,17 +94,25 @@ export default function ProductDetails() {
               </ul>
             </div>
           </div>
-          <div className="row">
-            <div className="col btn-wrap">
-              <Link to="/">
-                <div className="back-btn-wrap">
-                  <FaCaretLeft />
-                  <button className="btn home-btn">Back to Home</button>
-                </div>
-              </Link>
-            </div>
-          </div>
         </div>
+      </div>
+      <div className="col btn-wrap">
+        <Link to="/">
+          <div className="back-btn-wrap">
+            <FaCaretLeft />
+            <button className="btn home-btn">Home</button>
+          </div>
+        </Link>
+        <Link to="/meow">
+          <div className="back-btn-wrap">
+            <button className="btn home-btn">Cats Page</button>
+          </div>
+        </Link>
+        <Link to="/woof">
+          <div className="back-btn-wrap">
+            <button className="btn home-btn">Dogs Page</button>
+          </div>
+        </Link>
       </div>
     </div>
   );

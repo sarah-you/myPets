@@ -22,13 +22,13 @@
   float: left;
   width: 400px;
   height: 500px;
-  border: solid 1px #bbb;
+  border: solid 1.5px #f4d35e;
   transition: all 0.2s;
   margin-bottom: 1.5rem;
 }
 
 .prod-card:hover {
-  box-shadow: 2px 12px 15px #999;
+  box-shadow: 3px 10px 12px #ee964b;
   cursor: pointer;
 }
 

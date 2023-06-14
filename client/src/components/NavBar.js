@@ -1,8 +1,7 @@
-import { Link, Outlet, useNavigate } from 'react-router-dom';
+import { Link, Outlet } from 'react-router-dom';
 import './NavBar.css';
 
 export default function NavBar() {
-  const navigate = useNavigate();
   return (
     <div className="nav-bar">
       <div className="links-wrap">
@@ -64,6 +63,11 @@ export default function NavBar() {
             </Link>
           )}
         </div>
+      </div>
+      <div className="banner-wrap">
+        <p className="banner">
+          The is the beta version of myPets subscription.
+        </p>
       </div>
       <Outlet />
     </div>

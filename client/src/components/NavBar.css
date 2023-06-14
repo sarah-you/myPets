@@ -106,3 +106,17 @@
 .subscribe-icon {
   width: 20%;
 }
+
+.banner-wrap {
+  display: flex;
+  justify-content: center;
+  background-color: #0d3b66;
+}
+
+.banner {
+  text-align: center;
+  color: white;
+  font-family: geologica, sans-serif;
+  margin: 1rem;
+  font-size: 1.25rem;
+}

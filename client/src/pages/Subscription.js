@@ -45,8 +45,10 @@ export default function Subscription() {
               Receive your pet's favorites right to your door!
             </h4>
             <p className="text">
-              subscription details vary for each product. Please check the
-              products' details for more information :)
+              myPets is currently only taking subscription applications so that
+              our future members can have priority during our soft launch.{' '}
+              <b>(COMING SOON)</b> If you want to become pals, sign up today! We
+              won't bite :)
             </p>
             <label className="fn">
               <div className="fn-input-wrap">

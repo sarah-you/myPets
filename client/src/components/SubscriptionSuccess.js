@@ -22,8 +22,9 @@ export default function SubscriptionSuccess() {
           className="success-img"
         />
         <h3>Your goodest user ID is: ✨ {userData?.userId} ✨</h3>
-        <p>
-          Please use this user ID when you add subscription items to your cart!
+        <p className="success-text">
+          Please use this user ID when you add items to your cart!{' '}
+          <b>(COMING SOON!)</b> <br />
           Your unique ID will always be available here as long as you are
           subscribed! <br /> If you do not see a unique ID, it's because you're
           not subscribed yet! Please navigate to Subscription at the top

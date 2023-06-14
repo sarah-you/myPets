@@ -50,3 +50,5 @@ INSERT INTO "myPets"("productName", "petType", "category", "itemPrice", "subscri
 
 INSERT INTO "subscription"("firstName", "lastName", "email", "address")
   VALUES ('Emma', 'Johnson', 'emmajohnson@example.com', '1234 Elm Street, Anytown, USA');
+
+DELETE FROM "myPets" WHERE "subscriptionPrice" IS NULL;

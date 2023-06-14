@@ -40,3 +40,9 @@ export async function createSubscriber(firstName, lastName, email, address) {
   if (!res.ok) throw new Error(`fetch Error ${res.status}`);
   return await res.json();
 }
+
+export async function fetchCatProd() {
+  const res = await fetch('/api/meow');
+  if (!res.ok) throw new Error(`fetch Error ${res.status}`);
+  return await res.json();
+}
