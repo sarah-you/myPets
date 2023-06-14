@@ -28,7 +28,7 @@ export default function EmailSubscriptionModal() {
                 extra 25% off the first month
               </p>
               <div className="es-btn-wrap">
-                <Link to="subscription">
+                <Link to="success">
                   <button className="es-btn subscribe-btn">
                     <span>Subscribe</span>
                   </button>

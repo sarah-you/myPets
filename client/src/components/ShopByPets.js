@@ -5,11 +5,11 @@ export default function ShopByPets({ Link }) {
   const navigate = useNavigate();
 
   const handleClickCat = () => {
-    navigate('meow');
+    navigate('/meow');
   };
 
   const handleClickDog = () => {
-    navigate('woof');
+    navigate('/woof');
   };
   return (
     <div className="shop-by-pets-wrap">

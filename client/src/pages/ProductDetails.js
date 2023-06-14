@@ -5,6 +5,7 @@ import { Link } from 'react-router-dom';
 import { useParams } from 'react-router-dom';
 import { FaCaretLeft } from 'react-icons/fa';
 import PdCarousel from '../components/PdCarousel';
+import Ratings from '../components/Ratings';
 
 export default function ProductDetails() {
   const { productId } = useParams();
@@ -38,8 +39,8 @@ export default function ProductDetails() {
   if (!product) return null;
   const {
     productName,
-    petType,
-    category,
+    ratings,
+    reviews,
     itemPrice,
     subscriptionPrice,
     imgUrl,
@@ -68,10 +69,12 @@ export default function ProductDetails() {
             </div>
             <div className="col-12 col-sm-6 col-md-7">
               <h2 className="name">{productName}</h2>
-              <h5 className="text-secondary">{toDollars(itemPrice)}</h5>
-              <h5 className="text-secondary">{toDollars(subscriptionPrice)}</h5>
-              <p className="pet-type">{petType}</p>
-              <p className="category">{category}</p>
+              <p className="ratings">{ratings}</p>
+              <p className="reviews">{reviews} reviews</p>
+              <div className="price-wrap">
+                <h5 className=" price">{toDollars(itemPrice)}</h5>
+                <h5 className=" sub-price">{toDollars(subscriptionPrice)}</h5>
+              </div>
               <p className="detail">{detail}</p>
               <p className="detail">{detail2}</p>
               <p className="detail">{detail3}</p>

@@ -129,7 +129,7 @@ app.post('/api/subscription', async (req, res, next) => {
     `;
     const params = [firstName, lastName, email, address];
     const result = await db.query(sql, params);
-    res.status(201).json(result.rows);
+    res.status(201).json(result.rows[0]);
   } catch (err) {
     next(err);
   }
