@@ -28,18 +28,22 @@ export default function Subscription() {
       );
       const userData = JSON.stringify(result);
       localStorage.setItem('userInput', userData);
-      navigate('/success');
     } catch (err) {
       setError(error);
+    } finally {
+      navigate('/success');
     }
   }
+
   return (
     <div>
-      <h1>myPets Subscription 📦</h1>
+      <h1 className="sub-head">myPets Subscription 📦</h1>
       <div className="content-wrap">
         <div className="form-wrap">
           <form method="post" onSubmit={handleSubmit} className="form">
-            <h4>Receive your pet's favorites right to your door!</h4>
+            <h4 className="sub-h4">
+              Receive your pet's favorites right to your door!
+            </h4>
             <p className="text">
               subscription details vary for each product. Please check the
               products' details for more information :)
@@ -62,7 +66,7 @@ export default function Subscription() {
               <FaMapPin className="address-icon" />
               <input name="address" placeholder="Delivery Address" />
             </label>
-            <button type="submit" className="subscribe-btn">
+            <button type="submit" className="sub-btn">
               Subscribe
             </button>
             <p>

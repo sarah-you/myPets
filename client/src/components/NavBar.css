@@ -91,7 +91,8 @@
   margin: 1.5rem;
 }
 
-.subscribe {
+.subscribe,
+.success {
   color: #f95738;
   text-decoration: none;
   font-weight: bold;

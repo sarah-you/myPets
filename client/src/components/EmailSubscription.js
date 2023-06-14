@@ -21,18 +21,27 @@ export default function EmailSubscriptionModal() {
         <div className="es-modal">
           <div className="modal-content modal-wrap">
             <div className="content-wrap">
-              <h2>Hey Friend!</h2>
-              <p>
+              <h1 className="modal-head">Hi There!</h1>
+              <p className="modal-p">
                 Don’t forget, you can subscribe to our available plans to have
                 your buddy’s favorites ready at all times! Sign up today for
-                extra 25% off the first month
+                updates on flash sales!
               </p>
               <div className="es-btn-wrap">
-                <Link to="success">
-                  <button className="es-btn subscribe-btn">
-                    <span>Subscribe</span>
-                  </button>
-                </Link>
+                {localStorage.getItem('userInput') !== null ? (
+                  <Link to="success">
+                    {' '}
+                    <button className="es-btn subscribe-btn">
+                      <span>Subscribe</span>
+                    </button>
+                  </Link>
+                ) : (
+                  <Link to="subscription">
+                    <button className="es-btn subscribe-btn">
+                      <span>Subscribe</span>
+                    </button>
+                  </Link>
+                )}
                 <button onClick={handleCloseModal} className="close-btn es-btn">
                   Close
                 </button>

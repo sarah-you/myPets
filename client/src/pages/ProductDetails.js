@@ -69,6 +69,7 @@ export default function ProductDetails() {
             </div>
             <div className="col-12 col-sm-6 col-md-7">
               <h2 className="name">{productName}</h2>
+              <Ratings className="ratings" ratings={ratings} />
               <p className="ratings">{ratings}</p>
               <p className="reviews">{reviews} reviews</p>
               <div className="price-wrap">

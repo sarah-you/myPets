@@ -5,9 +5,7 @@ export default function SubscriptionSuccess() {
   const navigate = useNavigate();
   const handleClick = () => {
     localStorage.removeItem('userInput');
-    if (userData === null) {
-      navigate('/subscription');
-    }
+    navigate('/subscription');
   };
 
   const stringData = localStorage.getItem('userInput');
@@ -15,7 +13,7 @@ export default function SubscriptionSuccess() {
   return (
     <>
       <div className="container">
-        <h2>
+        <h2 className="success-h2">
           🎉 Hurray! Welcome to the club. You are subscribed to myPets! 🎉
         </h2>
         <img
@@ -23,10 +21,13 @@ export default function SubscriptionSuccess() {
           alt="cats and dogs"
           className="success-img"
         />
-        <h3>Your goodest user Id is: ✨ {userData?.userId} ✨</h3>
+        <h3>Your goodest user ID is: ✨ {userData?.userId} ✨</h3>
         <p>
-          please use this when you add subscription items to your cart! Your
-          unique ID will always be available here as long as you are subscribed!
+          Please use this user ID when you add subscription items to your cart!
+          Your unique ID will always be available here as long as you are
+          subscribed! <br /> If you do not see a unique ID, it's because you're
+          not subscribed yet! Please navigate to Subscription at the top
+          navigation bar and subscribe!
         </p>
         <div className="unsubscribe-btn-wrap">
           <button onClick={handleClick} className="unsubscribe-btn">

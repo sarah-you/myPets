@@ -1,4 +1,4 @@
-h1 {
+.sub-head {
   font-family: Geologica, sans-serif;
   font-weight: bold;
   text-align: center;
@@ -6,7 +6,7 @@ h1 {
   margin-bottom: 2rem;
 }
 
-h4 {
+.sub-h4 {
   color: #0d3b66;
 }
 
@@ -80,7 +80,21 @@ input::placeholder {
   font-size: 1.5rem;
 }
 
-.subscribe-btn:hover {
+.sub-btn {
+  border-radius: 4px;
+  background-color: #f4d35e;
+  border: none;
+  color: black;
+  text-align: center;
+  font-size: 28px;
+  padding: 20px;
+  width: 200px;
+  transition: all 0.5s;
+  cursor: pointer;
+  margin-top: 4rem;
+}
+
+.sub-btn:hover {
   cursor: pointer;
   font-weight: bold;
   color: white;

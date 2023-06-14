@@ -1,7 +1,8 @@
-import { Link, Outlet } from 'react-router-dom';
+import { Link, Outlet, useNavigate } from 'react-router-dom';
 import './NavBar.css';
 
 export default function NavBar() {
+  const navigate = useNavigate();
   return (
     <div className="nav-bar">
       <div className="links-wrap">
@@ -42,14 +43,26 @@ export default function NavBar() {
           </Link>
         </div>
         <div className="subscribe-wrap">
-          <Link to="subscription" className="subscribe">
-            <img
-              src="images/subscribe-icon.png"
-              alt="box icon"
-              className="subscribe-icon"
-            />
-            Subscription
-          </Link>
+          {localStorage.getItem('userInput') !== null ? (
+            <Link to="success" className="success">
+              {' '}
+              <img
+                src="images/subscribe-icon.png"
+                alt="box icon"
+                className="subscribe-icon"
+              />
+              Subscription
+            </Link>
+          ) : (
+            <Link to="subscription" className="subscribe">
+              <img
+                src="images/subscribe-icon.png"
+                alt="box icon"
+                className="subscribe-icon"
+              />
+              Subscription
+            </Link>
+          )}
         </div>
       </div>
       <Outlet />

@@ -1,3 +1,8 @@
-import { FaStar, FaRegStar, FaRegStarHalfStroke } from 'react-icons/fa';
+import { FaStar, FaRegStar, FaRegStarHalf } from 'react-icons/fa';
 
-export default function Ratings() {}
+export default function Ratings({ ratings }) {
+  const maxRating = 5;
+  const stars = [];
+
+  return <>{stars}</>;
+}
