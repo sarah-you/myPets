@@ -135,6 +135,57 @@ app.post('/api/subscription', async (req, res, next) => {
   }
 });
 
+// client remove/DELETE subscription (Subscription page)
+app.delete('/api/success/:userId', async (req, res, next) => {
+  try {
+    const userId = Number(req.params.userId);
+    if (!userId) {
+      throw new ClientError(400, 'productId must be a positive integer');
+    }
+    const sql = `
+      delete
+        from "subscription"
+        where "userId" = $1
+        returning *;
+    `;
+    const params = [userId];
+    const result = await db.query(sql, params);
+    if (!result.rows[0]) {
+      throw new ClientError(
+        400,
+        `cannot find subscriber with 'userId' ${userId}`
+      );
+    }
+    delete result.rows[0];
+    res.status(201).send(`User ID: ${userId} has been unsubscribed`);
+  } catch (err) {
+    next(err);
+  }
+});
+
+// get userID of subscribed user
+app.get('/api/success/:userId', async (req, res, next) => {
+  try {
+    const userId = Number(req.params.userId);
+    if (!userId) {
+      throw new ClientError(400, 'userId must be a positive integer');
+    }
+    const sql = `
+      select *
+        from "subscription"
+        where "userId" = $1
+    `;
+    const params = [userId];
+    const result = await db.query(sql, params);
+    if (!result.rows[0]) {
+      throw new ClientError(404, `cannot find user with userId ${userId}`);
+    }
+    res.json(result.rows[0]);
+  } catch (err) {
+    next(err);
+  }
+});
+
 // client update/PUT subscription form info (Subscription page)
 // app.put('/api/subscription/:userId', async (res, req, next) => {
 //   try {
@@ -167,21 +218,6 @@ app.post('/api/subscription', async (req, res, next) => {
 //       );
 //     }
 //     res.status(200).json(result.rows);
-//   } catch (err) {
-//     next(err);
-//   }
-// });
-
-// // client remove/DELETE subscription (Subscription page)
-// app.delete('/api/subscription/:userId', async (req, res, next) => {
-//   try {
-//     const userId = req.params.userId;
-//     if(userId === undefined) {
-//             throw new ClientError(
-//         400,
-//         `cannot find subscriber with 'userId' ${userId}`);
-//     }
-//     res.status(201).send(`subscription for ${userId} has been deleted`);
 //   } catch (err) {
 //     next(err);
 //   }

@@ -1,9 +1,9 @@
 import { Link } from 'react-router-dom';
-import { FaCaretLeft } from 'react-icons/fa';
 import { useEffect, useState } from 'react';
 import { Product } from '../components/Product';
 import { fetchCatalog } from '../lib';
 import './Catalog.css';
+import { FaCaretLeft } from 'react-icons/fa';
 
 export default function Catalog() {
   const [products, setProducts] = useState();
@@ -31,12 +31,21 @@ export default function Catalog() {
 
   return (
     <div className="container">
+      <h1 className="catalog-h1">Shop All Products</h1>
       <div className="product-list">
         {products?.map((product) => (
           <div key={product.productId} className="prod-wrap">
             <Product product={product} />
           </div>
         ))}
+      </div>
+      <div className="link">
+        <Link to="/">
+          <div className="back-btn-wrap">
+            <FaCaretLeft />
+            <button className="btn home-btn">Back to Home</button>
+          </div>
+        </Link>
       </div>
     </div>
   );
