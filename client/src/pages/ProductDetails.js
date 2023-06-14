@@ -3,7 +3,6 @@ import { fetchProduct, toDollars } from '../lib';
 import './ProductDetails.css';
 import { Link } from 'react-router-dom';
 import { useParams } from 'react-router-dom';
-import { FaCaretLeft } from 'react-icons/fa';
 import PdCarousel from '../components/PdCarousel';
 import Ratings from '../lib/Ratings';
 
@@ -110,7 +109,6 @@ export default function ProductDetails() {
       <div className="col btn-wrap">
         <Link to="/">
           <div className="back-btn-wrap">
-            <FaCaretLeft />
             <button className="btn home-btn">Home</button>
           </div>
         </Link>
@@ -122,6 +120,11 @@ export default function ProductDetails() {
         <Link to="/woof">
           <div className="back-btn-wrap">
             <button className="btn home-btn">Dogs Page</button>
+          </div>
+        </Link>
+        <Link to="/catalog">
+          <div className="back-btn-wrap">
+            <button className="btn home-btn">Catalog Page</button>
           </div>
         </Link>
       </div>
