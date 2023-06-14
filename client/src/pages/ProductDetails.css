@@ -9,6 +9,10 @@
   width: 80%;
 }
 
+.name {
+  margin-top: 3rem;
+}
+
 .sm-previews {
   display: flex;
   align-items: center;
@@ -18,34 +22,55 @@
   margin-top: 2rem;
 }
 
-.pet-type {
-  margin-bottom: 0.5rem;
-  font-size: 1.25rem;
-}
-
-.category {
-  margin-bottom: 2rem;
-  font-size: 1.25rem;
-}
-
-.price-wrap {
+.r-wrap {
   display: flex;
   flex-direction: row;
-  align-items: center;
-  justify-content: center;
+}
+
+.ratings {
+  margin-left: 1rem;
+  font-weight: 700;
+}
+
+.reviews {
+  margin-left: 1rem;
+}
+
+.all-price-wrap {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
   margin-bottom: 1rem;
+}
+
+.item-price-wrap,
+.sub-price-wrap {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  margin-top: 1.5rem;
 }
 
 .price {
   font-size: 2.5rem;
-  color: #f95738;
+  color: #ee964b;
+}
+
+.sp-text {
+  font-weight: 700;
+  color: #0d3b66;
 }
 
 .sub-price {
   font-size: 2.5rem;
   font-weight: bold;
-  color: #ee964b;
-  margin-left: 3rem;
+  color: #f95738;
+}
+
+.details-wrap {
+  margin-top: 2.5rem;
 }
 
 .btn-wrap {

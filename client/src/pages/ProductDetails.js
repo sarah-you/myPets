@@ -69,18 +69,29 @@ export default function ProductDetails() {
             </div>
             <div className="col-12 col-sm-6 col-md-7">
               <h2 className="name">{productName}</h2>
-              <Ratings className="ratings" ratings={ratings} />
-              <p className="ratings">{ratings}</p>
-              <p className="reviews">{reviews} reviews</p>
-              <div className="price-wrap">
-                <h5 className=" price">{toDollars(itemPrice)}</h5>
-                <h5 className=" sub-price">{toDollars(subscriptionPrice)}</h5>
+              <div className="r-wrap">
+                <Ratings className="ratings-comp" ratings={ratings} />
+                <p className="ratings">{ratings}</p>
+                <p className="reviews">{reviews} reviews</p>
               </div>
-              <p className="detail">{detail}</p>
-              <p className="detail">{detail2}</p>
-              <p className="detail">{detail3}</p>
-              <p className="detail">{detail4}4</p>
-              <p className="detail">{detail5}</p>
+              <div className="all-price-wrap">
+                <div className="item-price-wrap">
+                  <p className="ip-text">Item Price</p>
+                  <h5 className=" price">{toDollars(itemPrice)}</h5>
+                </div>
+                <div className="sub-price-wrap">
+                  <p className="sp-text">Subscription Price (monthly)</p>
+                  <h5 className=" sub-price">{toDollars(subscriptionPrice)}</h5>
+                </div>
+              </div>
+              <ul className="details-wrap">
+                <h4>Product Information</h4>
+                <li className="detail">{detail}</li>
+                <li className="detail">{detail2}</li>
+                <li className="detail">{detail3}</li>
+                <li className="detail">{detail4}</li>
+                <li className="detail">{detail5}</li>
+              </ul>
             </div>
           </div>
           <div className="row">

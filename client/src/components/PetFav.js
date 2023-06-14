@@ -2,6 +2,7 @@ import './PetFav.css';
 import { useEffect, useState } from 'react';
 import { fetchFav, toDollars } from '../lib';
 import { Link } from 'react-router-dom';
+import Ratings from './Ratings';
 
 export default function PetFav() {
   const [products, setProducts] = useState();
@@ -44,18 +45,23 @@ export default function PetFav() {
 }
 
 function Product({ product }) {
-  const { productName, itemPrice, imgUrl, detail, productId } = product;
+  const { productName, itemPrice, imgUrl, ratings, reviews, productId } =
+    product;
   return (
-    <div className="prod-card">
-      <img src={imgUrl} alt={productName} />
-      <div className="card-content">
-        <h3 className="card-title">{productName}</h3>
-        <p className="card-text price">{toDollars(itemPrice)}</p>
-        <p className="card-text detail">{detail}</p>
-        <Link to={`/details/${productId}`}>
-          <button className="view-btn">View Product</button>
-        </Link>
+    <Link to={`/details/${productId}`}>
+      <div className="prod-card">
+        <div className="card-img-wrap">
+          <img src={imgUrl} alt={productName} className="card-img" />
+        </div>
+        <div className="card-content">
+          <h3 className="card-title">{productName}</h3>
+          <p className="card-text price">{toDollars(itemPrice)}</p>
+          <div className="rev-n-rate">
+            <Ratings ratings={ratings} className="rate" />
+            <p className="rev">{reviews}</p>
+          </div>
+        </div>
       </div>
-    </div>
+    </Link>
   );
 }
