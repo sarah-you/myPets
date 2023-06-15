@@ -1,15 +1,30 @@
 import './SubscriptionSuccess.css';
 import { useNavigate } from 'react-router-dom';
+import { useState } from 'react';
+import { deleteSubscriber } from '../lib';
 
 export default function SubscriptionSuccess() {
   const navigate = useNavigate();
-  const handleClick = () => {
-    localStorage.removeItem('userInput');
-    navigate('/subscription');
-  };
+  const [error, setError] = useState();
 
   const stringData = localStorage.getItem('userInput');
   const userData = JSON.parse(stringData);
+
+  async function handleClick() {
+    try {
+      console.log('run');
+      localStorage.removeItem('userInput');
+      console.log('run2');
+      await deleteSubscriber(userData.userId);
+      console.log(localStorage.getItem('userInput'));
+      navigate('/subscription');
+    } catch (error) {
+      setError(error);
+      alert(`Error unsubscribing: ${error}`);
+      console.log(error);
+    }
+  }
+
   return (
     <>
       <div className="container">

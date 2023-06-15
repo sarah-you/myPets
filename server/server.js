@@ -156,7 +156,6 @@ app.delete('/api/success/:userId', async (req, res, next) => {
         `cannot find subscriber with 'userId' ${userId}`
       );
     }
-    delete result.rows[0];
     res.status(201).send(`User ID: ${userId} has been unsubscribed`);
   } catch (err) {
     next(err);

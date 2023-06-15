@@ -54,7 +54,10 @@ export async function fetchDogProd() {
 }
 
 export async function deleteSubscriber(userId) {
-  const res = await fetch(`/api/success/${userId}`);
+  const req = {
+    method: 'DELETE',
+  };
+  const res = await fetch(`/api/success/${userId}`, req);
   if (!res.ok) throw new Error(`fetch Error ${res.status}`);
   return await res.json();
 }

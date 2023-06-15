@@ -28,8 +28,9 @@ export default function Subscription() {
       );
       const userData = JSON.stringify(result);
       localStorage.setItem('userInput', userData);
-    } catch (err) {
+    } catch (error) {
       setError(error);
+      alert(`Error registering ${error})`);
     } finally {
       navigate('/success');
     }
