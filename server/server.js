@@ -1,8 +1,10 @@
 import 'dotenv/config';
 import express from 'express';
-import ClientError from './lib/client-error.js';
-import errorMiddleware from './lib/error-middleware.js';
+import { ClientError, errorMiddleware } from './lib/index.js';
+// import { authMiddleware } from './lib/index.js';
 import pg from 'pg';
+import argon2 from 'argon2';
+import jwt from 'jsonwebtoken';
 
 const db = new pg.Pool({
   connectionString: process.env.DATABASE_URL,
@@ -109,27 +111,65 @@ app.get('/api/details/:productId', async (req, res, next) => {
   }
 });
 
-// client POST subscription form (Subscription page)
+// client Sign Up form (Subscription page)
 app.post('/api/subscription', async (req, res, next) => {
   try {
     const firstName = req.body.firstName;
     const lastName = req.body.lastName;
     const email = req.body.email;
     const address = req.body.address;
-    if (!firstName || !lastName || !email || !address) {
-      throw new ClientError(
-        400,
-        `first name, last name, email, and address are required fields`
-      );
+    const username = req.body.username;
+    const password = req.body.password;
+
+    if (
+      !firstName ||
+      !lastName ||
+      !email ||
+      !address ||
+      !username ||
+      !password
+    ) {
+      throw new ClientError(400, `all fields are required`);
     }
     const sql = `
     insert into "subscription" ("firstName", "lastName", "email", "address")
-    values ($1, $2, $3, $4)
+    values ($1, $2, $3, $4, $5, $6)
     returning *;
     `;
-    const params = [firstName, lastName, email, address];
+    const params = [firstName, lastName, email, address, username, password];
     const result = await db.query(sql, params);
     res.status(201).json(result.rows[0]);
+  } catch (err) {
+    next(err);
+  }
+});
+
+// Subscriber Sign In
+app.post('/api/auth/sign-in', async (req, res, next) => {
+  try {
+    const { username, password } = req.body;
+    if (!username || !password) {
+      throw new ClientError(401, 'invalid login');
+    }
+    const sql = `
+      select "userId",
+            "hashedPassword"
+        from "users"
+      where "username" = $1
+    `;
+    const params = [username];
+    const result = await db.query(sql, params);
+    const [user] = result.rows;
+    if (!user) {
+      throw new ClientError(401, 'invalid login');
+    }
+    const { userId, hashedPassword } = user;
+    if (!(await argon2.verify(hashedPassword, password))) {
+      throw new ClientError(401, 'invalid login');
+    }
+    const payload = { userId, username };
+    const token = jwt.sign(payload, process.env.TOKEN_SECRET);
+    res.json({ token, user: payload });
   } catch (err) {
     next(err);
   }
@@ -162,7 +202,7 @@ app.delete('/api/success/:userId', async (req, res, next) => {
   }
 });
 
-// get userID of subscribed user
+// get user info of subscribed user
 app.get('/api/success/:userId', async (req, res, next) => {
   try {
     const userId = Number(req.params.userId);
@@ -184,43 +224,6 @@ app.get('/api/success/:userId', async (req, res, next) => {
     next(err);
   }
 });
-
-// client update/PUT subscription form info (Subscription page)
-// app.put('/api/subscription/:userId', async (res, req, next) => {
-//   try {
-//     const userId = req.params.userId;
-//     const firstName = req.body.firstName;
-//     const lastName = req.body.lastName;
-//     const email = req.body.email;
-//     const address = req.body.address;
-//     if (!firstName || !lastName || !email || !address || !userId) {
-//       throw new ClientError(
-//         400,
-//         `first name, last name, email, address, and userId are required fields`
-//       );
-//     }
-//     const sql = `
-//     update "subscription"
-//     set "firstName" = $2,
-//         "lastName" = $3,
-//         "email" = $4,
-//         "address" = $5
-//     where "userId" = $1
-//     returning *;
-//     `;
-//     const params = [userId, firstName, lastName, email, address];
-//     const result = await db.query(sql, params);
-//     if (!result.rows[0]) {
-//       throw new ClientError(
-//         404,
-//         `cannot find subscriber with 'userId' ${userId}`
-//       );
-//     }
-//     res.status(200).json(result.rows);
-//   } catch (err) {
-//     next(err);
-//   }
-// });
 
 /**
  * Serves React's index.html if no api route matches.

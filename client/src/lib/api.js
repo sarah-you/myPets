@@ -28,19 +28,6 @@ export async function fetchProduct(productId) {
   return await res.json();
 }
 
-export async function createSubscriber(firstName, lastName, email, address) {
-  const req = {
-    method: 'POST',
-    headers: {
-      'content-type': 'application/json',
-    },
-    body: JSON.stringify({ firstName, lastName, email, address }),
-  };
-  const res = await fetch('/api/subscription', req);
-  if (!res.ok) throw new Error(`fetch Error ${res.status}`);
-  return await res.json();
-}
-
 export async function fetchCatProd() {
   const res = await fetch('/api/meow');
   if (!res.ok) throw new Error(`fetch Error ${res.status}`);
@@ -53,17 +40,46 @@ export async function fetchDogProd() {
   return await res.json();
 }
 
+export async function fetchUser(userId) {
+  const res = await fetch(`/api/success/${userId}`);
+  if (!res.ok) throw new Error(`fetch Error ${res.status}`);
+  return await res.json();
+}
+
+//user related fetch
+
+export async function createSubscriber(
+  firstName,
+  lastName,
+  email,
+  address,
+  username,
+  password
+) {
+  const req = {
+    method: 'POST',
+    headers: {
+      'content-type': 'application/json',
+    },
+    body: JSON.stringify({
+      firstName,
+      lastName,
+      email,
+      address,
+      username,
+      password,
+    }),
+  };
+  const res = await fetch('/api/subscription', req);
+  if (!res.ok) throw new Error(`fetch Error ${res.status}`);
+  return await res.json();
+}
+
 export async function deleteSubscriber(userId) {
   const req = {
     method: 'DELETE',
   };
   const res = await fetch(`/api/success/${userId}`, req);
-  if (!res.ok) throw new Error(`fetch Error ${res.status}`);
-  return await res.json();
-}
-
-export async function fetchUser(userId) {
-  const res = await fetch(`/api/success/${userId}`);
   if (!res.ok) throw new Error(`fetch Error ${res.status}`);
   return await res.json();
 }

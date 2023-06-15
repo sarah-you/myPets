@@ -18,19 +18,22 @@ export default function Subscription() {
     const form = e.target;
     const formData = new FormData(form);
     const formJson = Object.fromEntries(formData.entries());
-    const { firstName, lastName, email, address } = formJson;
+    const { firstName, lastName, email, address, username, password } =
+      formJson;
     try {
       const result = await createSubscriber(
         firstName,
         lastName,
         email,
-        address
+        address,
+        username,
+        password
       );
       const userData = JSON.stringify(result);
       localStorage.setItem('userInput', userData);
-    } catch (error) {
+    } catch (err) {
       setError(error);
-      alert(`Error registering ${error})`);
+      alert(`Error registering ${err})`);
     } finally {
       navigate('/success');
     }
