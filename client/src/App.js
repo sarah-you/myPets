@@ -10,18 +10,8 @@ import Subscription from './pages/Subscription';
 import SubscriptionSuccess from './components/SubscriptionSuccess';
 import SignIn from './pages/SignIn';
 import NotFound from './pages/NotFound';
-import { useState } from 'react';
 
 function App() {
-  const [page, setPage] = useState('sign-in');
-
-  function handleNavigate(page) {
-    setPage(page);
-    if (page === 'signout') {
-      sessionStorage.removeItem('token');
-      setPage('/');
-    }
-  }
   return (
     <div className="App">
       <Routes>
@@ -33,22 +23,8 @@ function App() {
           <Route path="details/:productId" element={<ProductDetails />} />
           <Route path="subscription" element={<Subscription />} />
           <Route path="success" element={<SubscriptionSuccess />} />
-          <Route
-            path="signin"
-            element={
-              page === 'signin' && (
-                <SignIn onSignIn={() => handleNavigate('signin')} />
-              )
-            }
-          />
-          <Route
-            path="signout"
-            element={
-              page === 'signout' && (
-                <SignIn onSignIn={() => handleNavigate('signout')} />
-              )
-            }
-          />
+          <Route path="signin" element={<SignIn />} />
+          <Route path="signout" element={<SignIn />} />
           <Route path="*" element={<NotFound />} />
         </Route>
       </Routes>

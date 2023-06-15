@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 
-export default function SignIn({ onSignIn }) {
+export default function SignIn() {
   const [isLoading, setIsLoading] = useState(false);
   const navigate = useNavigate();
 
@@ -23,7 +23,6 @@ export default function SignIn({ onSignIn }) {
       const { user, token } = await res.json();
       sessionStorage.setItem('token', token);
       console.log('Signed In', user, '; received token:', token);
-      onSignIn();
       navigate('/');
     } catch (err) {
       alert(`Error signing in: ${err}`);
