@@ -12,16 +12,12 @@ export default function SubscriptionSuccess() {
 
   async function handleClick() {
     try {
-      console.log('run');
       localStorage.removeItem('userInput');
-      console.log('run2');
       await deleteSubscriber(userData.userId);
-      console.log(localStorage.getItem('userInput'));
       navigate('/subscription');
     } catch (error) {
       setError(error);
       alert(`Error unsubscribing: ${error}`);
-      console.log(error);
     }
   }
 
