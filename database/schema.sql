@@ -35,7 +35,7 @@ CREATE TABLE "public"."subscription"(
   "email" text NOT NULL,
   "address" text NOT NULL,
   "username" text NOT NULL,
-  "password" text NOT NULL,
+  "hashedPassword" text NOT NULL,
   "userId" serial NOT NULL,
   CONSTRAINT "Subscription_pk" PRIMARY KEY ("userId")
 )

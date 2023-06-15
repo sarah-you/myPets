@@ -17,9 +17,9 @@ function App() {
 
   function handleNavigate(page) {
     setPage(page);
-    if (page === 'sign-out') {
+    if (page === 'signout') {
       sessionStorage.removeItem('token');
-      setPage('sign-in');
+      setPage('/');
     }
   }
   return (
@@ -36,8 +36,16 @@ function App() {
           <Route
             path="signin"
             element={
-              page === 'sign-in' && (
-                <SignIn onSignIn={() => handleNavigate('/')} />
+              page === 'signin' && (
+                <SignIn onSignIn={() => handleNavigate('signin')} />
+              )
+            }
+          />
+          <Route
+            path="signout"
+            element={
+              page === 'signout' && (
+                <SignIn onSignIn={() => handleNavigate('signout')} />
               )
             }
           />

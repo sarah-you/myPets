@@ -1,7 +1,9 @@
 import { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 
 export default function SignIn({ onSignIn }) {
   const [isLoading, setIsLoading] = useState(false);
+  const navigate = useNavigate();
 
   async function handleSubmit(event) {
     event.preventDefault();
@@ -22,6 +24,7 @@ export default function SignIn({ onSignIn }) {
       sessionStorage.setItem('token', token);
       console.log('Signed In', user, '; received token:', token);
       onSignIn();
+      navigate('/');
     } catch (err) {
       alert(`Error signing in: ${err}`);
     } finally {

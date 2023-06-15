@@ -1,7 +1,7 @@
 import 'dotenv/config';
 import express from 'express';
 import { ClientError, errorMiddleware } from './lib/index.js';
-// import { authMiddleware } from './lib/index.js';
+// import { authorizationMiddleware } from './lib/index.js';
 import pg from 'pg';
 import argon2 from 'argon2';
 import jwt from 'jsonwebtoken';
@@ -30,7 +30,6 @@ app.get('/api/favpets', async (req, res, next) => {
     const sql = `
 SELECT *
 FROM "myPets"
-WHERE "subscriptionPrice" IS NOT NULL
 ORDER BY "ratings" desc
 LIMIT 6
     `;
@@ -131,12 +130,21 @@ app.post('/api/subscription', async (req, res, next) => {
     ) {
       throw new ClientError(400, `all fields are required`);
     }
+
+    const hashedPassword = await argon2.hash(password);
     const sql = `
-    insert into "subscription" ("firstName", "lastName", "email", "address")
+    insert into "subscription" ("firstName", "lastName", "email", "address", "username", "hashedPassword")
     values ($1, $2, $3, $4, $5, $6)
     returning *;
     `;
-    const params = [firstName, lastName, email, address, username, password];
+    const params = [
+      firstName,
+      lastName,
+      email,
+      address,
+      username,
+      hashedPassword,
+    ];
     const result = await db.query(sql, params);
     res.status(201).json(result.rows[0]);
   } catch (err) {
@@ -154,7 +162,7 @@ app.post('/api/auth/sign-in', async (req, res, next) => {
     const sql = `
       select "userId",
             "hashedPassword"
-        from "users"
+        from "subscription"
       where "username" = $1
     `;
     const params = [username];

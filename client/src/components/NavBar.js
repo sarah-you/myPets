@@ -66,6 +66,9 @@ export default function NavBar() {
         <div className="sign-in-wrap">
           <Link to="signin">Sign In</Link>
         </div>
+        <div className="sign-out-wrap">
+          <Link to="signout">Sign out</Link>
+        </div>
       </div>
       <div className="banner-wrap">
         <p className="banner">

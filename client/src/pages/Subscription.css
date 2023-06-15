@@ -8,6 +8,7 @@
 
 .sub-h4 {
   color: #0d3b66;
+  margin-top: 1rem;
 }
 
 .text {
@@ -15,24 +16,6 @@
   margin-right: 2rem;
   margin-bottom: 2rem;
   text-align: center;
-}
-
-.link {
-  text-align: center;
-  font-size: 1.5rem;
-}
-
-.back-btn-wrap {
-  color: #2568a3;
-}
-
-.back-btn-wrap:hover {
-  text-decoration: underline;
-}
-
-.home-btn {
-  font-size: 1.5rem;
-  font-family: Geologica, sans-serif;
 }
 
 .content-wrap {
@@ -43,7 +26,7 @@
 .form-wrap {
   display: flex;
   justify-content: center;
-  width: calc(100% / 2);
+  width: 60%;
 }
 
 .form {
@@ -51,17 +34,15 @@
   flex-direction: column;
   align-items: center;
   border: solid black;
-  width: 100%;
-  height: 50rem;
+  height: 80%;
   border-radius: 5px;
   justify-content: center;
   align-content: center;
 }
 
-label,
-button {
+label {
   margin-top: 1.5rem;
-  margin-bottom: 1.5rem;
+  margin-bottom: 1rem;
 }
 
 input {
@@ -79,7 +60,9 @@ input::placeholder {
 .fn-icon,
 .ln-icon,
 .email-icon,
-.address-icon {
+.address-icon,
+.username-icon,
+.password-icon {
   font-size: 1.5rem;
 }
 
@@ -94,11 +77,30 @@ input::placeholder {
   width: 200px;
   transition: all 0.5s;
   cursor: pointer;
-  margin-top: 4rem;
+  margin-top: 1rem;
+  margin-bottom: 1rem;
 }
 
 .sub-btn:hover {
   cursor: pointer;
   font-weight: bold;
   color: white;
+}
+
+.link {
+  margin-top: 2rem;
+  text-align: center;
+  font-size: 1.5rem;
+}
+
+.back-btn-wrap {
+  color: #2568a3;
+}
+
+.back-btn-wrap:hover {
+  text-decoration: underline;
+}
+
+.home-btn {
+  font-family: Geologica, sans-serif;
 }

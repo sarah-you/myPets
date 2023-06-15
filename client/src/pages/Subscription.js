@@ -7,6 +7,8 @@ import {
   FaUserCircle,
   FaEnvelope,
   FaMapPin,
+  FaLock,
+  FaUser,
 } from 'react-icons/fa';
 
 export default function Subscription() {
@@ -31,11 +33,10 @@ export default function Subscription() {
       );
       const userData = JSON.stringify(result);
       localStorage.setItem('userInput', userData);
+      navigate('/success');
     } catch (err) {
       setError(error);
       alert(`Error registering ${err})`);
-    } finally {
-      navigate('/success');
     }
   }
 
@@ -71,6 +72,19 @@ export default function Subscription() {
             <label className="address">
               <FaMapPin className="address-icon" />
               <input name="address" placeholder="Delivery Address" required />
+            </label>
+            <label className="username">
+              <FaUser className="username-icon" />
+              <input name="username" placeholder="Username" required />
+            </label>
+            <label className="password">
+              <FaLock className="password-icon" />
+              <input
+                name="password"
+                placeholder="Password"
+                type="password"
+                required
+              />
             </label>
             <button type="submit" className="sub-btn">
               Subscribe
