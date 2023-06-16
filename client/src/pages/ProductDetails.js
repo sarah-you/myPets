@@ -57,22 +57,7 @@ export default function ProductDetails() {
 
   async function handleClick() {
     try {
-      await addtoWishList(
-        productName,
-        ratings,
-        reviews,
-        itemPrice,
-        subscriptionPrice,
-        imgUrl,
-        imgUrl2,
-        imgUrl3,
-        imgUrl4,
-        detail,
-        detail2,
-        detail3,
-        detail4,
-        detail5
-      );
+      await addtoWishList(productId);
       navigate('/signout');
     } catch (err) {
       alert(`Oops! Cannot add item to wishlist. Please try again. ${err}`);

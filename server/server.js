@@ -236,60 +236,16 @@ app.get('/api/success/:userId', async (req, res, next) => {
 // add item to subscribers's wishlist (to db)
 app.post('/api/wishlist', async (req, res, next) => {
   try {
-    const productName = req.body.productName;
-    const ratings = req.body.ratings;
-    const reviews = req.body.reviews;
-    const itemPrice = req.body.itemPrice;
-    const subscriptionPrice = req.body.subscriptionPrice;
-    const imgUrl = req.body.imgUrl;
-    const imgUrl2 = req.body.imgUrl2;
-    const imgUrl3 = req.body.imgUrl3;
-    const imgUrl4 = req.body.imgUrl4;
-    const detail = req.body.detail;
-    const detail2 = req.body.detail2;
-    const detail3 = req.body.detail3;
-    const detail4 = req.body.detail4;
-    const detail5 = req.body.detail5;
-
-    if (
-      !productName ||
-      !ratings ||
-      !reviews ||
-      !itemPrice ||
-      !subscriptionPrice ||
-      !imgUrl ||
-      !imgUrl2 ||
-      !imgUrl3 ||
-      !imgUrl4 ||
-      !detail ||
-      !detail2 ||
-      !detail3 ||
-      !detail4 ||
-      !detail5
-    ) {
+    const productId = req.body.productId;
+    if (!productId) {
       throw new ClientError(400, `all fields are required`);
     }
     const sql = `
-    insert into "myWishList" ("productName", "ratings", "reviews", "itemPrice", "subscriptionPrice", "imgUrl", "imgUrl2", "imgUrl3", "imgUrl4", "detail", "detail2", "detail3", "detail4", "detail5")
-    values ($1, $2, $3, $4, $5, $6,$7, $8, $9, $10, $11, $12, $13, $14)
+    insert into "myWishList" ("productId")
+    values ($1)
     returning *;
     `;
-    const params = [
-      productName,
-      ratings,
-      reviews,
-      itemPrice,
-      subscriptionPrice,
-      imgUrl,
-      imgUrl2,
-      imgUrl3,
-      imgUrl4,
-      detail,
-      detail2,
-      detail3,
-      detail4,
-      detail5,
-    ];
+    const params = [productId];
     const result = await db.query(sql, params);
     res.status(201).json(result.rows[0]);
   } catch (err) {
@@ -301,8 +257,9 @@ app.post('/api/wishlist', async (req, res, next) => {
 app.get('/api/wishlist/items', async (req, res, next) => {
   try {
     const sql = `
-SELECT *
-FROM "myWishList"
+select *
+  from "myPets"
+  join "myWishList" using ("productId");
     `;
     const result = await db.query(sql);
     res.json(result.rows);

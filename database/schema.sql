@@ -44,21 +44,7 @@ WITH (
 );
 
 CREATE TABLE "public"."myWishList"(
-  "productName" text NOT NULL,
-  "ratings" real NOT NULL,
-  "reviews" integer NOT NULL,
-  "itemPrice" real NOT NULL,
-  "subscriptionPrice" real,
-  "imgUrl" text NOT NULL,
-  "imgUrl2" text,
-  "imgUrl3" text,
-  "imgUrl4" text,
-  "detail" text NOT NULL,
-  "detail2" text NOT NULL,
-  "detail3" text NOT NULL,
-  "detail4" text NOT NULL,
-  "detail5" text NOT NULL,
-  "productId" serial NOT NULL,
+  "productId" integer NOT NULL,
   CONSTRAINT "myWishList_pk" PRIMARY KEY ("productId")
 )
 WITH (

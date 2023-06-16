@@ -84,42 +84,14 @@ export async function deleteSubscriber(userId) {
   return await res.json();
 }
 
-export async function addtoWishList(
-  productName,
-  ratings,
-  reviews,
-  itemPrice,
-  subscriptionPrice,
-  imgUrl,
-  imgUrl2,
-  imgUrl3,
-  imgUrl4,
-  detail,
-  detail2,
-  detail3,
-  detail4,
-  detail5
-) {
+export async function addtoWishList(productId) {
   const req = {
     method: 'POST',
     headers: {
       'content-type': 'application/json',
     },
     body: JSON.stringify({
-      productName,
-      ratings,
-      reviews,
-      itemPrice,
-      subscriptionPrice,
-      imgUrl,
-      imgUrl2,
-      imgUrl3,
-      imgUrl4,
-      detail,
-      detail2,
-      detail3,
-      detail4,
-      detail5,
+      productId,
     }),
   };
   const res = await fetch('/api/wishlist', req);
