@@ -27,15 +27,15 @@ export default function SubscriptionSuccess() {
         <h2 className="success-h2">
           🎉 Hurray! Welcome to the club. You are subscribed to myPets! 🎉
         </h2>
+        <div className="sucess-signin-wrap">
+          <Link to="/signin">Sign In</Link>
+        </div>
         <img
           src="/images/success.jpeg"
           alt="cats and dogs"
           className="success-img"
         />
-        <h5>Please sign in to your account!</h5>
-        <div className="sucess-signin-wrap">
-          <Link to="/signin">Sign In</Link>
-        </div>
+
         <div className="unsubscribe-btn-wrap">
           <button onClick={handleClick} className="unsubscribe-btn">
             Delete my Account 🥺

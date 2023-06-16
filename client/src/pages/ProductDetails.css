@@ -53,10 +53,6 @@
   margin-top: 1.5rem;
 }
 
-.null {
-  display: none;
-}
-
 .price {
   font-size: 2.5rem;
   color: #ee964b;
@@ -77,6 +73,12 @@
   margin-top: 2.5rem;
 }
 
+.sub-n-save-wrap {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+}
+
 .sub-link-div {
   display: flex;
   justify-content: center;
@@ -88,9 +90,6 @@
 
 .sub-link-div:hover {
   text-decoration: underline #0d3b66;
-  width: 15rem;
-  height: 4rem;
-  border-radius: 10px;
 }
 
 .pd-sub-link {
@@ -102,20 +101,44 @@
   font-weight: 600;
 }
 
+.heart-icon-wrap {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.heart-icon {
+  font-size: 2.25rem;
+  margin-right: 1rem;
+}
+
+.heart-icon-btn {
+  margin-left: 3rem;
+  height: 5rem;
+  text-align: center;
+  margin-top: 2.25rem;
+  border: none;
+  background-color: #faf0ca;
+  font-size: 1.75rem;
+  font-weight: 600;
+}
+
+.heart-icon-btn:hover {
+  color: #f95738;
+}
+
 .btn-wrap {
   display: flex;
   justify-content: center;
 }
 
-.back-btn-wrap {
-  color: #2568a3;
-}
-
-.back-btn-wrap:hover {
-  text-decoration: underline;
-}
-
 .home-btn {
   font-size: 1.5rem;
   font-family: Geologica, sans-serif;
+  color: #2568a3;
+  margin: 1rem;
+}
+
+.home-btn:hover {
+  text-decoration: underline;
 }

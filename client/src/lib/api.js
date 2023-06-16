@@ -83,3 +83,52 @@ export async function deleteSubscriber(userId) {
   if (!res.ok) throw new Error(`fetch Error ${res.status}`);
   return await res.json();
 }
+
+export async function addtoWishList(
+  productName,
+  ratings,
+  reviews,
+  itemPrice,
+  subscriptionPrice,
+  imgUrl,
+  imgUrl2,
+  imgUrl3,
+  imgUrl4,
+  detail,
+  detail2,
+  detail3,
+  detail4,
+  detail5
+) {
+  const req = {
+    method: 'POST',
+    headers: {
+      'content-type': 'application/json',
+    },
+    body: JSON.stringify({
+      productName,
+      ratings,
+      reviews,
+      itemPrice,
+      subscriptionPrice,
+      imgUrl,
+      imgUrl2,
+      imgUrl3,
+      imgUrl4,
+      detail,
+      detail2,
+      detail3,
+      detail4,
+      detail5,
+    }),
+  };
+  const res = await fetch('/api/wishlist', req);
+  if (!res.ok) throw new Error(`fetch Error ${res.status}`);
+  return await res.json();
+}
+
+export async function fetchWishList() {
+  const res = await fetch('/api/wishlist/items');
+  if (!res.ok) throw new Error(`fetch Error ${res.status}`);
+  return await res.json();
+}

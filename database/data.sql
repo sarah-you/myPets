@@ -51,4 +51,8 @@ INSERT INTO "myPets"("productName", "petType", "category", "itemPrice", "subscri
 INSERT INTO "subscription"("firstName", "lastName", "email", "address", "username", "hashedPassword")
   VALUES ('Emma', 'Johnson', 'emmajohnson@example.com', '1234 Elm Street, Anytown, USA', 'emma2023', 'password1');
 
-DELETE FROM "myPets" WHERE "subscriptionPrice" IS NULL;
+DELETE FROM "myPets"
+WHERE "subscriptionPrice" IS NULL;
+
+INSERT INTO "myWishList"("productName", "ratings", "reviews", "itemPrice", "subscriptionPrice", "imgUrl", "imgUrl2", "imgUrl3", "imgUrl4", "detail", "detail2", "detail3", "detail4", "detail5")
+  VALUES ('Frisco Dog Training & Potty Pads', 4.5, 3987, 37.65, 35.77, 'https://image.chewy.com/is/image/catalog/89562_MAIN._AC_SL1200_V1674665679_.jpg', 'https://image.chewy.com/is/image/catalog/89562_PT2._AC_SL1200_V1674666047_.jpg', 'https://image.chewy.com/is/image/catalog/89562_PT3._AC_SL1200_V1674674460_.jpg', 'https://image.chewy.com/is/image/catalog/89562_PT5._AC_SL1200_V1674671567_.jpg', 'From Frisco by Chewy. Leak-proof, disposable pads provide your pooch with the right place to do their business. Available unscented with a built-in dog attractant or scented with a pleasant aroma.', 'Fast-drying, super-absorbent pads keep your floors dry and make cleanup easy.', 'Helps make potty training easier on you and your pup so you can spend more time on the cuddles and not the messes.', 'Pick the right size for your pup and your home—the core dimensions measure approximately 20 x 20.5 inches.', 'Frisco pet goods are crafted to deliver more happy moments together—from go-to potty gear to sturdy toys, comfy beds, adorable apparel and more. Designed, tested and approved by the pet experts at Chewy.');

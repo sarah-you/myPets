@@ -1,16 +1,17 @@
 import { useEffect, useState } from 'react';
-import { fetchProduct, toDollars } from '../lib';
+import { fetchProduct, toDollars, addtoWishList } from '../lib';
 import './ProductDetails.css';
-import { Link } from 'react-router-dom';
-import { useParams } from 'react-router-dom';
+import { Link, useNavigate, useParams } from 'react-router-dom';
 import PdCarousel from '../components/PdCarousel';
 import Ratings from '../lib/Ratings';
+import { FaHeart } from 'react-icons/fa';
 
 export default function ProductDetails() {
   const { productId } = useParams();
   const [product, setProduct] = useState();
   const [isLoading, setIsLoading] = useState(true);
   const [error, setError] = useState();
+  const navigate = useNavigate();
 
   useEffect(() => {
     async function loadProduct(productId) {
@@ -35,6 +36,7 @@ export default function ProductDetails() {
       </div>
     );
   }
+
   if (!product) return null;
   const {
     productName,
@@ -52,6 +54,31 @@ export default function ProductDetails() {
     detail4,
     detail5,
   } = product;
+
+  async function handleClick() {
+    try {
+      await addtoWishList(
+        productName,
+        ratings,
+        reviews,
+        itemPrice,
+        subscriptionPrice,
+        imgUrl,
+        imgUrl2,
+        imgUrl3,
+        imgUrl4,
+        detail,
+        detail2,
+        detail3,
+        detail4,
+        detail5
+      );
+      navigate('/signout');
+    } catch (err) {
+      alert(`Oops! Cannot add item to wishlist. Please try again. ${err}`);
+    }
+  }
+
   return (
     <div className="container">
       <div className="card shadow-sm">
@@ -68,10 +95,12 @@ export default function ProductDetails() {
             </div>
             <div className="col-12 col-sm-6 col-md-7">
               <h2 className="name">{productName}</h2>
-              <div className="r-wrap">
-                <Ratings className="ratings-comp" ratings={ratings} />
-                <p className="ratings">{ratings}</p>
-                <p className="reviews">{reviews} reviews</p>
+              <div className="rev-rating-heart-wrap">
+                <div className="r-wrap">
+                  <Ratings className="ratings-comp" ratings={ratings} />
+                  <p className="ratings">{ratings}</p>
+                  <p className="reviews">{reviews} reviews</p>
+                </div>
               </div>
               <div className="all-price-wrap">
                 <div className="item-price-wrap">
@@ -92,16 +121,35 @@ export default function ProductDetails() {
                 <li className="detail">{detail5}</li>
               </ul>
             </div>
-            <div className="sub-link-div">
-              {localStorage.getItem('userInput') !== null ? (
-                <Link to="/success" className="pd-sub-link">
-                  <h4 className="sub-h4">Join the waitlist!</h4>
-                </Link>
-              ) : (
-                <Link to="/subscription" className="pd-sub-link">
-                  <h4 className="sub-h4">Join the waitlist!</h4>
-                </Link>
-              )}
+            <div className="sub-n-save-wrap">
+              <div className="sub-link-div">
+                {localStorage.getItem('userInput') !== null ? (
+                  <Link to="/success" className="pd-sub-link">
+                    <h4 className="sub-h4">Subscribe Now</h4>
+                  </Link>
+                ) : (
+                  <Link to="/subscription" className="pd-sub-link">
+                    <h4 className="sub-h4">Subscribe Now</h4>
+                  </Link>
+                )}
+              </div>
+              <div className="heart-icon-wrap">
+                {localStorage.getItem('account') !== null ? (
+                  <Link to="/signout">
+                    <button onClick={handleClick} className="heart-icon-btn">
+                      <FaHeart className="heart-icon" />
+                      Save Item
+                    </button>
+                  </Link>
+                ) : (
+                  <Link to="/signin">
+                    <button className="heart-icon-btn">
+                      <FaHeart className="heart-icon" />
+                      Save Item
+                    </button>
+                  </Link>
+                )}
+              </div>
             </div>
           </div>
         </div>
