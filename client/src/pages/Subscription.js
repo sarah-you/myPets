@@ -78,6 +78,9 @@ export default function Subscription() {
               <input name="username" placeholder="Username" required />
             </label>
             <label className="password">
+              <p className="pw-text">
+                Please make sure to write down your password in a safe place!
+              </p>
               <FaLock className="password-icon" />
               <input
                 name="password"
@@ -95,10 +98,10 @@ export default function Subscription() {
           </form>
         </div>
         <div className="link">
-          <Link to="/">
+          <Link to="/signin">
             <div className="back-btn-wrap">
               <FaCaretLeft />
-              <button className="btn home-btn">Back to Home</button>
+              <button className="btn home-btn">Back to Sign In</button>
             </div>
           </Link>
         </div>

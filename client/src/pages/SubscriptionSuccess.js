@@ -1,5 +1,5 @@
 import './SubscriptionSuccess.css';
-import { useNavigate } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { useState } from 'react';
 import { deleteSubscriber } from '../lib';
 
@@ -12,12 +12,12 @@ export default function SubscriptionSuccess() {
 
   async function handleClick() {
     try {
-      localStorage.removeItem('userInput');
       await deleteSubscriber(userData.userId);
+      alert(`Your account has been deleted`);
       navigate('/subscription');
-    } catch (error) {
+    } catch (err) {
       setError(error);
-      alert(`Error unsubscribing: ${error}`);
+      alert(`Error unsubscribing: ${err}`);
     }
   }
 
@@ -32,18 +32,13 @@ export default function SubscriptionSuccess() {
           alt="cats and dogs"
           className="success-img"
         />
-        <h3>Your goodest user ID is: ✨ {userData?.userId} ✨</h3>
-        <p className="success-text">
-          Please use this user ID when you add items to your cart!{' '}
-          <b>(COMING SOON!)</b> <br />
-          Your unique ID will always be available here as long as you are
-          subscribed! <br /> If you do not see a unique ID, it's because you're
-          not subscribed yet! Please navigate to Subscription at the top
-          navigation bar and subscribe!
-        </p>
+        <h5>Please sign in to your account!</h5>
+        <div className="sucess-signin-wrap">
+          <Link to="/signin">Sign In</Link>
+        </div>
         <div className="unsubscribe-btn-wrap">
           <button onClick={handleClick} className="unsubscribe-btn">
-            Unsubscribe 🥺
+            Delete my Account 🥺
           </button>
         </div>
       </div>

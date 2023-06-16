@@ -7,8 +7,9 @@ import Woof from './pages/Woof';
 import Catalog from './pages/Catalog';
 import ProductDetails from './pages/ProductDetails';
 import Subscription from './pages/Subscription';
-import SubscriptionSuccess from './components/SubscriptionSuccess';
+import SubscriptionSuccess from './pages/SubscriptionSuccess';
 import SignIn from './pages/SignIn';
+import SignOut from './pages/SignOut';
 import NotFound from './pages/NotFound';
 
 function App() {
@@ -24,7 +25,7 @@ function App() {
           <Route path="subscription" element={<Subscription />} />
           <Route path="success" element={<SubscriptionSuccess />} />
           <Route path="signin" element={<SignIn />} />
-          <Route path="signout" element={<SignIn />} />
+          <Route path="signout" element={<SignOut />} />
           <Route path="*" element={<NotFound />} />
         </Route>
       </Routes>

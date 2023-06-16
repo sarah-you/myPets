@@ -1,0 +1,8 @@
+.account-head {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  text-align: center;
+  margin-top: 2rem;
+  color: #0d3b66;
+}

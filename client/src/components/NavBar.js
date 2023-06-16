@@ -12,7 +12,7 @@ export default function NavBar() {
           </Link>
         </div>
         <div className="meow-wrap">
-          <Link to="meow" className="meow">
+          <Link to="/meow" className="meow">
             <img
               src="images/cat-icon.png"
               alt="cute cartoon cat"
@@ -22,7 +22,7 @@ export default function NavBar() {
           </Link>
         </div>
         <div className="woof-wrap">
-          <Link to="woof" className="woof">
+          <Link to="/woof" className="woof">
             <img
               src="images/dog-icon.png"
               alt="cute cartoon dog"
@@ -41,38 +41,18 @@ export default function NavBar() {
             Catalog
           </Link>
         </div>
-        <div className="subscribe-wrap">
-          {localStorage.getItem('userInput') !== null ? (
-            <Link to="success" className="success">
-              {' '}
-              <img
-                src="images/subscribe-icon.png"
-                alt="box icon"
-                className="subscribe-icon"
-              />
-              Subscription
-            </Link>
-          ) : (
-            <Link to="subscription" className="subscribe">
-              <img
-                src="images/subscribe-icon.png"
-                alt="box icon"
-                className="subscribe-icon"
-              />
-              Subscription
-            </Link>
-          )}
-        </div>
         <div className="sign-in-wrap">
-          <Link to="signin">Sign In</Link>
-        </div>
-        <div className="sign-out-wrap">
-          <Link to="signout">Sign out</Link>
+          {localStorage.getItem('account') !== null ? (
+            <Link to="/signout">Account</Link>
+          ) : (
+            <Link to="/signin">Account</Link>
+          )}
         </div>
       </div>
       <div className="banner-wrap">
         <p className="banner">
-          The is the beta version of myPets subscription.
+          The is the beta version of myPets subscription. Thank you for your
+          patience :)
         </p>
       </div>
       <Outlet />

@@ -1,5 +1,6 @@
 import { useState } from 'react';
-import { useNavigate } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
+import './SignIn.css';
 
 export default function SignIn() {
   const [isLoading, setIsLoading] = useState(false);
@@ -22,10 +23,18 @@ export default function SignIn() {
       }
       const { user, token } = await res.json();
       sessionStorage.setItem('token', token);
-      console.log('Signed In', user, '; received token:', token);
-      navigate('/');
+      const accountData = {
+        username: user,
+        pw: token,
+      };
+      const myAccount = JSON.stringify(accountData);
+      localStorage.setItem('account', myAccount);
+      alert(`Welcome! You are now signed in to your account.`);
+      navigate('/signout');
     } catch (err) {
-      alert(`Error signing in: ${err}`);
+      alert(
+        `Login Failed. The username or password is invalid. Please try again`
+      );
     } finally {
       setIsLoading(false);
     }
@@ -34,8 +43,13 @@ export default function SignIn() {
   return (
     <div className="container">
       <div className="row">
-        <div className="column-full d-flex justify-between">
-          <h1>Sign In</h1>
+        <div className="column-full d-flex justify-between account-head">
+          <h1>myPets Account</h1>
+          <h5 className="signin-h5">Welcome!</h5>
+          <p className="signin-text">
+            Please sign in or register to add your pets' favorites to your
+            personal list!
+          </p>
         </div>
       </div>
       <form onSubmit={handleSubmit}>
@@ -69,6 +83,9 @@ export default function SignIn() {
               Sign In
             </button>
           </div>
+          <Link to="/subscription">
+            <button className="register-btn">Register</button>
+          </Link>
         </div>
       </form>
     </div>

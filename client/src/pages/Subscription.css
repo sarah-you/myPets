@@ -66,6 +66,12 @@ input::placeholder {
   font-size: 1.5rem;
 }
 
+.pw-text {
+  text-align: center;
+  margin-left: 2rem;
+  margin-bottom: 0;
+}
+
 .sub-btn {
   border-radius: 4px;
   background-color: #f4d35e;
