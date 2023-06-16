@@ -15,17 +15,3 @@
 .success-img {
   width: 120%;
 }
-
-.unsubscribe-btn {
-  width: 15rem;
-  height: 4rem;
-  background-color: #ee964b;
-  border: #ee964b;
-  font-size: 1.25rem;
-  border-radius: 5px;
-}
-
-.unsubscribe-btn:active {
-  background-color: #f4d35e;
-  transform: translateY(3px);
-}

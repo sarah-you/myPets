@@ -60,7 +60,9 @@ export default function ProductDetails() {
       await addtoWishList(productId);
       navigate('/signout');
     } catch (err) {
-      alert(`Oops! Cannot add item to wishlist. Please try again. ${err}`);
+      alert(
+        `Oops! Cannot add item to wishlist. Please check to see if this item is already added to your wishlist and try again! ${err}`
+      );
     }
   }
 

@@ -1,26 +1,7 @@
 import './SubscriptionSuccess.css';
 import { Link, useNavigate } from 'react-router-dom';
 import { useState } from 'react';
-import { deleteSubscriber } from '../lib';
-
 export default function SubscriptionSuccess() {
-  const navigate = useNavigate();
-  const [error, setError] = useState();
-
-  const stringData = localStorage.getItem('userInput');
-  const userData = JSON.parse(stringData);
-
-  async function handleClick() {
-    try {
-      await deleteSubscriber(userData.userId);
-      alert(`Your account has been deleted`);
-      navigate('/subscription');
-    } catch (err) {
-      setError(error);
-      alert(`Error unsubscribing: ${err}`);
-    }
-  }
-
   return (
     <>
       <div className="container">
@@ -35,12 +16,6 @@ export default function SubscriptionSuccess() {
           alt="cats and dogs"
           className="success-img"
         />
-
-        <div className="unsubscribe-btn-wrap">
-          <button onClick={handleClick} className="unsubscribe-btn">
-            Delete my Account 🥺
-          </button>
-        </div>
       </div>
     </>
   );
