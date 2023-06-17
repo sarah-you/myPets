@@ -5,7 +5,7 @@ export default function SubscriptionSuccess() {
     <>
       <div className="container">
         <h2 className="success-h2">
-          🎉 Hurray! Welcome to the club. You are subscribed to myPets! 🎉
+          🎉 Hurray! Welcome to the club. You are registered to myPets! 🎉
         </h2>
         <div className="sucess-signin-wrap">
           {localStorage.getItem('account') !== null ? (

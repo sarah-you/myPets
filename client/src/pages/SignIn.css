@@ -6,3 +6,53 @@
   margin-top: 2rem;
   color: #0d3b66;
 }
+
+.signin-h1 {
+  font-family: geologica, sans-serif;
+}
+
+.username,
+.password {
+  margin: 0;
+  margin-left: 1rem;
+}
+
+input {
+  border: #f4d35e 2px solid;
+  background-color: white;
+}
+
+.all-btns-wrap {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.signin-btn {
+  width: 10rem;
+  height: 3rem;
+  border-radius: 5px;
+  font-size: 1.15rem;
+  font-weight: 500;
+  background-color: #f95738;
+  border: none;
+  margin-bottom: 2rem;
+  margin-top: 1rem;
+  color: white;
+}
+
+.register-btn {
+  width: 10rem;
+  height: 3rem;
+  border-radius: 5px;
+  font-size: 1.15rem;
+  font-weight: 500;
+  background-color: #f4d35e;
+  border: none;
+}
+
+.signin-btn:hover,
+.register-btn:hover {
+  border: #faf0ca 2px solid;
+}

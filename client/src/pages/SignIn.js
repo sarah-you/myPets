@@ -45,8 +45,7 @@ export default function SignIn() {
     <div className="container">
       <div className="row">
         <div className="column-full d-flex justify-between account-head">
-          <h1>myPets Account</h1>
-          <h5 className="signin-h5">Welcome!</h5>
+          <h1 className="signin-h1">myPets Account</h1>
           <p className="signin-text">
             Please sign in or register to add your pets' favorites to your
             personal list!
@@ -56,8 +55,8 @@ export default function SignIn() {
       <form onSubmit={handleSubmit}>
         <div className="row margin-bottom-1">
           <div className="column-half">
-            <label className="margin-bottom-1 d-block">
-              Username
+            <label className="d-block">
+              <p className="username">Username</p>
               <input
                 required
                 name="username"
@@ -65,8 +64,8 @@ export default function SignIn() {
                 className="input-b-color text-padding input-b-radius purple-outline input-height margin-bottom-2 d-block width-100"
               />
             </label>
-            <label className="margin-bottom-1 d-block">
-              Password
+            <label className="d-block">
+              <p className="password">Password</p>
               <input
                 required
                 name="password"
@@ -76,17 +75,17 @@ export default function SignIn() {
             </label>
           </div>
         </div>
-        <div className="row">
-          <div className="column-full d-flex justify-between">
-            <button
-              disabled={isLoading}
-              className="input-b-radius text-padding purple-background white-text">
+        <div className="all-btns-wrap">
+          <div className="signin-btn-wrap">
+            <button disabled={isLoading} className="signin-btn">
               Sign In
             </button>
           </div>
-          <Link to="/subscription">
-            <button className="register-btn">Register</button>
-          </Link>
+          <div className="register-btn-wrap">
+            <Link to="/subscription">
+              <button className="register-btn">Register</button>
+            </Link>
+          </div>
         </div>
       </form>
     </div>
