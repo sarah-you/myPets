@@ -12,6 +12,22 @@
   margin-bottom: 2rem;
 }
 
+.success-signin-btn {
+  height: 4rem;
+  width: 15rem;
+  padding: 0.25rem;
+  margin-bottom: 2rem;
+  font-size: 1.25rem;
+  background-color: #ee964b;
+  border: none;
+  border-radius: 5px;
+  font-family: work-sans, sans-serif;
+}
+
+.success-signin-btn:hover {
+  border: #faf0ca 2px solid;
+}
+
 .success-img {
   width: 120%;
 }

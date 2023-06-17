@@ -9,9 +9,13 @@ export default function SubscriptionSuccess() {
         </h2>
         <div className="sucess-signin-wrap">
           {localStorage.getItem('account') !== null ? (
-            <Link to="/signout">Go To My Account</Link>
+            <Link to="/signout">
+              <button className="success-signin-btn">Go To My Account</button>
+            </Link>
           ) : (
-            <Link to="/signin">Sign In</Link>
+            <Link to="/signin">
+              <button className="success-signin-btn">Sign In</button>
+            </Link>
           )}
         </div>
         <img
