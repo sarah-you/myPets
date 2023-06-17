@@ -104,3 +104,12 @@ export async function fetchWishList() {
   if (!res.ok) throw new Error(`fetch Error ${res.status}`);
   return await res.json();
 }
+
+// export async function removeItem(productId) {
+//     const req = {
+//       method: 'DELETE',
+//     };
+//     const res = await fetch(`/api/wishlist/${productId}`, req);
+//     if (!res.ok) throw new Error(`fetch Error ${res.status}`);
+//     return await res.json();
+// }

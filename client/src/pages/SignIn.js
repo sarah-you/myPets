@@ -37,6 +37,7 @@ export default function SignIn() {
       );
     } finally {
       setIsLoading(false);
+      window.location.reload();
     }
   }
 

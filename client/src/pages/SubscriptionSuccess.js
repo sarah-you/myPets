@@ -1,6 +1,5 @@
 import './SubscriptionSuccess.css';
-import { Link, useNavigate } from 'react-router-dom';
-import { useState } from 'react';
+import { Link } from 'react-router-dom';
 export default function SubscriptionSuccess() {
   return (
     <>
@@ -9,7 +8,11 @@ export default function SubscriptionSuccess() {
           🎉 Hurray! Welcome to the club. You are subscribed to myPets! 🎉
         </h2>
         <div className="sucess-signin-wrap">
-          <Link to="/signin">Sign In</Link>
+          {localStorage.getItem('account') !== null ? (
+            <Link to="/signout">Go To My Account</Link>
+          ) : (
+            <Link to="/signin">Sign In</Link>
+          )}
         </div>
         <img
           src="/images/success.jpeg"

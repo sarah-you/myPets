@@ -1,8 +1,9 @@
 import './SignOut.css';
-import { fetchWishList, deleteSubscriber } from '../lib';
-import { useEffect, useState } from 'react';
+import { fetchWishList, deleteSubscriber, removeItem } from '../lib';
+import { useEffect, useState, useRef } from 'react';
 import { Product } from '../components/Product';
 import { useNavigate } from 'react-router-dom';
+import { FaTrashAlt } from 'react-icons/fa';
 
 export default function SignOut() {
   const stringData = localStorage.getItem('userInput');
@@ -12,6 +13,7 @@ export default function SignOut() {
   const [isLoading, setIsLoading] = useState(true);
   const [error, setError] = useState();
   const navigate = useNavigate();
+  // const targetRef = useRef(null);
 
   useEffect(() => {
     async function loadWishList() {
@@ -29,9 +31,15 @@ export default function SignOut() {
   }, []);
 
   async function handleSignOut() {
-    sessionStorage.removeItem('token');
-    localStorage.removeItem('account');
-    navigate('/signin');
+    try {
+      sessionStorage.removeItem('token');
+      localStorage.removeItem('account');
+      navigate('/signin');
+    } catch (err) {
+      setError(err);
+    } finally {
+      window.location.reload();
+    }
   }
 
   async function handleDeleteAcc() {
@@ -42,10 +50,21 @@ export default function SignOut() {
       alert(`Your account has been deleted`);
       navigate('/subscription');
     } catch (err) {
-      setError(error);
+      setError(err);
       alert(`Error unsubscribing: ${err}`);
     }
   }
+
+  // async function handleRemoveItem() {
+  //   try {
+  //     const item = targetRef.current.closest('.prod-wrap');
+  //     console.log(item);
+  //     await removeItem(productId);
+  //     alert(`Item has been removed from myWishList.`);
+  //   } catch (err) {
+  //     setError(err);
+  //   }
+  // }
 
   if (isLoading) return <div>Loading...</div>;
   if (error) console.log(error);
@@ -74,8 +93,15 @@ export default function SignOut() {
       <h2 className="signout-h2">myWishList</h2>
       <div className="product-list">
         {products?.map((product) => (
-          <div key={product.productId} className="prod-wrap">
+          <div key={product.productId} className="prod-wrap remove">
             <Product product={product} />
+            <button
+              // ref={targetRef}
+              // onClick={handleRemoveItem}
+              className="remove-btn">
+              <FaTrashAlt className="trash-icon" />
+              Remove from myWishList
+            </button>
           </div>
         ))}
       </div>

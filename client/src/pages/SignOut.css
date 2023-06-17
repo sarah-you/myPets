@@ -22,12 +22,37 @@
   margin-bottom: 2rem;
 }
 
+.remove {
+  display: flex;
+  flex-direction: column;
+}
+
+.remove-btn {
+  padding: 0.25rem;
+  margin-bottom: 2rem;
+  height: 3rem;
+  border: none;
+  border-radius: 5px;
+  background-color: #ee964b;
+  color: black;
+}
+
+.remove-btn:hover {
+  border: solid 2px #faf0ca;
+}
+
+.trash-icon {
+  font-size: 1.25rem;
+  margin-right: 1rem;
+}
+
 .signout-btn {
   margin-right: 3rem;
   border-radius: 5px;
   font-size: 1.25rem;
   background-color: #f4d35e;
   border: #f4d35e;
+  color: #f95738;
 }
 
 .unsubscribe-btn {
@@ -36,15 +61,17 @@
   font-size: 1.25rem;
   border-radius: 5px;
   margin-top: 1rem;
+  color: #faf0ca;
 }
 
 .signout-btn,
 .unsubscribe-btn {
   width: 15rem;
   height: 3.5rem;
+  color: black;
 }
 
-.unsubscribe-btn:active {
-  background-color: #f4d35e;
-  transform: translateY(3px);
+.signout-btn:hover,
+.unsubscribe-btn:hover {
+  border: solid 2px #faf0ca;
 }

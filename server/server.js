@@ -188,7 +188,7 @@ app.delete('/api/success/:userId', async (req, res, next) => {
   try {
     const userId = Number(req.params.userId);
     if (!userId) {
-      throw new ClientError(400, 'productId must be a positive integer');
+      throw new ClientError(400, 'userId must be a positive integer');
     }
     const sql = `
       delete
@@ -267,6 +267,32 @@ select *
     next(err);
   }
 });
+
+// app.delete('/api/wishlist/:productId', async (req, res, next) => {
+//   try {
+//     const productId = Number(req.params.productId);
+//     if (!productId) {
+//       throw new ClientError(400, 'productId must be a positive integer');
+//     }
+//     const sql = `
+//        delete
+//         from "myWishList"
+//         where "productId" = $1
+//         returning *;
+//  `;
+//     const params = [productId];
+//     const result = await db.query(sql, params);
+//     if (!result.rows[0]) {
+//       throw new ClientError(
+//         400,
+//         `cannot find item with 'productId' ${productId}`
+//       );
+//     }
+//     res.status(201).json(`${productId} has been removed from myWishList`);
+//   } catch (err) {
+//     next(err);
+//   }
+// });
 
 /**
  * Serves React's index.html if no api route matches.
