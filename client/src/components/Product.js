@@ -1,6 +1,7 @@
 import { Link } from 'react-router-dom';
 import { toDollars } from '../lib';
 import Ratings from '../lib/Ratings';
+import './Product.css';
 
 export function Product({ product }) {
   const { productName, itemPrice, imgUrl, ratings, reviews, productId } =

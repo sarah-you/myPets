@@ -1,6 +1,6 @@
 .signout-hero {
   width: 100%;
-  height: 700px;
+  height: 500px;
 }
 
 .signout-h1 {
@@ -25,16 +25,18 @@
 .remove {
   display: flex;
   flex-direction: column;
+  align-items: center;
 }
 
 .remove-btn {
   padding: 0.25rem;
   margin-bottom: 2rem;
+  width: 25rem;
   height: 3rem;
   border: none;
-  border-radius: 5px;
   background-color: #ee964b;
   color: black;
+  border-radius: 10px;
 }
 
 .remove-btn:hover {

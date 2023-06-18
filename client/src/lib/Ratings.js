@@ -1,5 +1,3 @@
-// import { FaStar, FaRegStar, FaRegStarHalf } from 'react-icons/fa';
-
 export default function Ratings({ ratings }) {
   let rating = [];
 

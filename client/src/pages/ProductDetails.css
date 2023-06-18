@@ -7,6 +7,12 @@
   background-color: #faf0ca;
   margin-top: 3rem;
   width: 80%;
+  border: none;
+}
+
+.card-body {
+  background-color: white;
+  border-radius: 20px;
 }
 
 .name {
@@ -125,7 +131,7 @@ img {
   text-align: center;
   margin-top: 2.25rem;
   border: none;
-  background-color: #faf0ca;
+  background-color: white;
   font-size: 1.75rem;
   font-weight: 600;
 }

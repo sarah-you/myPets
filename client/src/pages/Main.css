@@ -1,0 +1,5 @@
+.carousel-wrapper {
+  display: flex;
+  justify-content: end;
+  align-items: flex-end;
+}

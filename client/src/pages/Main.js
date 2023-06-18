@@ -33,10 +33,14 @@ const img = [
 export default function Main() {
   return (
     <>
-      <Carousel img={img} />
-      <EmailSubscriptionModal />
-      <ShopByPets />
-      <PetFav />
+      <div className="main-page-container">
+        <div className="carousel-wrapper">
+          <Carousel img={img} />
+        </div>
+        <EmailSubscriptionModal />
+        <ShopByPets />
+        <PetFav />
+      </div>
     </>
   );
 }
