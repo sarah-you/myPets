@@ -48,7 +48,11 @@ export default function EmailSubscriptionModal() {
               </div>
             </div>
             <div className="img-wrap">
-              <img src="../images/popUp.jpeg" alt="dog and friend" />
+              <img
+                className="popup-img"
+                src="../images/popUp.jpeg"
+                alt="dog and friend"
+              />
             </div>
           </div>
         </div>
