@@ -26,6 +26,10 @@
   left: 5px;
 }
 
+.img {
+  width: 70%;
+}
+
 .img:hover {
   background-color: white;
   opacity: 80%;

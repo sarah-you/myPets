@@ -1,0 +1,10 @@
+.pd-carousel-wrap {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+}
+
+.pd-carousel-img {
+  width: 100%;
+}

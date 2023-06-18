@@ -13,13 +13,20 @@
   margin-top: 3rem;
 }
 
+.pd-imgs-wrap {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
 .sm-previews {
   display: flex;
   align-items: center;
-  width: 25%;
   height: 10rem;
-  margin-left: 5rem;
-  margin-top: 2rem;
+}
+
+img {
+  width: 25%;
 }
 
 .r-wrap {

@@ -1,5 +1,6 @@
 import { FaChevronLeft, FaChevronRight } from 'react-icons/fa';
 import { useState } from 'react';
+import './PdCarousel.css';
 
 export default function PdCarousel({ imgs, productName }) {
   const [current, setCurrent] = useState(0);
@@ -13,8 +14,8 @@ export default function PdCarousel({ imgs, productName }) {
     <div className="container">
       <div className="row">
         <div className="col-full">
-          <div className="carousel-wrap">
-            <div className="l-arrow-wrap">
+          <div className="pd-carousel-wrap">
+            <div className="pd-l-arrow-wrap">
               <FaChevronLeft onClick={handleClickPrev} />
             </div>
             <div className="mid-col-wrap">
@@ -22,7 +23,7 @@ export default function PdCarousel({ imgs, productName }) {
                 <PdImage img={imgs[current]} productName={productName} />
               </div>
             </div>
-            <div className="r-arrow-wrap">
+            <div className="pd-r-arrow-wrap">
               <FaChevronRight onClick={handleClickNext} />
             </div>
           </div>
@@ -34,5 +35,5 @@ export default function PdCarousel({ imgs, productName }) {
 
 // image component
 function PdImage({ img, productName }) {
-  return <img src={img} alt={productName}></img>;
+  return <img className="pd-carousel-img" src={img} alt={productName}></img>;
 }

@@ -71,7 +71,7 @@ export default function ProductDetails() {
       <div className="card shadow-sm">
         <div className="card-body">
           <div className="row mb-4">
-            <div className="col-12 col-sm-6 col-md-5">
+            <div className="col-12 col-sm-6 col-md-5 pd-imgs-wrap">
               <PdCarousel imgs={[imgUrl, imgUrl2, imgUrl3, imgUrl4]} />
               <div className="sm-previews">
                 <img src={imgUrl} alt={productName} className="main-img" />
