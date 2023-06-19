@@ -1,7 +1,10 @@
 import 'dotenv/config';
 import express from 'express';
-import { ClientError, errorMiddleware } from './lib/index.js';
-// import { authorizationMiddleware } from './lib/index.js';
+import {
+  ClientError,
+  errorMiddleware,
+  authorizationMiddleware,
+} from './lib/index.js';
 import pg from 'pg';
 import argon2 from 'argon2';
 import jwt from 'jsonwebtoken';
@@ -110,7 +113,36 @@ app.get('/api/details/:productId', async (req, res, next) => {
   }
 });
 
-// client Sign Up form (Subscription page)
+// user related fetch
+
+// fetchUser(userId) -- get user info of subscribed user
+app.get(
+  '/api/success/:userId',
+  authorizationMiddleware,
+  async (req, res, next) => {
+    try {
+      const userId = Number(req.params.userId);
+      if (!userId) {
+        throw new ClientError(400, 'userId must be a positive integer');
+      }
+      const sql = `
+      select *
+        from "subscription"
+        where "userId" = $1
+    `;
+      const params = [userId];
+      const result = await db.query(sql, params);
+      if (!result.rows[0]) {
+        throw new ClientError(404, `cannot find user with userId ${userId}`);
+      }
+      res.json(result.rows[0]);
+    } catch (err) {
+      next(err);
+    }
+  }
+);
+
+// function createSubscriber -- client Sign Up form (Subscription page)
 app.post('/api/subscription', async (req, res, next) => {
   try {
     const firstName = req.body.firstName;
@@ -152,7 +184,7 @@ app.post('/api/subscription', async (req, res, next) => {
   }
 });
 
-// Subscriber Sign In
+// Subscriber Sign In (api inside SignIn.js handleSubmit function)
 app.post('/api/auth/sign-in', async (req, res, next) => {
   try {
     const { username, password } = req.body;
@@ -183,58 +215,39 @@ app.post('/api/auth/sign-in', async (req, res, next) => {
   }
 });
 
-// client remove/DELETE subscription (Subscription page)
-app.delete('/api/success/:userId', async (req, res, next) => {
-  try {
-    const userId = Number(req.params.userId);
-    if (!userId) {
-      throw new ClientError(400, 'userId must be a positive integer');
-    }
-    const sql = `
+// deleteSubscriber(userId) -- client remove/DELETE subscription (Subscription page)
+app.delete(
+  '/api/success/:userId',
+  authorizationMiddleware,
+  async (req, res, next) => {
+    try {
+      const userId = Number(req.params.userId);
+      if (!userId) {
+        throw new ClientError(400, 'userId must be a positive integer');
+      }
+      const sql = `
       delete
         from "subscription"
         where "userId" = $1
         returning *;
     `;
-    const params = [userId];
-    const result = await db.query(sql, params);
-    if (!result.rows[0]) {
-      throw new ClientError(
-        400,
-        `cannot find subscriber with 'userId' ${userId}`
-      );
+      const params = [userId];
+      const result = await db.query(sql, params);
+      if (!result.rows[0]) {
+        throw new ClientError(
+          400,
+          `cannot find subscriber with 'userId' ${userId}`
+        );
+      }
+      res.status(201).json(`User ID: ${userId} has been unsubscribed`);
+    } catch (err) {
+      next(err);
     }
-    res.status(201).json(`User ID: ${userId} has been unsubscribed`);
-  } catch (err) {
-    next(err);
   }
-});
+);
 
-// get user info of subscribed user
-app.get('/api/success/:userId', async (req, res, next) => {
-  try {
-    const userId = Number(req.params.userId);
-    if (!userId) {
-      throw new ClientError(400, 'userId must be a positive integer');
-    }
-    const sql = `
-      select *
-        from "subscription"
-        where "userId" = $1
-    `;
-    const params = [userId];
-    const result = await db.query(sql, params);
-    if (!result.rows[0]) {
-      throw new ClientError(404, `cannot find user with userId ${userId}`);
-    }
-    res.json(result.rows[0]);
-  } catch (err) {
-    next(err);
-  }
-});
-
-// add item to subscribers's wishlist (to db)
-app.post('/api/wishlist', async (req, res, next) => {
+// addtoWishList(productId) -- add item to subscribers's wishlist (to db)
+app.post('/api/wishlist', authorizationMiddleware, async (req, res, next) => {
   try {
     const productId = req.body.productId;
     if (!productId) {
@@ -253,46 +266,55 @@ app.post('/api/wishlist', async (req, res, next) => {
   }
 });
 
-// display the specific wishlist item in wishlist section
-app.get('/api/wishlist/items', async (req, res, next) => {
-  try {
-    const sql = `
+// function fetchWishList() -- display the wishlist item(s) in wishlist section
+app.get(
+  '/api/wishlist/items',
+  authorizationMiddleware,
+  async (req, res, next) => {
+    try {
+      const sql = `
 select *
   from "myPets"
   join "myWishList" using ("productId");
     `;
-    const result = await db.query(sql);
-    res.json(result.rows);
-  } catch (err) {
-    next(err);
+      const result = await db.query(sql);
+      res.json(result.rows);
+    } catch (err) {
+      next(err);
+    }
   }
-});
+);
 
-// app.delete('/api/wishlist/:productId', async (req, res, next) => {
-//   try {
-//     const productId = Number(req.params.productId);
-//     if (!productId) {
-//       throw new ClientError(400, 'productId must be a positive integer');
-//     }
-//     const sql = `
-//        delete
-//         from "myWishList"
-//         where "productId" = $1
-//         returning *;
-//  `;
-//     const params = [productId];
-//     const result = await db.query(sql, params);
-//     if (!result.rows[0]) {
-//       throw new ClientError(
-//         400,
-//         `cannot find item with 'productId' ${productId}`
-//       );
-//     }
-//     res.status(201).json(`${productId} has been removed from myWishList`);
-//   } catch (err) {
-//     next(err);
-//   }
-// });
+// function removeItem(productId) -- remove selected item from wishlist
+app.delete(
+  '/api/wishlist/:productId',
+  authorizationMiddleware,
+  async (req, res, next) => {
+    try {
+      const productId = Number(req.params.productId);
+      if (!productId) {
+        throw new ClientError(400, 'productId must be a positive integer');
+      }
+      const sql = `
+       delete
+        from "myWishList"
+        where "productId" = $1
+        returning *;
+ `;
+      const params = [productId];
+      const result = await db.query(sql, params);
+      if (!result.rows[0]) {
+        throw new ClientError(
+          400,
+          `cannot find item with 'productId' ${productId}`
+        );
+      }
+      res.status(201).json(`${productId} has been removed from myWishList`);
+    } catch (err) {
+      next(err);
+    }
+  }
+);
 
 /**
  * Serves React's index.html if no api route matches.

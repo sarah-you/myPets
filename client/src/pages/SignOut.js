@@ -1,6 +1,6 @@
 import './SignOut.css';
 import { fetchWishList, deleteSubscriber, removeItem } from '../lib';
-import { useEffect, useState, useRef } from 'react';
+import { useEffect, useState } from 'react';
 import { Product } from '../components/Product';
 import { useNavigate } from 'react-router-dom';
 import { FaTrashAlt } from 'react-icons/fa';
@@ -13,7 +13,6 @@ export default function SignOut() {
   const [isLoading, setIsLoading] = useState(true);
   const [error, setError] = useState();
   const navigate = useNavigate();
-  // const targetRef = useRef(null);
 
   useEffect(() => {
     async function loadWishList() {
@@ -55,16 +54,18 @@ export default function SignOut() {
     }
   }
 
-  // async function handleRemoveItem() {
-  //   try {
-  //     const item = targetRef.current.closest('.prod-wrap');
-  //     console.log(item);
-  //     await removeItem(productId);
-  //     alert(`Item has been removed from myWishList.`);
-  //   } catch (err) {
-  //     setError(err);
-  //   }
-  // }
+  async function handleRemoveItem(productId) {
+    try {
+      await removeItem(productId);
+      setProducts(
+        products.filter((product) => products.productId !== productId)
+      );
+      alert(`Item has been removed from myWishList.`);
+      window.location.reload();
+    } catch (err) {
+      setError(err);
+    }
+  }
 
   if (isLoading) return <div>Loading...</div>;
   if (error) console.log(error);
@@ -96,8 +97,7 @@ export default function SignOut() {
           <div key={product.productId} className="prod-wrap remove">
             <Product product={product} />
             <button
-              // ref={targetRef}
-              // onClick={handleRemoveItem}
+              onClick={() => handleRemoveItem(product.productId)}
               className="remove-btn">
               <FaTrashAlt className="trash-icon" />
               Remove from myWishList

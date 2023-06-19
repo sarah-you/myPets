@@ -40,13 +40,21 @@ export async function fetchDogProd() {
   return await res.json();
 }
 
+//user related fetch
+const signInData = JSON.parse(localStorage.getItem('account'));
+const pw = signInData.pw;
+
 export async function fetchUser(userId) {
-  const res = await fetch(`/api/success/${userId}`);
+  const req = {
+    method: 'GET',
+    headers: {
+      Authorization: `Bearer ${pw}`,
+    },
+  };
+  const res = await fetch(`/api/success/${userId}`, req);
   if (!res.ok) throw new Error(`fetch Error ${res.status}`);
   return await res.json();
 }
-
-//user related fetch
 
 export async function createSubscriber(
   firstName,
@@ -78,6 +86,9 @@ export async function createSubscriber(
 export async function deleteSubscriber(userId) {
   const req = {
     method: 'DELETE',
+    headers: {
+      Authorization: `Bearer ${pw}`,
+    },
   };
   const res = await fetch(`/api/success/${userId}`, req);
   if (!res.ok) throw new Error(`fetch Error ${res.status}`);
@@ -89,6 +100,7 @@ export async function addtoWishList(productId) {
     method: 'POST',
     headers: {
       'content-type': 'application/json',
+      Authorization: `Bearer ${pw}`,
     },
     body: JSON.stringify({
       productId,
@@ -100,16 +112,25 @@ export async function addtoWishList(productId) {
 }
 
 export async function fetchWishList() {
-  const res = await fetch('/api/wishlist/items');
+  const req = {
+    method: 'GET',
+    headers: {
+      Authorization: `Bearer ${pw}`,
+    },
+  };
+  const res = await fetch('/api/wishlist/items', req);
   if (!res.ok) throw new Error(`fetch Error ${res.status}`);
   return await res.json();
 }
 
-// export async function removeItem(productId) {
-//     const req = {
-//       method: 'DELETE',
-//     };
-//     const res = await fetch(`/api/wishlist/${productId}`, req);
-//     if (!res.ok) throw new Error(`fetch Error ${res.status}`);
-//     return await res.json();
-// }
+export async function removeItem(productId) {
+  const req = {
+    method: 'DELETE',
+    headers: {
+      Authorization: `Bearer ${pw}`,
+    },
+  };
+  const res = await fetch(`/api/wishlist/${productId}`, req);
+  if (!res.ok) throw new Error(`fetch Error ${res.status}`);
+  return await res.json();
+}
