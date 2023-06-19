@@ -11,8 +11,12 @@
   font-family: geologica, sans-serif;
 }
 
-.username,
-.password {
+.signin-input {
+  width: 25rem;
+}
+
+.signin-username,
+.signin-password {
   margin: 0;
   margin-left: 1rem;
 }

@@ -76,3 +76,16 @@
   margin: 1rem;
   font-size: 1.25rem;
 }
+
+@media screen and (width <= 992px) {
+  .links-wrap {
+    display: flex;
+    flex-wrap: wrap;
+  }
+
+  .links-wrap > * {
+    flex: 1 1 100%;
+    max-width: 100%;
+    margin: 0.5rem;
+  }
+}

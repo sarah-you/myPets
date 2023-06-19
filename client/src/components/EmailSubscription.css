@@ -117,3 +117,36 @@
 .popup-img {
   width: 80%;
 }
+
+@media screen and (width <= 992px) {
+  .content-wrap {
+    margin: 0;
+  }
+
+  .modal-p {
+    font-size: 0.75rem;
+  }
+
+  .es-btn-wrap {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .close-btn,
+  .subscribe-btn {
+    margin: 0;
+    height: 3rem;
+    width: 8rem;
+  }
+
+  .es-btn {
+    font-size: 1rem;
+    margin-top: 2rem;
+    padding: 1rem;
+  }
+
+  .popup-img {
+    width: 100%;
+    height: auto;
+  }
+}

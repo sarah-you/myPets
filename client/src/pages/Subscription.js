@@ -73,14 +73,11 @@ export default function Subscription() {
               <FaMapPin className="address-icon" />
               <input name="address" placeholder="Delivery Address" required />
             </label>
-            <label className="username">
+            <label className="sub-username">
               <FaUser className="username-icon" />
               <input name="username" placeholder="Username" required />
             </label>
-            <label className="password">
-              <p className="pw-text">
-                Please make sure to write down your password in a safe place!
-              </p>
+            <label className="sub-password">
               <FaLock className="password-icon" />
               <input
                 name="password"
@@ -88,6 +85,9 @@ export default function Subscription() {
                 type="password"
                 required
               />
+              <p className="pw-text">
+                Please make sure to write down your password in a safe place!
+              </p>
             </label>
             <button type="submit" className="sub-btn">
               Subscribe

@@ -65,3 +65,9 @@
   color: black;
   font-weight: 200;
 }
+
+@media screen and (width <= 992px) {
+  .pet-fav {
+    text-align: center;
+  }
+}

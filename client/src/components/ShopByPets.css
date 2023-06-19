@@ -5,7 +5,7 @@
 
 .shop-by-pets {
   margin-top: 5rem;
-  margin-left: 15rem;
+  margin-left: 7rem;
   margin-bottom: 3rem;
   font-weight: bold;
   font-size: 2.25rem;
@@ -77,4 +77,31 @@
   left: 50%;
   transform: translate(-50%, -50%);
   font-size: 3rem;
+}
+
+@media screen and (width <= 992px) {
+  .shop-by-pets {
+    display: flex;
+    flex-direction: row;
+    text-align: center;
+    margin-left: 3rem;
+    margin-top: 5rem;
+    margin-bottom: 3rem;
+  }
+
+  .btns-wrap:hover::before {
+    margin-left: 4rem;
+  }
+
+  .img {
+    width: 100%;
+  }
+
+  .cat-btn:hover::after {
+    font-size: 2rem;
+  }
+
+  .dog-btn:hover::after {
+    font-size: 2rem;
+  }
 }

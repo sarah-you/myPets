@@ -77,3 +77,14 @@
 .unsubscribe-btn:hover {
   border: solid 2px #faf0ca;
 }
+
+@media screen and (width <= 992px) {
+  .signout-hero {
+    width: 100%;
+    height: auto;
+  }
+
+  .signout-h1 {
+    margin-right: 2rem;
+  }
+}

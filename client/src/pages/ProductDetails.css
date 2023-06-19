@@ -155,3 +155,9 @@ img {
 .home-btn:hover {
   text-decoration: underline;
 }
+
+@media screen and (width <= 992px) {
+  .btn-wrap {
+    width: 100%;
+  }
+}

@@ -68,8 +68,8 @@ input::placeholder {
 
 .pw-text {
   text-align: center;
-  margin-left: 2rem;
   margin-bottom: 0;
+  font-size: 0.75rem;
 }
 
 .sub-btn {

@@ -6,3 +6,13 @@
   background-color: white;
   border: none;
 }
+
+@media screen and (width <= 992px) {
+  .prod-card {
+    width: 100%;
+  }
+
+  .card-img-wrap {
+    width: 25%;
+  }
+}

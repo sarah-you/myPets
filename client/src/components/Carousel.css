@@ -34,3 +34,10 @@
 .progress-bar:hover {
   cursor: pointer;
 }
+
+@media screen and (width <= 992px) {
+  .l-arrow-wrap,
+  .r-arrow-wrap {
+    margin-top: 5rem;
+  }
+}

@@ -1,3 +1,15 @@
 body {
   background-color: #faf0ca;
 }
+
+@media screen and (width <= 600px) {
+  .app {
+    width: auto;
+  }
+}
+
+@media screen and (width <= 768px) {
+  .app {
+    width: auto;
+  }
+}

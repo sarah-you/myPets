@@ -56,21 +56,21 @@ export default function SignIn() {
         <div className="row margin-bottom-1">
           <div className="column-half">
             <label className="d-block">
-              <p className="username">Username</p>
+              <p className="signin-username">Username</p>
               <input
                 required
                 name="username"
                 type="text"
-                className="input-b-color text-padding input-b-radius purple-outline input-height margin-bottom-2 d-block width-100"
+                className="signin-input input-b-color text-padding input-b-radius purple-outline input-height margin-bottom-2 d-block width-100"
               />
             </label>
             <label className="d-block">
-              <p className="password">Password</p>
+              <p className="signin-password">Password</p>
               <input
                 required
                 name="password"
                 type="password"
-                className="input-b-color text-padding input-b-radius purple-outline input-height margin-bottom-2 d-block width-100"
+                className="signin-input input-b-color text-padding input-b-radius purple-outline input-height margin-bottom-2 d-block width-100"
               />
             </label>
           </div>
