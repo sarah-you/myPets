@@ -1,10 +1,11 @@
 import { useEffect, useState } from 'react';
-import { fetchProduct, toDollars, addtoCart } from '../lib';
+import { fetchProduct, toDollars, addtoCart, addtoWishList } from '../lib';
 import './ProductDetails.css';
 import { Link, useNavigate, useParams } from 'react-router-dom';
 import PdCarousel from '../components/PdCarousel';
 import Ratings from '../lib/Ratings';
 import { BsCart4 } from 'react-icons/bs';
+import { FaHeart } from 'react-icons/fa';
 
 export default function ProductDetails() {
   const { productId } = useParams();
@@ -55,13 +56,24 @@ export default function ProductDetails() {
     detail5,
   } = product;
 
-  async function handleClick() {
+  async function handleCart() {
     try {
       await addtoCart(productId);
       navigate('/cart');
     } catch (err) {
       alert(
         `Oops! Cannot add item to cart. Please check to see if this item is already added to your cart and try again! ${err}`
+      );
+    }
+  }
+
+  async function handleSaveItem() {
+    try {
+      await addtoWishList(productId);
+      navigate('/signout');
+    } catch (err) {
+      alert(
+        `Oops! Cannot add item to wishlist. Please check to see if this item is already added to your wishlist and try again! ${err}`
       );
     }
   }
@@ -106,27 +118,35 @@ export default function ProductDetails() {
               <div className="sub-link-div">
                 {localStorage.getItem('userInput') !== null ? (
                   <Link to="/success" className="pd-sub-link">
-                    <h4 className="sub-h4">Subscribe Now</h4>
+                    <h4 className="sub-text-h4">Subscribe Now</h4>
                   </Link>
                 ) : (
                   <Link to="/subscription" className="pd-sub-link">
-                    <h4 className="sub-h4">Subscribe Now</h4>
+                    <h4 className="sub-text-h4">Subscribe Now</h4>
                   </Link>
                 )}
               </div>
-              <div className="cart-icon-wrap">
+              <div className="pd-cart-wrap">
+                <Link to="/cart">
+                  <button onClick={handleCart} className="cart-icon-btn">
+                    <BsCart4 className="cart-icon" />
+                    Add to Cart
+                  </button>
+                </Link>
+              </div>
+              <div className="save-item-wrap">
                 {localStorage.getItem('account') !== null ? (
                   <Link to="/signout">
-                    <button onClick={handleClick} className="cart-icon-btn">
-                      <BsCart4 className="cart-icon" />
-                      Add to Cart
+                    <button onClick={handleSaveItem} className="heart-icon-btn">
+                      <FaHeart className="heart-icon" />
+                      Save Item
                     </button>
                   </Link>
                 ) : (
                   <Link to="/signin">
-                    <button className="cart-icon-btn">
-                      <BsCart4 className="cart-icon" />
-                      Add to Cart
+                    <button className="heart-icon-btn">
+                      <FaHeart className="heart-icon" />
+                      Save Item
                     </button>
                   </Link>
                 )}

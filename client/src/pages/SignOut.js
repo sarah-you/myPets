@@ -8,6 +8,8 @@ import { FaTrashAlt } from 'react-icons/fa';
 export default function SignOut() {
   const stringData = localStorage.getItem('userInput');
   const userData = JSON.parse(stringData);
+  const userId = userData.userId;
+  console.log(userId);
 
   const [products, setProducts] = useState();
   const [isLoading, setIsLoading] = useState(true);
@@ -17,7 +19,7 @@ export default function SignOut() {
   useEffect(() => {
     async function loadWishList() {
       try {
-        const products = await fetchWishList();
+        const products = await fetchWishList(userId);
         setProducts(products);
       } catch (err) {
         setError(err);
@@ -27,7 +29,7 @@ export default function SignOut() {
     }
     setIsLoading(true);
     loadWishList();
-  }, []);
+  }, [userId]);
 
   async function handleSignOut() {
     try {

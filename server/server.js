@@ -334,17 +334,26 @@ app.post('/api/wishlist', authorizationMiddleware, async (req, res, next) => {
 
 // // function fetchWishList() -- display the wishlist item(s) in wishlist section
 app.get(
-  '/api/wishlist/items',
+  '/api/wishlist/:userId',
   authorizationMiddleware,
   async (req, res, next) => {
     try {
+      const userId = Number(req.params.userId);
+      if (!userId) {
+        throw new ClientError(400, 'userId must be a positive integer');
+      }
       const sql = `
 select *
   from "myPets"
-  join "myWishList" using ("productId");
+  join "myWishList" using ("productId")
+  where "userId" = $1
     `;
-      const result = await db.query(sql);
-      res.json(result.rows);
+      const params = [userId];
+      const result = await db.query(sql, params);
+      if (!result.rows[0]) {
+        throw new ClientError(404, `cannot find user with userId ${userId}`);
+      }
+      res.json(result.rows[0]);
     } catch (err) {
       next(err);
     }

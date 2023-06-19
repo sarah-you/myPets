@@ -163,7 +163,7 @@ export async function addtoWishList(productId) {
   return await res.json();
 }
 
-export async function fetchWishList() {
+export async function fetchWishList(userId) {
   const signInData = JSON.parse(localStorage.getItem('account'));
   const pw = signInData.pw;
   const req = {
@@ -172,7 +172,7 @@ export async function fetchWishList() {
       Authorization: `Bearer ${pw}`,
     },
   };
-  const res = await fetch('/api/wishlist/items', req);
+  const res = await fetch(`/api/wishlist/${userId}`, req);
   if (!res.ok) throw new Error(`fetch Error ${res.status}`);
   return await res.json();
 }
