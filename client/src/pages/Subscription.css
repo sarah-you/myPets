@@ -110,3 +110,31 @@ input::placeholder {
 .home-btn {
   font-family: Geologica, sans-serif;
 }
+
+@media screen and (width <= 992px) {
+  .sub-h4 {
+    text-align: center;
+  }
+
+  label {
+    display: flex;
+    flex-direction: row;
+    margin-right: 1rem;
+    margin-left: 1rem;
+  }
+
+  input {
+    width: 20rem;
+  }
+
+  .sub-password {
+    display: block;
+  }
+
+  .sub-btn {
+    height: 3rem;
+    width: 8rem;
+    font-size: 1.25rem;
+    padding: 0.5rem;
+  }
+}
