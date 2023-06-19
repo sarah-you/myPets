@@ -28,7 +28,7 @@ export default function NavBar() {
           </Link>
         </div>
         <div className="pc-wrap">
-          <Link to="catalog" className="pc">
+          <Link to="/catalog" className="pc">
             <HiOutlineSquares2X2 className="pc-icon" />
             Catalog
           </Link>
@@ -47,7 +47,7 @@ export default function NavBar() {
           )}
         </div>
         <div className="cart-wrap">
-          <Link to="cart" className="cart">
+          <Link to="/cart" className="cart">
             <BsCart4 className="cart-icon" />
             Cart
           </Link>
