@@ -1,8 +1,8 @@
 import './Cart.css';
-import { fetchWishList, removeItem } from '../lib';
+import { Link } from 'react-router-dom';
+import { fetchCart, removeCartItem } from '../lib';
 import { useEffect, useState } from 'react';
 import { Product } from '../components/Product';
-import { useNavigate } from 'react-router-dom';
 import { FaTrashAlt } from 'react-icons/fa';
 
 export default function Cart() {
@@ -12,12 +12,11 @@ export default function Cart() {
   const [products, setProducts] = useState();
   const [isLoading, setIsLoading] = useState(true);
   const [error, setError] = useState();
-  const navigate = useNavigate();
 
   useEffect(() => {
-    async function loadWishList() {
+    async function loadCart() {
       try {
-        const products = await fetchWishList();
+        const products = await fetchCart();
         setProducts(products);
       } catch (err) {
         setError(err);
@@ -26,12 +25,12 @@ export default function Cart() {
       }
     }
     setIsLoading(true);
-    loadWishList();
+    loadCart();
   }, []);
 
   async function handleRemoveItem(productId) {
     try {
-      await removeItem(productId);
+      await removeCartItem(productId);
       setProducts(
         products.filter((product) => products.productId !== productId)
       );
@@ -44,7 +43,13 @@ export default function Cart() {
 
   if (isLoading) return <div>Loading...</div>;
   if (error) console.log(error);
-  if (error) return <div>Error Loading myCart: {error.message}</div>;
+  if (error)
+    return (
+      <h2 className="cart-error-h2">
+        You must be logged in to access your cart. Please navigate to{' '}
+        <Link to="/signin"> Account </Link> and sign in.
+      </h2>
+    );
 
   return (
     <div className="cart-container">
@@ -62,6 +67,28 @@ export default function Cart() {
             </button>
           </div>
         ))}
+      </div>
+      <div className="col btn-wrap">
+        <Link to="/">
+          <div className="back-btn-wrap">
+            <button className="btn home-btn">Home</button>
+          </div>
+        </Link>
+        <Link to="/meow">
+          <div className="back-btn-wrap">
+            <button className="btn home-btn">Cats Page</button>
+          </div>
+        </Link>
+        <Link to="/woof">
+          <div className="back-btn-wrap">
+            <button className="btn home-btn">Dogs Page</button>
+          </div>
+        </Link>
+        <Link to="/catalog">
+          <div className="back-btn-wrap">
+            <button className="btn home-btn">Catalog Page</button>
+          </div>
+        </Link>
       </div>
     </div>
   );

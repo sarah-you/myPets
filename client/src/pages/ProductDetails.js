@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react';
-import { fetchProduct, toDollars, addtoWishList } from '../lib';
+import { fetchProduct, toDollars, addtoCart } from '../lib';
 import './ProductDetails.css';
 import { Link, useNavigate, useParams } from 'react-router-dom';
 import PdCarousel from '../components/PdCarousel';
@@ -57,11 +57,11 @@ export default function ProductDetails() {
 
   async function handleClick() {
     try {
-      await addtoWishList(productId);
-      navigate('/signout');
+      await addtoCart(productId);
+      navigate('/cart');
     } catch (err) {
       alert(
-        `Oops! Cannot add item to wishlist. Please check to see if this item is already added to your wishlist and try again! ${err}`
+        `Oops! Cannot add item to cart. Please check to see if this item is already added to your cart and try again! ${err}`
       );
     }
   }

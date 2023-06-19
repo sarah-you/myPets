@@ -1,5 +1,5 @@
 import './SignOut.css';
-import { fetchWishList, deleteSubscriber, removeItem } from '../lib';
+import { fetchWishList, deleteSubscriber, removeWishListItem } from '../lib';
 import { useEffect, useState } from 'react';
 import { Product } from '../components/Product';
 import { useNavigate } from 'react-router-dom';
@@ -56,7 +56,7 @@ export default function SignOut() {
 
   async function handleRemoveItem(productId) {
     try {
-      await removeItem(productId);
+      await removeWishListItem(productId);
       setProducts(
         products.filter((product) => products.productId !== productId)
       );

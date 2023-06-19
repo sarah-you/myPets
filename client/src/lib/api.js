@@ -97,6 +97,54 @@ export async function deleteSubscriber(userId) {
 
 // myCart fetch
 
+export async function addtoCart(productId) {
+  const signInData = JSON.parse(localStorage.getItem('account'));
+  const pw = signInData.pw;
+  const req = {
+    method: 'POST',
+    headers: {
+      'content-type': 'application/json',
+      Authorization: `Bearer ${pw}`,
+    },
+    body: JSON.stringify({
+      productId,
+    }),
+  };
+  const res = await fetch('/api/addcart', req);
+  if (!res.ok) throw new Error(`fetch Error ${res.status}`);
+  return await res.json();
+}
+
+export async function fetchCart() {
+  const signInData = JSON.parse(localStorage.getItem('account'));
+  const pw = signInData.pw;
+  const req = {
+    method: 'GET',
+    headers: {
+      Authorization: `Bearer ${pw}`,
+    },
+  };
+  const res = await fetch('/api/cart/items', req);
+  if (!res.ok) throw new Error(`fetch Error ${res.status}`);
+  return await res.json();
+}
+
+export async function removeCartItem(productId) {
+  const signInData = JSON.parse(localStorage.getItem('account'));
+  const pw = signInData.pw;
+  const req = {
+    method: 'DELETE',
+    headers: {
+      Authorization: `Bearer ${pw}`,
+    },
+  };
+  const res = await fetch(`/api/cart/${productId}`, req);
+  if (!res.ok) throw new Error(`fetch Error ${res.status}`);
+  return await res.json();
+}
+
+// myWishList fetch
+
 export async function addtoWishList(productId) {
   const signInData = JSON.parse(localStorage.getItem('account'));
   const pw = signInData.pw;
@@ -129,7 +177,7 @@ export async function fetchWishList() {
   return await res.json();
 }
 
-export async function removeItem(productId) {
+export async function removeWishListItem(productId) {
   const signInData = JSON.parse(localStorage.getItem('account'));
   const pw = signInData.pw;
   const req = {
@@ -142,5 +190,3 @@ export async function removeItem(productId) {
   if (!res.ok) throw new Error(`fetch Error ${res.status}`);
   return await res.json();
 }
-
-// myWishList fetch

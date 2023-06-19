@@ -246,7 +246,73 @@ app.delete(
   }
 );
 
-// addtoWishList(productId) -- add item to subscribers's wishlist (to db)
+// addtoCart (productId) -- add item to subscribers's wishlist (to db)
+app.post('/api/addcart', authorizationMiddleware, async (req, res, next) => {
+  try {
+    const productId = req.body.productId;
+    if (!productId) {
+      throw new ClientError(400, `all fields are required`);
+    }
+    const sql = `
+    insert into "myWishList" ("productId")
+    values ($1)
+    returning *;
+    `;
+    const params = [productId];
+    const result = await db.query(sql, params);
+    res.status(201).json(result.rows[0]);
+  } catch (err) {
+    next(err);
+  }
+});
+
+// function fetchCart() -- display the cart item(s) in Cart page
+app.get('/api/cart/items', authorizationMiddleware, async (req, res, next) => {
+  try {
+    const sql = `
+select *
+  from "myPets"
+  join "myCart" using ("productId");
+    `;
+    const result = await db.query(sql);
+    res.json(result.rows);
+  } catch (err) {
+    next(err);
+  }
+});
+
+// function removeCartItem(productId) -- remove selected item from cart
+app.delete(
+  '/api/cart/:productId',
+  authorizationMiddleware,
+  async (req, res, next) => {
+    try {
+      const productId = Number(req.params.productId);
+      if (!productId) {
+        throw new ClientError(400, 'productId must be a positive integer');
+      }
+      const sql = `
+       delete
+        from "myCart"
+        where "productId" = $1
+        returning *;
+ `;
+      const params = [productId];
+      const result = await db.query(sql, params);
+      if (!result.rows[0]) {
+        throw new ClientError(
+          400,
+          `cannot find item with 'productId' ${productId}`
+        );
+      }
+      res.status(201).json(`${productId} has been removed from myCart`);
+    } catch (err) {
+      next(err);
+    }
+  }
+);
+
+// addtoWishList(productId) -- add item to myWishList
 app.post('/api/wishlist', authorizationMiddleware, async (req, res, next) => {
   try {
     const productId = req.body.productId;
@@ -266,7 +332,7 @@ app.post('/api/wishlist', authorizationMiddleware, async (req, res, next) => {
   }
 });
 
-// function fetchWishList() -- display the wishlist item(s) in wishlist section
+// // function fetchWishList() -- display the wishlist item(s) in wishlist section
 app.get(
   '/api/wishlist/items',
   authorizationMiddleware,
@@ -285,7 +351,7 @@ select *
   }
 );
 
-// function removeItem(productId) -- remove selected item from wishlist
+// // function removeItem(productId) -- remove selected item from wishlist
 app.delete(
   '/api/wishlist/:productId',
   authorizationMiddleware,

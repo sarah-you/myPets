@@ -54,5 +54,8 @@ INSERT INTO "subscription"("firstName", "lastName", "email", "address", "usernam
 DELETE FROM "myPets"
 WHERE "subscriptionPrice" IS NULL;
 
-INSERT INTO "myWishList"("productId")
+INSERT INTO "myCart"("productId")
   VALUES (18);
+
+INSERT INTO "myWishList"("productId")
+  VALUES (30);

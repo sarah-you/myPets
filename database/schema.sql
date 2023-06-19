@@ -43,6 +43,14 @@ WITH (
   OIDS = FALSE
 );
 
+CREATE TABLE "public"."myCart"(
+  "productId" integer NOT NULL,
+  CONSTRAINT "myCart_pk" PRIMARY KEY ("productId")
+)
+WITH (
+  OIDS = FALSE
+);
+
 CREATE TABLE "public"."myWishList"(
   "productId" integer NOT NULL,
   CONSTRAINT "myWishList_pk" PRIMARY KEY ("productId")
