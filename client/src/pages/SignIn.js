@@ -47,8 +47,7 @@ export default function SignIn() {
         <div className="column-full d-flex justify-between account-head">
           <h1 className="signin-h1">myPets Account</h1>
           <p className="signin-text">
-            Please sign in or register to add your pets' favorites to your
-            personal list!
+            Please sign in or register to add items to your cart or wishlist!
           </p>
         </div>
       </div>

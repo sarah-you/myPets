@@ -254,7 +254,7 @@ app.post('/api/addcart', authorizationMiddleware, async (req, res, next) => {
       throw new ClientError(400, `all fields are required`);
     }
     const sql = `
-    insert into "myWishList" ("productId")
+    insert into "myCart" ("productId")
     values ($1)
     returning *;
     `;
