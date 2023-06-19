@@ -3,6 +3,7 @@ import './NavBar.css';
 import { TbCat, TbDog } from 'react-icons/tb';
 import { HiOutlineSquares2X2, HiOutlineUserCircle } from 'react-icons/hi2';
 import { FaPaw } from 'react-icons/fa';
+import { BsCart4 } from 'react-icons/bs';
 
 export default function NavBar() {
   return (
@@ -44,6 +45,12 @@ export default function NavBar() {
               Account
             </Link>
           )}
+        </div>
+        <div className="cart-wrap">
+          <Link to="cart" className="cart">
+            <BsCart4 className="cart-icon" />
+            Cart
+          </Link>
         </div>
       </div>
       <div className="banner-wrap">

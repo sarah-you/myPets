@@ -10,6 +10,7 @@ import Subscription from './pages/Subscription';
 import SubscriptionSuccess from './pages/SubscriptionSuccess';
 import SignIn from './pages/SignIn';
 import SignOut from './pages/SignOut';
+import Cart from './pages/Cart';
 import NotFound from './pages/NotFound';
 
 function App() {
@@ -26,6 +27,7 @@ function App() {
           <Route path="success" element={<SubscriptionSuccess />} />
           <Route path="signin" element={<SignIn />} />
           <Route path="signout" element={<SignOut />} />
+          <Route path="cart" element={<Cart />} />
           <Route path="*" element={<NotFound />} />
         </Route>
       </Routes>
