@@ -4,7 +4,7 @@ import './ProductDetails.css';
 import { Link, useNavigate, useParams } from 'react-router-dom';
 import PdCarousel from '../components/PdCarousel';
 import Ratings from '../lib/Ratings';
-import { FaHeart } from 'react-icons/fa';
+import { BsCart4 } from 'react-icons/bs';
 
 export default function ProductDetails() {
   const { productId } = useParams();
@@ -114,19 +114,19 @@ export default function ProductDetails() {
                   </Link>
                 )}
               </div>
-              <div className="heart-icon-wrap">
+              <div className="cart-icon-wrap">
                 {localStorage.getItem('account') !== null ? (
                   <Link to="/signout">
-                    <button onClick={handleClick} className="heart-icon-btn">
-                      <FaHeart className="heart-icon" />
-                      Save Item
+                    <button onClick={handleClick} className="cart-icon-btn">
+                      <BsCart4 className="cart-icon" />
+                      Add to Cart
                     </button>
                   </Link>
                 ) : (
                   <Link to="/signin">
-                    <button className="heart-icon-btn">
-                      <FaHeart className="heart-icon" />
-                      Save Item
+                    <button className="cart-icon-btn">
+                      <BsCart4 className="cart-icon" />
+                      Add to Cart
                     </button>
                   </Link>
                 )}

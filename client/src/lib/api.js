@@ -1,9 +1,12 @@
 // client side API requests
 
 /**
- * Fetches all products from the API.
- * @returns Promise that resolves to an array of products.
+ * Fetches a single product from the API.
+ * @param {number} productId The ID of the product to fetch.
+ * @returns Promise that resolves to the product.
  */
+
+// products fetch
 
 export async function fetchFav() {
   const res = await fetch('/api/favpets');
@@ -17,11 +20,6 @@ export async function fetchCatalog() {
   return await res.json();
 }
 
-/**
- * Fetches a single product from the API.
- * @param {number} productId The ID of the product to fetch.
- * @returns Promise that resolves to the product.
- */
 export async function fetchProduct(productId) {
   const res = await fetch(`/api/details/${productId}`);
   if (!res.ok) throw new Error(`fetch Error ${res.status}`);
@@ -97,6 +95,8 @@ export async function deleteSubscriber(userId) {
   return await res.json();
 }
 
+// myCart fetch
+
 export async function addtoWishList(productId) {
   const signInData = JSON.parse(localStorage.getItem('account'));
   const pw = signInData.pw;
@@ -142,3 +142,5 @@ export async function removeItem(productId) {
   if (!res.ok) throw new Error(`fetch Error ${res.status}`);
   return await res.json();
 }
+
+// myWishList fetch

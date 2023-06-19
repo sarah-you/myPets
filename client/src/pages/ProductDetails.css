@@ -114,18 +114,18 @@ img {
   font-weight: 600;
 }
 
-.heart-icon-wrap {
+.cart-icon-wrap {
   display: flex;
   justify-content: center;
   align-items: center;
 }
 
-.heart-icon {
+.cart-icon {
   font-size: 2.25rem;
   margin-right: 1rem;
 }
 
-.heart-icon-btn {
+.cart-icon-btn {
   margin-left: 3rem;
   height: 5rem;
   text-align: center;
@@ -136,7 +136,7 @@ img {
   font-weight: 600;
 }
 
-.heart-icon-btn:hover {
+.cart-icon-btn:hover {
   color: #f95738;
 }
 
