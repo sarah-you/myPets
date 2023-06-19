@@ -8,3 +8,7 @@
 .pd-carousel-img {
   width: 100%;
 }
+
+.sm-previews {
+  cursor: pointer;
+}

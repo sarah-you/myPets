@@ -4,12 +4,18 @@ import './PdCarousel.css';
 
 export default function PdCarousel({ imgs, productName }) {
   const [current, setCurrent] = useState(0);
+
   function handleClickPrev() {
     setCurrent((current - 1 + imgs.length) % imgs.length);
   }
   function handleClickNext() {
     setCurrent((current + 1) % imgs.length);
   }
+
+  function handleClick(index) {
+    setCurrent(index);
+  }
+
   return (
     <div className="container">
       <div className="row">
@@ -21,6 +27,18 @@ export default function PdCarousel({ imgs, productName }) {
             <div className="mid-col-wrap">
               <div className="img-wrap">
                 <PdImage img={imgs[current]} productName={productName} />
+              </div>
+              <div className="pd-carousel-sm-imgs">
+                <div className="sm-previews">
+                  {imgs.map((img, index) => (
+                    <img
+                      key={index}
+                      src={img}
+                      alt={productName}
+                      onClick={() => handleClick(index)}
+                    />
+                  ))}
+                </div>
               </div>
             </div>
             <div className="pd-r-arrow-wrap">
