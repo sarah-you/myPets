@@ -41,10 +41,10 @@ export async function fetchDogProd() {
 }
 
 //user related fetch
-const signInData = JSON.parse(localStorage.getItem('account'));
-const pw = signInData.pw;
 
 export async function fetchUser(userId) {
+  const signInData = JSON.parse(localStorage.getItem('account'));
+  const pw = signInData.pw;
   const req = {
     method: 'GET',
     headers: {
@@ -84,6 +84,8 @@ export async function createSubscriber(
 }
 
 export async function deleteSubscriber(userId) {
+  const signInData = JSON.parse(localStorage.getItem('account'));
+  const pw = signInData.pw;
   const req = {
     method: 'DELETE',
     headers: {
@@ -96,6 +98,8 @@ export async function deleteSubscriber(userId) {
 }
 
 export async function addtoWishList(productId) {
+  const signInData = JSON.parse(localStorage.getItem('account'));
+  const pw = signInData.pw;
   const req = {
     method: 'POST',
     headers: {
@@ -112,6 +116,8 @@ export async function addtoWishList(productId) {
 }
 
 export async function fetchWishList() {
+  const signInData = JSON.parse(localStorage.getItem('account'));
+  const pw = signInData.pw;
   const req = {
     method: 'GET',
     headers: {
@@ -124,6 +130,8 @@ export async function fetchWishList() {
 }
 
 export async function removeItem(productId) {
+  const signInData = JSON.parse(localStorage.getItem('account'));
+  const pw = signInData.pw;
   const req = {
     method: 'DELETE',
     headers: {
