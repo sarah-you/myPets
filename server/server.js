@@ -249,16 +249,16 @@ app.delete(
 // addtoCart (productId) -- add item to subscribers's wishlist (to db)
 app.post('/api/addcart', authorizationMiddleware, async (req, res, next) => {
   try {
-    const productId = req.body.productId;
-    if (!productId) {
+    const { productId, userId } = req.body;
+    if (!productId || !userId) {
       throw new ClientError(400, `all fields are required`);
     }
     const sql = `
-    insert into "myCart" ("productId")
-    values ($1)
+    insert into "myCart" ("productId", "userId")
+    values ($1, $2)
     returning *;
     `;
-    const params = [productId];
+    const params = [productId, userId];
     const result = await db.query(sql, params);
     res.status(201).json(result.rows[0]);
   } catch (err) {
@@ -267,19 +267,26 @@ app.post('/api/addcart', authorizationMiddleware, async (req, res, next) => {
 });
 
 // function fetchCart() -- display the cart item(s) in Cart page
-app.get('/api/cart/items', authorizationMiddleware, async (req, res, next) => {
-  try {
-    const sql = `
+app.get(
+  '/api/cart/:userId',
+  authorizationMiddleware,
+  async (req, res, next) => {
+    try {
+      const userId = req.params.userId;
+      const sql = `
 select *
   from "myPets"
-  join "myCart" using ("productId");
+  join "myCart" using ("productId")
+  where "userId" = $1
     `;
-    const result = await db.query(sql);
-    res.json(result.rows);
-  } catch (err) {
-    next(err);
+      const params = [userId];
+      const result = await db.query(sql, params);
+      res.json(result.rows);
+    } catch (err) {
+      next(err);
+    }
   }
-});
+);
 
 // function removeCartItem(productId) -- remove selected item from cart
 app.delete(
@@ -337,8 +344,8 @@ app.get(
   '/api/wishlist/:userId',
   authorizationMiddleware,
   async (req, res, next) => {
-    const userId = req.params.userId;
     try {
+      const userId = req.params.userId;
       const sql = `
 select *
   from "myPets"

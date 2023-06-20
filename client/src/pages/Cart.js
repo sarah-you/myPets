@@ -8,6 +8,7 @@ import { FaTrashAlt } from 'react-icons/fa';
 export default function Cart() {
   const stringData = localStorage.getItem('userInput');
   const userData = JSON.parse(stringData);
+  const userId = userData.userId;
 
   const [products, setProducts] = useState();
   const [isLoading, setIsLoading] = useState(true);
@@ -16,7 +17,7 @@ export default function Cart() {
   useEffect(() => {
     async function loadCart() {
       try {
-        const products = await fetchCart();
+        const products = await fetchCart(userId);
         setProducts(products);
       } catch (err) {
         setError(err);
@@ -26,7 +27,7 @@ export default function Cart() {
     }
     setIsLoading(true);
     loadCart();
-  }, []);
+  }, [userId]);
 
   async function handleRemoveItem(productId) {
     try {

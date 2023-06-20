@@ -56,9 +56,12 @@ export default function ProductDetails() {
     detail5,
   } = product;
 
+  const userData = JSON.parse(localStorage.getItem('userInput'));
+  const userId = userData.userId;
+
   async function handleCart() {
     try {
-      await addtoCart(productId);
+      await addtoCart(productId, userId);
       navigate('/cart');
     } catch (err) {
       alert(
@@ -68,8 +71,6 @@ export default function ProductDetails() {
   }
 
   async function handleSaveItem() {
-    const userData = JSON.parse(localStorage.getItem('userInput'));
-    const userId = userData.userId;
     try {
       await addtoWishList(productId, userId);
       navigate('/signout');

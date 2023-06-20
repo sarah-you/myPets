@@ -97,7 +97,7 @@ export async function deleteSubscriber(userId) {
 
 // myCart fetch
 
-export async function addtoCart(productId) {
+export async function addtoCart(productId, userId) {
   const signInData = JSON.parse(localStorage.getItem('account'));
   const pw = signInData.pw;
   const req = {
@@ -108,6 +108,7 @@ export async function addtoCart(productId) {
     },
     body: JSON.stringify({
       productId,
+      userId,
     }),
   };
   const res = await fetch('/api/addcart', req);
@@ -115,7 +116,7 @@ export async function addtoCart(productId) {
   return await res.json();
 }
 
-export async function fetchCart() {
+export async function fetchCart(userId) {
   const signInData = JSON.parse(localStorage.getItem('account'));
   const pw = signInData.pw;
   const req = {
@@ -124,7 +125,7 @@ export async function fetchCart() {
       Authorization: `Bearer ${pw}`,
     },
   };
-  const res = await fetch('/api/cart/items', req);
+  const res = await fetch(`/api/cart/${userId}`, req);
   if (!res.ok) throw new Error(`fetch Error ${res.status}`);
   return await res.json();
 }
