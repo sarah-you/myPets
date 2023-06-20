@@ -38,11 +38,11 @@
 }
 
 .modal-p {
-  margin-top: 4rem;
-  font-family: noto-sans-kr, sans-serif;
-  font-weight: lighter;
-  font-size: 1.25rem;
+  margin-top: 3rem;
+  font-family: geologica, sans-serif;
+  font-size: 18px;
   color: #faf0ca;
+  text-align: center;
 }
 
 .es-btn-wrap {

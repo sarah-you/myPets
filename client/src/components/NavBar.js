@@ -47,10 +47,17 @@ export default function NavBar() {
           )}
         </div>
         <div className="cart-wrap">
-          <Link to="/cart" className="cart">
-            <BsCart4 className="cart-icon" />
-            Cart
-          </Link>
+          {localStorage.getItem('account') !== null ? (
+            <Link to="/cart" className="cart">
+              <BsCart4 className="cart-icon" />
+              Cart
+            </Link>
+          ) : (
+            <Link to="/signin" className="account">
+              <BsCart4 className="account-icon" />
+              Cart
+            </Link>
+          )}
         </div>
       </div>
       <div className="banner-wrap">

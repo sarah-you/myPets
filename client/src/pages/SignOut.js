@@ -95,7 +95,7 @@ export default function SignOut() {
       <h2 className="signout-h2">myWishList</h2>
       <div className="product-list">
         {products?.map((product) => (
-          <div key={product.productId} className="prod-wrap remove">
+          <div key={product.productId} className="prod-wrap wishlist-remove">
             <Product product={product} />
             <button
               onClick={() => handleRemoveItem(product.productId)}

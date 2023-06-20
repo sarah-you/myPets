@@ -35,7 +35,7 @@ export default function Cart() {
       setProducts(
         products.filter((product) => products.productId !== productId)
       );
-      alert(`Item has been removed from myWishList.`);
+      alert(`Item has been removed from myCart.`);
       window.location.reload();
     } catch (err) {
       setError(err);
@@ -44,21 +44,20 @@ export default function Cart() {
 
   if (isLoading) return <div>Loading...</div>;
   if (error) console.log(error);
-  if (error)
-    return (
-      <h2 className="cart-error-h2">
-        You must be logged in to access your cart. Please navigate to{' '}
-        <Link to="/signin"> Account </Link> and sign in.
-      </h2>
-    );
+  if (error) <div>Error Loading myCart: {error.message}</div>;
 
   return (
     <div className="cart-container">
-      <h1 className="cart-h1">Hi {userData.firstName}!</h1>
-      <h2 className="cart-h2">myCart</h2>
+      <h1 className="cart-h1">{userData.firstName}'s Cart</h1>
+      <p className="cart-p">
+        Please keep in mind that by adding items to your cart, you are
+        subscribing to myPets monthly subscription. <br /> This means that your
+        order will be sent to you each month until it is cancelled manually. You
+        will receive an email when your order is on its way.
+      </p>
       <div className="product-list">
         {products?.map((product) => (
-          <div key={product.productId} className="prod-wrap remove">
+          <div key={product.productId} className="prod-wrap cart-remove">
             <Product product={product} />
             <button
               onClick={() => handleRemoveItem(product.productId)}

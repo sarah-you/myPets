@@ -4,8 +4,14 @@ import Ratings from '../lib/Ratings';
 import './Product.css';
 
 export function Product({ product }) {
-  const { productName, itemPrice, imgUrl, ratings, reviews, productId } =
-    product;
+  const {
+    productName,
+    subscriptionPrice,
+    imgUrl,
+    ratings,
+    reviews,
+    productId,
+  } = product;
   return (
     <Link to={`/details/${productId}`}>
       <div className="prod-card">
@@ -14,7 +20,7 @@ export function Product({ product }) {
         </div>
         <div className="card-content">
           <h3 className="card-title">{productName}</h3>
-          <p className="card-text price">{toDollars(itemPrice)}</p>
+          <p className="card-text price">{toDollars(subscriptionPrice)}</p>
           <div className="rev-n-rate">
             <Ratings ratings={ratings} className="rate" />
             <p className="rev">{reviews}</p>

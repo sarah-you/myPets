@@ -66,9 +66,10 @@ img {
   margin-top: 1.5rem;
 }
 
-.price {
+.item-price {
   font-size: 2.5rem;
   color: #ee964b;
+  font-weight: bold;
 }
 
 .sp-text {

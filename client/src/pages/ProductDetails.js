@@ -65,7 +65,7 @@ export default function ProductDetails() {
       navigate('/cart');
     } catch (err) {
       alert(
-        `Oops! Cannot add item to cart. Please check to see if this item is already added to your cart and try again! ${err}`
+        `Oops! Cannot add item to cart. Please check to see if you are logged in. Then confirm if this item is already added to your cart and try again!`
       );
     }
   }
@@ -101,7 +101,7 @@ export default function ProductDetails() {
               <div className="all-price-wrap">
                 <div className="item-price-wrap">
                   <p className="ip-text">Item Price</p>
-                  <h5 className="price">{toDollars(itemPrice)}</h5>
+                  <h5 className="item-price">{toDollars(itemPrice)}</h5>
                 </div>
                 <div className="sub-price-wrap">
                   <p className="sp-text">myPets Price (monthly)</p>
@@ -130,12 +130,21 @@ export default function ProductDetails() {
                 )}
               </div>
               <div className="pd-cart-wrap">
-                <Link to="/cart">
-                  <button onClick={handleCart} className="cart-icon-btn">
-                    <BsCart4 className="cart-icon" />
-                    Add to Cart
-                  </button>
-                </Link>
+                {localStorage.getItem('account') !== null ? (
+                  <Link to="/cart">
+                    <button onClick={handleCart} className="cart-icon-btn">
+                      <BsCart4 className="cart-icon" />
+                      Add to Cart
+                    </button>
+                  </Link>
+                ) : (
+                  <Link to="/signin">
+                    <button onClick={handleCart} className="cart-icon-btn">
+                      <BsCart4 className="cart-icon" />
+                      Add to Cart
+                    </button>
+                  </Link>
+                )}
               </div>
               <div className="save-item-wrap">
                 {localStorage.getItem('account') !== null ? (
@@ -147,7 +156,7 @@ export default function ProductDetails() {
                   </Link>
                 ) : (
                   <Link to="/signin">
-                    <button className="heart-icon-btn">
+                    <button onClick={handleSaveItem} className="heart-icon-btn">
                       <FaHeart className="heart-icon" />
                       Save Item
                     </button>

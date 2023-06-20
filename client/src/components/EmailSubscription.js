@@ -24,8 +24,7 @@ export default function EmailSubscriptionModal() {
               <h1 className="modal-head">Hi There!</h1>
               <p className="modal-p">
                 Don’t forget, you can subscribe to have your buddy’s favorites
-                ready at all times! Sign up today for updates on some of our
-                best deals!
+                ready at all times! Sign up today for some of our best deals!
               </p>
               <div className="es-btn-wrap">
                 {localStorage.getItem('userInput') !== null ? (
