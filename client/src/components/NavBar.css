@@ -17,7 +17,6 @@
 .home {
   color: #0d3b66;
   text-decoration: none;
-  font-weight: bold;
   font-size: 2rem;
 }
 
@@ -54,7 +53,6 @@
 .cart {
   color: black;
   text-decoration: none;
-  font-weight: bold;
 }
 
 .home:hover,
@@ -64,7 +62,7 @@
 .account:hover,
 .cart:hover {
   cursor: pointer;
-  text-decoration: underline;
+  font-weight: bold;
 }
 
 .banner-wrap {
