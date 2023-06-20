@@ -145,7 +145,7 @@ export async function removeCartItem(productId) {
 
 // myWishList fetch
 
-export async function addtoWishList(productId) {
+export async function addtoWishList(productId, userId) {
   const signInData = JSON.parse(localStorage.getItem('account'));
   const pw = signInData.pw;
   const req = {
@@ -156,6 +156,7 @@ export async function addtoWishList(productId) {
     },
     body: JSON.stringify({
       productId,
+      userId,
     }),
   };
   const res = await fetch('/api/wishlist', req);

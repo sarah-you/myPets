@@ -68,8 +68,10 @@ export default function ProductDetails() {
   }
 
   async function handleSaveItem() {
+    const userData = JSON.parse(localStorage.getItem('userInput'));
+    const userId = userData.userId;
     try {
-      await addtoWishList(productId);
+      await addtoWishList(productId, userId);
       navigate('/signout');
     } catch (err) {
       alert(

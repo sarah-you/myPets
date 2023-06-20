@@ -9,7 +9,6 @@ export default function SignOut() {
   const stringData = localStorage.getItem('userInput');
   const userData = JSON.parse(stringData);
   const userId = userData.userId;
-  console.log(userId);
 
   const [products, setProducts] = useState();
   const [isLoading, setIsLoading] = useState(true);

@@ -315,16 +315,16 @@ app.delete(
 // addtoWishList(productId) -- add item to myWishList
 app.post('/api/wishlist', authorizationMiddleware, async (req, res, next) => {
   try {
-    const productId = req.body.productId;
-    if (!productId) {
+    const { productId, userId } = req.body;
+    if (!productId || !userId) {
       throw new ClientError(400, `all fields are required`);
     }
     const sql = `
-    insert into "myWishList" ("productId")
-    values ($1)
+    insert into "myWishList" ("productId", "userId")
+    values ($1, $2)
     returning *;
     `;
-    const params = [productId];
+    const params = [productId, userId];
     const result = await db.query(sql, params);
     res.status(201).json(result.rows[0]);
   } catch (err) {
@@ -332,7 +332,7 @@ app.post('/api/wishlist', authorizationMiddleware, async (req, res, next) => {
   }
 });
 
-// // function fetchWishList() -- display the wishlist item(s) in wishlist section
+// function fetchWishList() -- display the wishlist item(s) in wishlist section
 app.get(
   '/api/wishlist/:userId',
   authorizationMiddleware,
