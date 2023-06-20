@@ -337,11 +337,8 @@ app.get(
   '/api/wishlist/:userId',
   authorizationMiddleware,
   async (req, res, next) => {
+    const userId = req.params.userId;
     try {
-      const userId = Number(req.params.userId);
-      if (!userId) {
-        throw new ClientError(400, 'userId must be a positive integer');
-      }
       const sql = `
 select *
   from "myPets"
@@ -350,17 +347,14 @@ select *
     `;
       const params = [userId];
       const result = await db.query(sql, params);
-      if (!result.rows[0]) {
-        throw new ClientError(404, `cannot find user with userId ${userId}`);
-      }
-      res.json(result.rows[0]);
+      res.json(result.rows);
     } catch (err) {
       next(err);
     }
   }
 );
 
-// // function removeItem(productId) -- remove selected item from wishlist
+// // function removeWishListItem(productId) -- remove selected item from wishlist
 app.delete(
   '/api/wishlist/:productId',
   authorizationMiddleware,
