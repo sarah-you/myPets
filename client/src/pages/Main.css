@@ -1,5 +1,42 @@
-.carousel-wrapper {
+.header-wrap {
   display: flex;
-  justify-content: end;
-  align-items: flex-end;
+  flex-direction: row;
+  justify-content: space-around;
+  align-items: center;
+}
+
+.main-header-text-wrap {
+  width: calc(100% / 2);
+}
+
+.main-h1 {
+  font-family: Geologica, sans-serif;
+  text-align: center;
+  font-weight: 400;
+  font-size: 3rem;
+}
+
+.main-h2 {
+  margin-top: 1.5rem;
+  font-size: 1.5rem;
+  text-align: center;
+  font-weight: 300;
+}
+
+.main-h1-wrap,
+.carousel-wrap {
+  margin: 1rem;
+}
+
+.carousel-wrap {
+  margin-top: 6rem;
+}
+
+@media screen and (width <= 992px) {
+  .header-wrap {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
 }

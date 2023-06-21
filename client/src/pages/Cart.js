@@ -1,9 +1,9 @@
 import './Cart.css';
-import { Link } from 'react-router-dom';
 import { fetchCart, removeCartItem } from '../lib';
 import { useEffect, useState } from 'react';
 import { Product } from '../components/Product';
 import { FaTrashAlt } from 'react-icons/fa';
+import Footer from '../components/Footer';
 
 export default function Cart() {
   const stringData = localStorage.getItem('userInput');
@@ -68,28 +68,7 @@ export default function Cart() {
           </div>
         ))}
       </div>
-      <div className="col btn-wrap">
-        <Link to="/">
-          <div className="back-btn-wrap">
-            <button className="btn home-btn">Home</button>
-          </div>
-        </Link>
-        <Link to="/meow">
-          <div className="back-btn-wrap">
-            <button className="btn home-btn">Cats Page</button>
-          </div>
-        </Link>
-        <Link to="/woof">
-          <div className="back-btn-wrap">
-            <button className="btn home-btn">Dogs Page</button>
-          </div>
-        </Link>
-        <Link to="/catalog">
-          <div className="back-btn-wrap">
-            <button className="btn home-btn">Catalog Page</button>
-          </div>
-        </Link>
-      </div>
+      <Footer />
     </div>
   );
 }

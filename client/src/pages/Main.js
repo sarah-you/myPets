@@ -2,6 +2,8 @@ import Carousel from '../components/Carousel';
 import ShopByPets from '../components/ShopByPets';
 import PetFav from '../components/PetFav';
 import EmailSubscriptionModal from '../components/EmailSubscription';
+import Footer from '../components/Footer';
+import './Main.css';
 
 const img = [
   {
@@ -34,13 +36,22 @@ export default function Main() {
   return (
     <>
       <div className="main-page-container">
-        <div className="carousel-wrapper">
-          <Carousel img={img} />
-        </div>
+        <header className="header-wrap">
+          <div className="main-header-text-wrap">
+            <h1 className="main-h1">Pamper your pets with premium products</h1>
+            <h2 className="main-h2">
+              discover a wonderland of tail-wagging delights at myPets!
+            </h2>
+          </div>
+          <div className="carousel-wrapper">
+            <Carousel img={img} />
+          </div>
+        </header>
         <EmailSubscriptionModal />
         <ShopByPets />
         <PetFav />
       </div>
+      <Footer />
     </>
   );
 }
