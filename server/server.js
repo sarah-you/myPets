@@ -87,7 +87,7 @@ FROM "myPets"
   }
 });
 
-// data for specific product based on productId (ProductDetails)
+// fetchProduct(productId) -- data for specific product based on productId (ProductDetails)
 app.get('/api/details/:productId', async (req, res, next) => {
   try {
     const productId = Number(req.params.productId);
@@ -246,7 +246,7 @@ app.delete(
   }
 );
 
-// addtoCart (productId) -- add item to subscribers's wishlist (to db)
+// addtoCart (productId) -- add item to subscribers's cart (to db)
 app.post('/api/addcart', authorizationMiddleware, async (req, res, next) => {
   try {
     const { productId, userId } = req.body;
