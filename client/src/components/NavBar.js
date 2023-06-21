@@ -18,13 +18,13 @@ export default function NavBar() {
         <div className="meow-wrap">
           <Link to="/meow" className="meow">
             <TbCat className="kitti" />
-            Meow
+            myCats
           </Link>
         </div>
         <div className="woof-wrap">
           <Link to="/woof" className="woof">
             <TbDog className="doggo" />
-            Woof
+            myDogs
           </Link>
         </div>
         <div className="pc-wrap">
@@ -37,12 +37,12 @@ export default function NavBar() {
           {localStorage.getItem('account') !== null ? (
             <Link to="/signout" className="account">
               <HiOutlineUserCircle className="account-icon" />
-              Account
+              myPage
             </Link>
           ) : (
             <Link to="/signin" className="account">
               <HiOutlineUserCircle className="account-icon" />
-              Account
+              myPage
             </Link>
           )}
         </div>
@@ -50,12 +50,12 @@ export default function NavBar() {
           {localStorage.getItem('account') !== null ? (
             <Link to="/cart" className="cart">
               <BsCart4 className="cart-icon" />
-              Cart
+              myCart
             </Link>
           ) : (
             <Link to="/signin" className="account">
               <BsCart4 className="account-icon" />
-              Cart
+              myCart
             </Link>
           )}
         </div>

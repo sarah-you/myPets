@@ -23,6 +23,11 @@ export default function SubscriptionSuccess() {
           alt="cats and dogs"
           className="success-img"
         />
+        <Link to="/">
+          <div className="back-btn-wrap">
+            <button className="btn home-btn">Go Back Home</button>
+          </div>
+        </Link>
       </div>
     </>
   );
