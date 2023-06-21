@@ -2,6 +2,7 @@ import Carousel from '../components/Carousel';
 import ShopByPets from '../components/ShopByPets';
 import PetFav from '../components/PetFav';
 import EmailSubscriptionModal from '../components/EmailSubscription';
+import Footer from '../components/Footer';
 import './Main.css';
 
 const img = [
@@ -50,6 +51,7 @@ export default function Main() {
         <ShopByPets />
         <PetFav />
       </div>
+      <Footer />
     </>
   );
 }

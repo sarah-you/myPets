@@ -1,9 +1,8 @@
-import { Link } from 'react-router-dom';
 import { useEffect, useState } from 'react';
 import { Product } from '../components/Product';
 import { fetchCatalog } from '../lib';
 import './Catalog.css';
-import { FaCaretLeft } from 'react-icons/fa';
+import Footer from '../components/Footer';
 
 export default function Catalog() {
   const [products, setProducts] = useState();
@@ -30,7 +29,7 @@ export default function Catalog() {
   if (error) return <div>Error Loading Cat Products: {error.message}</div>;
 
   return (
-    <div className="container">
+    <div className="catalog-container">
       <h1 className="catalog-h1">Shop All Products</h1>
       <div className="product-list">
         {products?.map((product) => (
@@ -39,14 +38,7 @@ export default function Catalog() {
           </div>
         ))}
       </div>
-      <div className="link">
-        <Link to="/">
-          <div className="back-btn-wrap">
-            <FaCaretLeft />
-            <button className="btn home-btn">Back to Home</button>
-          </div>
-        </Link>
-      </div>
+      <Footer />
     </div>
   );
 }

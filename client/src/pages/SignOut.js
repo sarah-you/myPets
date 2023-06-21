@@ -4,6 +4,7 @@ import { useEffect, useState } from 'react';
 import { Product } from '../components/Product';
 import { useNavigate } from 'react-router-dom';
 import { FaTrashAlt } from 'react-icons/fa';
+import Footer from '../components/Footer';
 
 export default function SignOut() {
   const stringData = localStorage.getItem('userInput');
@@ -106,6 +107,7 @@ export default function SignOut() {
           </div>
         ))}
       </div>
+      <Footer />
     </div>
   );
 }

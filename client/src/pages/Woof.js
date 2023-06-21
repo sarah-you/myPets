@@ -1,7 +1,6 @@
-import { Link } from 'react-router-dom';
-import { FaCaretLeft } from 'react-icons/fa';
 import './Woof.css';
 import DogProd from '../components/DogProd';
+import Footer from '../components/Footer';
 
 export default function Woof() {
   return (
@@ -10,13 +9,8 @@ export default function Woof() {
       <div className="dog-content-wrap">
         <h1 className="dog-h1">myDogs 🐕</h1>
         <DogProd />
-        <Link to="/">
-          <div className="back-btn-wrap">
-            <FaCaretLeft />
-            <button className="btn home-btn">Back to Home</button>
-          </div>
-        </Link>
       </div>
+      <Footer />
     </div>
   );
 }

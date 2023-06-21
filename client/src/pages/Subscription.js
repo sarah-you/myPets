@@ -10,6 +10,7 @@ import {
   FaLock,
   FaUser,
 } from 'react-icons/fa';
+import Footer from '../components/Footer';
 
 export default function Subscription() {
   const [error, setError] = useState();
@@ -106,6 +107,7 @@ export default function Subscription() {
           </Link>
         </div>
       </div>
+      <Footer />
     </div>
   );
 }
