@@ -1,37 +1,56 @@
 // client side API requests
 
-/**
- * Fetches a single product from the API.
- * @param {number} productId The ID of the product to fetch.
- * @returns Promise that resolves to the product.
- */
-
 // products fetch
 
+/**
+ * Fetches the most popular products from the myPets API.
+ * @param {}
+ * @returns Promise that resolves to the product.
+ */
 export async function fetchFav() {
   const res = await fetch('/api/favpets');
   if (!res.ok) throw new Error(`fetch Error ${res.status}`);
   return await res.json();
 }
 
+/**
+ * Fetches all products from the myPets API.
+ * @param {}
+ * @returns Promise that resolves to the product.
+ */
 export async function fetchCatalog() {
   const res = await fetch('/api/catalog');
   if (!res.ok) throw new Error(`fetch Error ${res.status}`);
   return await res.json();
 }
 
+/**
+ * Fetches a single product from the myPets API.
+ * @param {number} productId The ID of the product to fetch.
+ * @returns Promise that resolves to the product.
+ */
 export async function fetchProduct(productId) {
   const res = await fetch(`/api/details/${productId}`);
   if (!res.ok) throw new Error(`fetch Error ${res.status}`);
   return await res.json();
 }
 
+/**
+ * Fetches all the cat products from the API.
+ * @param {}
+ * @returns Promise that resolves to the product.
+ */
 export async function fetchCatProd() {
   const res = await fetch('/api/meow');
   if (!res.ok) throw new Error(`fetch Error ${res.status}`);
   return await res.json();
 }
 
+/**
+ * Fetches all the dog products from the myPets API.
+ * @param {}
+ * @returns Promise that resolves to the product.
+ */
 export async function fetchDogProd() {
   const res = await fetch('/api/woof');
   if (!res.ok) throw new Error(`fetch Error ${res.status}`);
@@ -40,6 +59,11 @@ export async function fetchDogProd() {
 
 //user related fetch
 
+/**
+ * Fetches the user from the subscription API.
+ * @param {number} userId The ID of the user.
+ * @returns Promise that resolves to the product.
+ */
 export async function fetchUser(userId) {
   const signInData = JSON.parse(localStorage.getItem('account'));
   const pw = signInData.pw;
@@ -54,6 +78,16 @@ export async function fetchUser(userId) {
   return await res.json();
 }
 
+/**
+ * Adds the user data to the subscription API.
+ * @param {string} firstName of user
+ * @param {string} lastName of user
+ * @param {string} email of user
+ * @param {string} address of user
+ * @param {string} username of user
+ * @param {string} password of user
+ * @returns Promise that resolves to the product.
+ */
 export async function createSubscriber(
   firstName,
   lastName,
@@ -81,6 +115,11 @@ export async function createSubscriber(
   return await res.json();
 }
 
+/**
+ * Deletes the user from the subscription API.
+ * @param {number} userId The ID of the user.
+ * @returns Promise that resolves to the product.
+ */
 export async function deleteSubscriber(userId) {
   const signInData = JSON.parse(localStorage.getItem('account'));
   const pw = signInData.pw;
@@ -97,6 +136,12 @@ export async function deleteSubscriber(userId) {
 
 // myCart fetch
 
+/**
+ * Adds a product to the myCart API.
+ * @param {number} userId The ID of the user.
+ * @param {number} productId The ID of the product.
+ * @returns Promise that resolves to the product.
+ */
 export async function addtoCart(productId, userId) {
   const signInData = JSON.parse(localStorage.getItem('account'));
   const pw = signInData.pw;
@@ -116,6 +161,12 @@ export async function addtoCart(productId, userId) {
   return await res.json();
 }
 
+/**
+ * Fetches all products from the myCart API.
+ * @param {number} userId The ID of the user.
+ * @param {number} productId The ID of the product.
+ * @returns Promise that resolves to the product.
+ */
 export async function fetchCart(userId) {
   const signInData = JSON.parse(localStorage.getItem('account'));
   const pw = signInData.pw;
@@ -130,6 +181,11 @@ export async function fetchCart(userId) {
   return await res.json();
 }
 
+/**
+ * Deletes a product from the myCart API.
+ * @param {number} productId The ID of the product.
+ * @returns Promise that resolves to the product.
+ */
 export async function removeCartItem(productId) {
   const signInData = JSON.parse(localStorage.getItem('account'));
   const pw = signInData.pw;
@@ -146,6 +202,12 @@ export async function removeCartItem(productId) {
 
 // myWishList fetch
 
+/**
+ * Adds a product to the myWishList API.
+ * @param {number} userId The ID of the user.
+ * @param {number} productId The ID of the product.
+ * @returns Promise that resolves to the product.
+ */
 export async function addtoWishList(productId, userId) {
   const signInData = JSON.parse(localStorage.getItem('account'));
   const pw = signInData.pw;
@@ -165,6 +227,11 @@ export async function addtoWishList(productId, userId) {
   return await res.json();
 }
 
+/**
+ * Fetches all products from the myWishList API.
+ * @param {number} userId The ID of the user.
+ * @returns Promise that resolves to the product.
+ */
 export async function fetchWishList(userId) {
   const signInData = JSON.parse(localStorage.getItem('account'));
   const pw = signInData.pw;
@@ -179,6 +246,11 @@ export async function fetchWishList(userId) {
   return await res.json();
 }
 
+/**
+ * Deletes a product from the myWishList API.
+ * @param {number} productId The ID of the product.
+ * @returns Promise that resolves to the product.
+ */
 export async function removeWishListItem(productId) {
   const signInData = JSON.parse(localStorage.getItem('account'));
   const pw = signInData.pw;
