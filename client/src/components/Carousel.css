@@ -6,8 +6,17 @@
 
 .l-arrow-wrap,
 .r-arrow-wrap {
-  margin-top: 15rem;
+  margin-top: 14rem;
   font-size: 2rem;
+}
+
+.l-arrow-wrap {
+  margin-right: 2rem;
+  margin-left: 5rem;
+}
+
+.r-arrow-wrap {
+  margin-left: 2rem;
 }
 
 .l-arrow-wrap,
@@ -23,7 +32,7 @@
 }
 
 .carousel-img {
-  width: 100%;
+  width: 700px;
 }
 
 .progress-bar {
