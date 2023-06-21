@@ -83,7 +83,7 @@ export default function ProductDetails() {
       navigate('/signout');
     } catch (err) {
       alert(
-        `Oops! Cannot add item to wishlist. Please check to see if this item is already added to your wishlist and try again!`
+        `Oops! Cannot add item to wishlist. Please check to see if you are logged in. Then confirm if this item is already added to your wishlist and try again!`
       );
     }
   }
