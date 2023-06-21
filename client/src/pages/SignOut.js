@@ -14,6 +14,16 @@ export default function SignOut() {
   const navigate = useNavigate();
 
   useEffect(() => {
+    const stringData = localStorage.getItem('userInput');
+    if (stringData !== null) {
+      const userData = JSON.parse(stringData);
+      setUserData(userData);
+    } else {
+      navigate('/signin');
+    }
+  }, [navigate]);
+
+  useEffect(() => {
     async function loadWishList() {
       try {
         const products = await fetchWishList(userData.userId);
@@ -29,16 +39,6 @@ export default function SignOut() {
       loadWishList();
     }
   }, [userData]);
-
-  useEffect(() => {
-    const stringData = localStorage.getItem('userInput');
-    if (stringData !== null) {
-      const userData = JSON.parse(stringData);
-      setUserData(userData);
-    } else {
-      navigate('/signin');
-    }
-  }, [navigate]);
 
   async function handleSignOut() {
     try {

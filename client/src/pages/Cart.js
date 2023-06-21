@@ -36,7 +36,7 @@ export default function Cart() {
     }
     setIsLoading(true);
     loadCart();
-  }, [userData.userId]);
+  }, [userData]);
 
   async function handleRemoveItem(productId) {
     try {
