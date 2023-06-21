@@ -4,20 +4,29 @@ import { useEffect, useState } from 'react';
 import { Product } from '../components/Product';
 import { FaTrashAlt } from 'react-icons/fa';
 import Footer from '../components/Footer';
+import { useNavigate } from 'react-router-dom';
 
 export default function Cart() {
-  const stringData = localStorage.getItem('userInput');
-  const userData = JSON.parse(stringData);
-  const userId = userData.userId;
-
   const [products, setProducts] = useState();
   const [isLoading, setIsLoading] = useState(true);
   const [error, setError] = useState();
+  const [userData, setUserData] = useState();
+  const navigate = useNavigate();
+
+  useEffect(() => {
+    const stringData = localStorage.getItem('userInput');
+    if (stringData !== null) {
+      const userData = JSON.parse(stringData);
+      setUserData(userData);
+    } else {
+      navigate('/signin');
+    }
+  }, [navigate]);
 
   useEffect(() => {
     async function loadCart() {
       try {
-        const products = await fetchCart(userId);
+        const products = await fetchCart(userData.userId);
         setProducts(products);
       } catch (err) {
         setError(err);
@@ -27,7 +36,7 @@ export default function Cart() {
     }
     setIsLoading(true);
     loadCart();
-  }, [userId]);
+  }, [userData.userId]);
 
   async function handleRemoveItem(productId) {
     try {

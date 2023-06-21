@@ -12,6 +12,7 @@ export default function ProductDetails() {
   const [product, setProduct] = useState();
   const [isLoading, setIsLoading] = useState(true);
   const [error, setError] = useState();
+  const [userId, setUserId] = useState();
   const navigate = useNavigate();
 
   useEffect(() => {
@@ -28,6 +29,15 @@ export default function ProductDetails() {
     setIsLoading(true);
     loadProduct(productId);
   }, [productId]);
+
+  useEffect(() => {
+    const stringData = localStorage.getItem('userInput');
+    if (stringData !== null) {
+      const userData = JSON.parse(stringData);
+      setUserId(userData.userId);
+    }
+    return;
+  }, []);
 
   if (isLoading) return <div>Loading...</div>;
   if (error) {
@@ -56,9 +66,6 @@ export default function ProductDetails() {
     detail5,
   } = product;
 
-  const userData = JSON.parse(localStorage.getItem('userInput'));
-  const userId = userData.userId;
-
   async function handleCart() {
     try {
       await addtoCart(productId, userId);
@@ -76,7 +83,7 @@ export default function ProductDetails() {
       navigate('/signout');
     } catch (err) {
       alert(
-        `Oops! Cannot add item to wishlist. Please check to see if this item is already added to your wishlist and try again! ${err}`
+        `Oops! Cannot add item to wishlist. Please check to see if this item is already added to your wishlist and try again!`
       );
     }
   }

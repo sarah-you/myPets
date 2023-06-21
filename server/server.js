@@ -192,8 +192,7 @@ app.post('/api/auth/sign-in', async (req, res, next) => {
       throw new ClientError(401, 'invalid login');
     }
     const sql = `
-      select "userId",
-            "hashedPassword"
+      select *
         from "subscription"
       where "username" = $1
     `;
@@ -209,7 +208,7 @@ app.post('/api/auth/sign-in', async (req, res, next) => {
     }
     const payload = { userId, username };
     const token = jwt.sign(payload, process.env.TOKEN_SECRET);
-    res.json({ token, user: payload });
+    res.json({ token, user: user });
   } catch (err) {
     next(err);
   }

@@ -30,6 +30,9 @@ export default function SignIn() {
       };
       const myAccount = JSON.stringify(accountData);
       localStorage.setItem('account', myAccount);
+      const userString = JSON.stringify(user);
+      localStorage.setItem('userInput', userString);
+
       alert(`Welcome! You are now signed in to your account.`);
       navigate('/signout');
     } catch (err) {

@@ -7,19 +7,16 @@ import { FaTrashAlt } from 'react-icons/fa';
 import Footer from '../components/Footer';
 
 export default function SignOut() {
-  const stringData = localStorage.getItem('userInput');
-  const userData = JSON.parse(stringData);
-  const userId = userData.userId;
-
   const [products, setProducts] = useState();
   const [isLoading, setIsLoading] = useState(true);
   const [error, setError] = useState();
+  const [userData, setUserData] = useState();
   const navigate = useNavigate();
 
   useEffect(() => {
     async function loadWishList() {
       try {
-        const products = await fetchWishList(userId);
+        const products = await fetchWishList(userData.userId);
         setProducts(products);
       } catch (err) {
         setError(err);
@@ -27,9 +24,21 @@ export default function SignOut() {
         setIsLoading(false);
       }
     }
-    setIsLoading(true);
-    loadWishList();
-  }, [userId]);
+    if (userData !== undefined) {
+      setIsLoading(true);
+      loadWishList();
+    }
+  }, [userData]);
+
+  useEffect(() => {
+    const stringData = localStorage.getItem('userInput');
+    if (stringData !== null) {
+      const userData = JSON.parse(stringData);
+      setUserData(userData);
+    } else {
+      navigate('/signin');
+    }
+  }, [navigate]);
 
   async function handleSignOut() {
     try {
