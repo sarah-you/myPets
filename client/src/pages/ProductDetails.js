@@ -37,8 +37,8 @@ export default function ProductDetails() {
       </div>
     );
   }
-
   if (!product) return null;
+
   const {
     productName,
     ratings,
