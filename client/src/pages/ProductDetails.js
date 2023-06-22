@@ -15,6 +15,7 @@ export default function ProductDetails() {
   const [userId, setUserId] = useState();
   const navigate = useNavigate();
 
+  // render product data via api call
   useEffect(() => {
     async function loadProduct(productId) {
       try {
@@ -30,6 +31,7 @@ export default function ProductDetails() {
     loadProduct(productId);
   }, [productId]);
 
+  // store userdata in local storage to access userId
   useEffect(() => {
     const stringData = localStorage.getItem('userInput');
     if (stringData !== null) {
@@ -39,6 +41,7 @@ export default function ProductDetails() {
     return;
   }, []);
 
+  // logic while waiting for product data to load & its error handling
   if (isLoading) return <div>Loading...</div>;
   if (error) {
     return (
@@ -49,6 +52,7 @@ export default function ProductDetails() {
   }
   if (!product) return null;
 
+  //destructured product data to use front end
   const {
     productName,
     ratings,
@@ -66,6 +70,7 @@ export default function ProductDetails() {
     detail5,
   } = product;
 
+  // add to cart api call that sends request to server to add this product info to cart db
   async function handleCart() {
     try {
       await addtoCart(productId, userId);
@@ -77,6 +82,7 @@ export default function ProductDetails() {
     }
   }
 
+  // add to savedlist api call that sends request to server to add this product info to wishlist db
   async function handleSaveItem() {
     try {
       await addtoWishList(productId, userId);
