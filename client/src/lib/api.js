@@ -186,7 +186,7 @@ export async function fetchCart(userId) {
  * @param {number} productId The ID of the product.
  * @returns Promise that resolves to the product.
  */
-export async function removeCartItem(productId) {
+export async function removeCartItem(productId, userId) {
   const signInData = JSON.parse(localStorage.getItem('account'));
   const pw = signInData.pw;
   const req = {
@@ -194,8 +194,12 @@ export async function removeCartItem(productId) {
     headers: {
       Authorization: `Bearer ${pw}`,
     },
+    body: JSON.stringify({
+      productId,
+      userId,
+    }),
   };
-  const res = await fetch(`/api/cart/${productId}`, req);
+  const res = await fetch(`/api/cart/${userId}/${productId}`, req);
   if (!res.ok) throw new Error(`fetch Error ${res.status}`);
   return await res.json();
 }
@@ -251,7 +255,7 @@ export async function fetchWishList(userId) {
  * @param {number} productId The ID of the product.
  * @returns Promise that resolves to the product.
  */
-export async function removeWishListItem(productId) {
+export async function removeWishListItem(productId, userId) {
   const signInData = JSON.parse(localStorage.getItem('account'));
   const pw = signInData.pw;
   const req = {
@@ -259,8 +263,12 @@ export async function removeWishListItem(productId) {
     headers: {
       Authorization: `Bearer ${pw}`,
     },
+    body: JSON.stringify({
+      productId,
+      userId,
+    }),
   };
-  const res = await fetch(`/api/wishlist/${productId}`, req);
+  const res = await fetch(`/api/wishlist/${userId}/${productId}`, req);
   if (!res.ok) throw new Error(`fetch Error ${res.status}`);
   return await res.json();
 }

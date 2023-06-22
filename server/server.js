@@ -289,26 +289,27 @@ select *
 
 // function removeCartItem(productId) -- remove selected item from cart
 app.delete(
-  '/api/cart/:productId',
+  '/api/cart/:userId/:productId',
   authorizationMiddleware,
   async (req, res, next) => {
     try {
       const productId = Number(req.params.productId);
-      if (!productId) {
+      const userId = Number(req.params.userId);
+      if (!productId || !userId) {
         throw new ClientError(400, 'productId must be a positive integer');
       }
       const sql = `
        delete
         from "myCart"
-        where "productId" = $1
+        where "productId" = $1 and "userId" = $2
         returning *;
  `;
-      const params = [productId];
+      const params = [productId, userId];
       const result = await db.query(sql, params);
       if (!result.rows[0]) {
         throw new ClientError(
           400,
-          `cannot find item with 'productId' ${productId}`
+          `cannot find item for user with 'userId' ${userId} and 'productId' ${productId}`
         );
       }
       res.status(201).json(`${productId} has been removed from myCart`);
@@ -362,26 +363,27 @@ select *
 
 // // function removeWishListItem(productId) -- remove selected item from wishlist
 app.delete(
-  '/api/wishlist/:productId',
+  '/api/wishlist/:userId/:productId',
   authorizationMiddleware,
   async (req, res, next) => {
     try {
       const productId = Number(req.params.productId);
-      if (!productId) {
+      const userId = Number(req.params.userId);
+      if (!productId || !userId) {
         throw new ClientError(400, 'productId must be a positive integer');
       }
       const sql = `
        delete
         from "myWishList"
-        where "productId" = $1
+        where "productId" = $1 and "userId" = $2
         returning *;
  `;
-      const params = [productId];
+      const params = [productId, userId];
       const result = await db.query(sql, params);
       if (!result.rows[0]) {
         throw new ClientError(
           400,
-          `cannot find item with 'productId' ${productId}`
+          `cannot find item for user with 'userId' ${userId} and 'productId' ${productId}`
         );
       }
       res.status(201).json(`${productId} has been removed from myWishList`);

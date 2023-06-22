@@ -40,7 +40,7 @@ export default function Cart() {
 
   async function handleRemoveItem(productId) {
     try {
-      await removeCartItem(productId);
+      await removeCartItem(productId, userData.userId);
       setProducts(
         products.filter((product) => products.productId !== productId)
       );

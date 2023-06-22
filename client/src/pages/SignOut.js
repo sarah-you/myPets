@@ -67,7 +67,7 @@ export default function SignOut() {
 
   async function handleRemoveItem(productId) {
     try {
-      await removeWishListItem(productId);
+      await removeWishListItem(productId, userData.userId);
       setProducts(
         products.filter((product) => products.productId !== productId)
       );

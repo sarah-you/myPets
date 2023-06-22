@@ -46,7 +46,7 @@ WITH (
 CREATE TABLE "public"."myCart"(
     "userId" integer NOT NULL,
   "productId" integer NOT NULL,
-  CONSTRAINT "myCart_pk" PRIMARY KEY ("productId")
+  CONSTRAINT "myCart_pk" PRIMARY KEY ("productId", "userId")
 )
 WITH (
   OIDS = FALSE
@@ -55,7 +55,7 @@ WITH (
 CREATE TABLE "public"."myWishList"(
     "userId" integer NOT NULL,
   "productId" integer NOT NULL,
-  CONSTRAINT "myWishList_pk" PRIMARY KEY ("productId")
+  CONSTRAINT "myWishList_pk" PRIMARY KEY ("productId", "userId")
 )
 WITH (
   OIDS = FALSE
