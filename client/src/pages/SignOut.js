@@ -65,11 +65,11 @@ export default function SignOut() {
     }
   }
 
-  async function handleRemoveItem(productId) {
+  async function handleRemoveItem(productId, userId) {
     try {
-      await removeWishListItem(productId, userData.userId);
+      await removeWishListItem(productId, userId);
       setProducts(
-        products.filter((product) => products.productId !== productId)
+        products.filter((product) => product.productId !== productId)
       );
       alert(`Item has been removed from myWishList.`);
       window.location.reload();
@@ -108,7 +108,9 @@ export default function SignOut() {
           <div key={product.productId} className="prod-wrap wishlist-remove">
             <Product product={product} />
             <button
-              onClick={() => handleRemoveItem(product.productId)}
+              onClick={() =>
+                handleRemoveItem(product.productId, userData.userId)
+              }
               className="remove-btn">
               <FaTrashAlt className="trash-icon" />
               Remove from myWishList

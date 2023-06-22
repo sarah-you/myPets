@@ -34,15 +34,17 @@ export default function Cart() {
         setIsLoading(false);
       }
     }
-    setIsLoading(true);
-    loadCart();
+    if (userData !== undefined) {
+      setIsLoading(true);
+      loadCart();
+    }
   }, [userData]);
 
-  async function handleRemoveItem(productId) {
+  async function handleRemoveItem(productId, userId) {
     try {
-      await removeCartItem(productId, userData.userId);
+      await removeCartItem(productId, userId);
       setProducts(
-        products.filter((product) => products.productId !== productId)
+        products.filter((product) => product.productId !== productId)
       );
       alert(`Item has been removed from myCart.`);
       window.location.reload();
@@ -69,7 +71,9 @@ export default function Cart() {
           <div key={product.productId} className="prod-wrap cart-remove">
             <Product product={product} />
             <button
-              onClick={() => handleRemoveItem(product.productId)}
+              onClick={() =>
+                handleRemoveItem(product.productId, userData.userId)
+              }
               className="remove-btn">
               <FaTrashAlt className="trash-icon" />
               Remove from Cart
