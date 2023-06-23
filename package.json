@@ -13,8 +13,8 @@
     "dev:client": "npm run start --prefix client",
     "dev:server": "npm run dev --prefix server",
     "dev": "npm-run-all --parallel --print-label dev:*",
-    "install:client": "npm install --prefix client",
     "install:server": "npm install --prefix server",
+    "install:client": "npm install --prefix client",
     "install:env": "test -f server/.env || cp server/.env.example server/.env",
     "postinstall": "run-s install:*",
     "prepare": "husky install"
