@@ -31,3 +31,13 @@
 .success-img {
   width: 150%;
 }
+
+@media screen and (width <= 992px) {
+  .success-h2 {
+    text-align: center;
+  }
+
+  .success-img {
+    width: 110%;
+  }
+}
