@@ -38,6 +38,7 @@
   },
   "main": "index.js",
   "dependencies": {
+    "@babel/plugin-proposal-private-property-in-object": "^7.21.11",
     "acorn": "^8.8.2",
     "acorn-jsx": "^5.3.2",
     "aggregate-error": "^3.1.0",
