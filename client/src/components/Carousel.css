@@ -43,9 +43,13 @@
   cursor: pointer;
 }
 
-@media screen and (width <= 992px) {
+@media screen and (width <= 768px) {
+  .carousel-img {
+    width: 160%;
+  }
+
   .l-arrow-wrap,
   .r-arrow-wrap {
-    margin-top: 5rem;
+    margin-top: 3rem;
   }
 }
