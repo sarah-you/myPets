@@ -31,14 +31,14 @@ export default function Footer() {
         </div>
         <div className="company-info-wrap">
           <div className="contact-wrap">
-            <p className="contact">
+            <p className="footer-contact">
               <b>Contact Us</b>
             </p>
             <p>(800)-000-0000</p>
             <p>info@mypets.com</p>
           </div>
           <div className="address-wrap">
-            <p className="address">
+            <p className="footer-address">
               <b>Address</b>
             </p>
             <p>287 Fetch Drive, Ballpark, CA</p>

@@ -44,9 +44,9 @@ export default function Subscription() {
   return (
     <div>
       <h1 className="sub-head">myPets Subscription 📦</h1>
-      <div className="content-wrap">
+      <div className="sub-content-wrap">
         <div className="form-wrap">
-          <form method="post" onSubmit={handleSubmit} className="form">
+          <form method="post" onSubmit={handleSubmit} className="sub-form">
             <h4 className="sub-h4">
               Receive your pet's favorites right to your door!
             </h4>
@@ -59,24 +59,50 @@ export default function Subscription() {
             <label className="fn">
               <div className="fn-input-wrap">
                 <FaUserCircle className="fn-icon" />
-                <input name="firstName" placeholder="First Name" required />
+                <input
+                  name="firstName"
+                  placeholder="First Name"
+                  required
+                  className="fn-input"
+                />
               </div>
             </label>
             <label className="ln">
               <FaUserCircle className="ln-icon" />
-              <input name="lastName" placeholder="Last Name" required />
+              <input
+                name="lastName"
+                placeholder="Last Name"
+                required
+                className="ln-input"
+              />
             </label>
             <label className="email">
               <FaEnvelope className="email-icon" />
-              <input type="text" name="email" placeholder="Email" required />
+              <input
+                type="text"
+                name="email"
+                placeholder="Email"
+                required
+                className="email-input"
+              />
             </label>
             <label className="address">
               <FaMapPin className="address-icon" />
-              <input name="address" placeholder="Delivery Address" required />
+              <input
+                name="address"
+                placeholder="Delivery Address"
+                required
+                className="address-input"
+              />
             </label>
             <label className="sub-username">
               <FaUser className="username-icon" />
-              <input name="username" placeholder="Username" required />
+              <input
+                name="username"
+                placeholder="Username"
+                required
+                className="username-input"
+              />
             </label>
             <label className="sub-password">
               <FaLock className="password-icon" />
@@ -85,6 +111,7 @@ export default function Subscription() {
                 placeholder="Password"
                 type="password"
                 required
+                className="password-input"
               />
               <p className="pw-text">
                 Please make sure to write down your password in a safe place!
