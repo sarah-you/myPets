@@ -83,7 +83,26 @@
     height: auto;
   }
 
+  .signout-header-wrap {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .signout-btns-wrap {
+    align-items: center;
+    margin-top: 1rem;
+  }
+
+  .signout-btn {
+    margin-right: 0;
+  }
+
   .signout-h1 {
     margin-right: 2rem;
+  }
+
+  .remove-btn {
+    width: 20rem;
   }
 }
