@@ -59,7 +59,7 @@ export default function SignIn() {
         <form onSubmit={handleSubmit}>
           <div className="row margin-bottom-1">
             <div className="column-half">
-              <label className="d-block">
+              <label className="d-block username-label">
                 <p className="signin-username">Username</p>
                 <input
                   required
@@ -68,7 +68,7 @@ export default function SignIn() {
                   className="signin-input input-b-color text-padding input-b-radius purple-outline input-height margin-bottom-2 d-block width-100"
                 />
               </label>
-              <label className="d-block">
+              <label className="d-block password-label">
                 <p className="signin-password">Password</p>
                 <input
                   required

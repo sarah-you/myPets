@@ -60,3 +60,11 @@ input {
 .register-btn:hover {
   border: #faf0ca 2px solid;
 }
+
+@media screen and (width <= 768px) {
+  .signin-input {
+    justify-content: center;
+    align-items: center;
+    width: 20rem;
+  }
+}
