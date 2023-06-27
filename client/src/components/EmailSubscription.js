@@ -21,11 +21,23 @@ export default function EmailSubscriptionModal() {
         <div className="es-modal">
           <div className="modal-content modal-wrap">
             <div className="content-wrap">
-              <h1 className="modal-head">Hi There!</h1>
-              <p className="modal-p">
-                Don’t forget, you can subscribe to have your buddy’s favorites
-                ready at all times! Sign up today for some of our best deals!
-              </p>
+              <div className="text-and-img-wrap">
+                <div className="es-text-wrap">
+                  <h1 className="modal-head">Hi There!</h1>
+                  <p className="modal-p">
+                    Don’t forget, you can subscribe to have your buddy’s
+                    favorites ready at all times! Sign up today for some of our
+                    best deals!
+                  </p>
+                </div>
+                <div className="es-img-wrap">
+                  <img
+                    className="popup-img"
+                    src="../images/es-pic.jpeg"
+                    alt="dog and friend"
+                  />
+                </div>
+              </div>
               <div className="es-btn-wrap">
                 {localStorage.getItem('userInput') !== null ? (
                   <Link to="success">
@@ -45,13 +57,6 @@ export default function EmailSubscriptionModal() {
                   Close
                 </button>
               </div>
-            </div>
-            <div className="img-wrap">
-              <img
-                className="popup-img"
-                src="../images/popUp.jpeg"
-                alt="dog and friend"
-              />
             </div>
           </div>
         </div>
