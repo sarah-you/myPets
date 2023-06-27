@@ -24,3 +24,17 @@
   flex-direction: column;
   align-items: center;
 }
+
+@media screen and (width <= 992px) {
+  .cart-h1 {
+    margin-top: 1rem;
+    margin-left: 0;
+  }
+
+  .cart-p {
+    margin-top: 1rem;
+    margin-left: 1rem;
+    margin-right: 1rem;
+    margin-bottom: 2rem;
+  }
+}
