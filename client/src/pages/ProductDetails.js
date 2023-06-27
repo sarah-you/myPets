@@ -97,7 +97,7 @@ export default function ProductDetails() {
               <PdCarousel imgs={[imgUrl, imgUrl2, imgUrl3, imgUrl4]} />
             </div>
             <div className="col-12 col-sm-6 col-md-7">
-              <h2 className="name">{productName}</h2>
+              <h2 className="pd-name">{productName}</h2>
               <div className="rev-rating-heart-wrap">
                 <div className="r-wrap">
                   <Ratings className="ratings-comp" ratings={ratings} />

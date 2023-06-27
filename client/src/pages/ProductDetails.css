@@ -15,7 +15,7 @@
   border-radius: 20px;
 }
 
-.name {
+.pd-name {
   margin-top: 3rem;
 }
 
@@ -38,6 +38,7 @@ img {
 .r-wrap {
   display: flex;
   flex-direction: row;
+  margin-top: 1rem;
 }
 
 .ratings {
@@ -165,8 +166,40 @@ img {
 }
 
 @media screen and (width <= 992px) {
-  .btn-wrap {
-    width: 100%;
+  .pd-l-arrow-wrap {
+    margin-right: 1rem;
+  }
+
+  .pd-r-arrow-wrap {
+    margin-left: 1rem;
+  }
+
+  .pd-l-arrow-wrap,
+  .pd-r-arrow-wrap {
+    margin-bottom: 5rem;
+  }
+
+  .pd-name {
+    text-align: center;
+    margin-top: 1rem;
+  }
+
+  .r-wrap {
+    display: flex;
+    justify-content: center;
+  }
+
+  .sub-price-wrap {
+    margin-left: 1rem;
+  }
+
+  .sp-text {
+    margin-bottom: 0;
+  }
+
+  .item-price,
+  .sub-price {
+    font-size: 2rem;
   }
 
   .sub-link-div,
@@ -187,5 +220,11 @@ img {
     margin-top: 1rem;
     margin-right: 0;
     margin-left: 0;
+  }
+
+  .btn-wrap {
+    display: flex;
+    flex-direction: column;
+    text-align: center;
   }
 }

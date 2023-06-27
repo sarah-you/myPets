@@ -5,10 +5,29 @@
   align-items: center;
 }
 
+.pd-l-arrow-wrap {
+  margin-right: 1rem;
+}
+
+.pd-r-arrow-wrap {
+  margin-left: 1rem;
+}
+
+.pd-l-arrow-wrap,
+.pd-r-arrow-wrap {
+  margin-bottom: 6rem;
+}
+
 .pd-carousel-img {
   width: 100%;
 }
 
 .sm-previews {
   cursor: pointer;
+}
+
+@media screen and (width <= 992px) {
+  .pd-carousel-img {
+    margin-top: 2rem;
+  }
 }

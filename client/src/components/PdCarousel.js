@@ -25,8 +25,12 @@ export default function PdCarousel({ imgs, productName }) {
               <FaChevronLeft onClick={handleClickPrev} />
             </div>
             <div className="mid-col-wrap">
-              <div className="img-wrap">
-                <PdImage img={imgs[current]} productName={productName} />
+              <div className="-pd-carousel-img-wrap">
+                <PdImage
+                  img={imgs[current]}
+                  productName={productName}
+                  className="pd-carousel-img"
+                />
               </div>
               <div className="pd-carousel-sm-imgs">
                 <div className="sm-previews">
