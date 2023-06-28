@@ -30,6 +30,14 @@ https://mypets.azurewebsites.net/
 - User can use the footer to quickly navigate to pages without scrolling back up
 - User can interact with the app on mobile, tablet, or desktop devices
 
+#### Landing Page -- Carousel, Pop-Up CTA
+
+![myPets-overview gif 1](/client/public/images/myPets-overview-1.gif)
+
+#### Signed In Account > WishList > Product Details > Add to Cart > Remove Item from Cart
+
+![myPets-overview gif 2](/client/public/images/myPets-overview-2.gif)
+
 #### Stretch Features
 
 - Search bar to search products
