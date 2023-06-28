@@ -15,7 +15,7 @@
   margin: auto;
   padding: 20px;
   width: 80%;
-  height: 95vh;
+  height: 100vh;
 }
 
 .modal-wrap {
@@ -24,7 +24,6 @@
 }
 
 .content-wrap {
-  display: flex;
   margin-top: 1rem;
 }
 
@@ -66,6 +65,7 @@
 .es-btn-wrap {
   display: flex;
   justify-content: center;
+  margin-top: 2rem;
 }
 
 .es-btn {

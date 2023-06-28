@@ -174,7 +174,7 @@ export default function ProductDetails() {
           </div>
         </div>
       </div>
-      <div className="col btn-wrap">
+      <div className="col pd-btn-wrap">
         <Link to="/">
           <div className="back-btn-wrap">
             <button className="btn home-btn">Home</button>

@@ -149,7 +149,7 @@ img {
   color: #f95738;
 }
 
-.btn-wrap {
+.pd-btn-wrap {
   display: flex;
   justify-content: center;
 }
@@ -222,7 +222,7 @@ img {
     margin-left: 0;
   }
 
-  .btn-wrap {
+  .pd-btn-wrap {
     display: flex;
     flex-direction: column;
     text-align: center;
