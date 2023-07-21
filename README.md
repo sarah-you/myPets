@@ -51,6 +51,10 @@ Chrome DevTools
 - User can use the footer to quickly navigate to pages without scrolling back up
 - User can interact with the app on mobile, tablet, or desktop devices
 
+#### Wireframe (Figma)
+![myPets Figma](https://github.com/sarah-you/myPets/assets/103456134/f122ad1c-dccb-484a-82d3-b9fec4485fa3)
+
+
 #### Landing Page -- Carousel, Pop-Up CTA
 
 ![myPets-overview gif 1](/client/public/images/myPets-overview-1.gif)
