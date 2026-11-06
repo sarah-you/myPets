@@ -6,7 +6,7 @@ As a cat owner and pet enthusiast, I understand the panic that arises when your 
 
 ### Link to myPets
 
-https://mypets.azurewebsites.net/
+https://mypets-odpq.onrender.com/
 
 ### 📚 Tech Stack
 
