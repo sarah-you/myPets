@@ -1,8 +1,14 @@
 # myPets
 
-## A full-stack e-commerce web application for pet owners who want to purchase pet goods.
+## A full-stack e-commerce web application featuring a secure account management portal, high-performance product catalog search and filtering, and dynamic real-time shopping cart management
 
 As a cat owner and pet enthusiast, I understand the panic that arises when your pets’ favorite products run out. That’s why I’ve created a one-stop online store with monthly subscriptions, ensuring you never have to worry about running out of essentials again. Browse through the curated selection of high-quality pet products and enjoy a seamless shopping journey.
+
+- Developed a responsive frontend with React, JavaScript, CSS, and Bootstrap, adhering to industry-standard 3-tier architecture
+
+- Constructed a scalable backend integrating PostgreSQL (RDBMS), ensuring efficient storage of product and user data through hard-coded SQL data and schema
+
+- Established robust communication channels between server and client-side API requests utilizing Node and Express for cart management, wishlist functionality, and secure account sign-in/out operations, including comprehensive error-handling middlewares
 
 ### Link to myPets
 
